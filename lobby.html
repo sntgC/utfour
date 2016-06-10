@@ -2,18 +2,32 @@
 <html>
 	<head>
 		<title>Lobby</title>
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+			//Adds a cookie storing the username that expires when the page is closed
+			function addCookie(){
+				var name=document.getElementById("nameBox").value;
+				document.cookie="username="+name;
+			}
+			//Reads the username from the cookie
+			function readCookie(){
+				alert(document.cookie);
+			}
+		</script>
 	</head>
 	<body>
-	<!--The low quality of graphics is due to both the lack of bootstrap and a competent web designer, will be fixed in the future-->
-	<p>Lobby Currently Under Construction</p>
-	<div id="loginDiv">
-		<form>
-			Username: <input type="text" name="username">
-			<input type="button" value="Sign In">
-		</form>
-	</div>
-	<div class="gameDisplay", id="room1">
-		<p>The winner of room 1 is <b id="winner1">dat boi</b></p>
-	</div>
+		<!--The low quality of graphics is due to both the lack of bootstrap and a competent web designer, will be fixed in the future-->
+		<p>Lobby Currently Under Construction</p>
+		<div id="loginDiv">
+			<form>
+				Username: <input type="text" name="username" id="nameBox">
+				<input type="button" value="Sign In" onclick="addCookie()">
+			</form>
+			<a href="/room.html">Go To Room</a>
+		</div>
+		<div class="gameDisplay", id="room1">
+			<p>The winner of room 1 is <b id="winner1">dat boi</b></p>
+		</div>
+		<input type="button" value="Who Am I?" onclick="readCookie()">
 	</body>
 </html>

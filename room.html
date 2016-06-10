@@ -10,14 +10,19 @@
 				choice+= Math.random()>0.5? "p1":"p2";
 				$( "#choice" ).append( document.createTextNode( choice ) );
 			}
+			function readCookie(){
+				alert(document.cookie);
+			}
 		</script>
 	</head>
 	<body>
+		<a href="/lobby.html">Back To Lobby</a>
 		<p id="p1">Player 1: </p>
 		<p id="p2">Player 2: </p>
 		<form>
 			<input type="button" value="Choose Winner" onclick="pickPlayer()">
 		</form>
 		<p id="choice"><b>Output:</b> </p>
+		<input type="button" value="Who am I?" onclick=readCookie()></input>
 	</body>
 </html>
