@@ -4,10 +4,22 @@
 		<title>Lobby</title>
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script>
-			//Adds a cookie storing the username that expires when the page is closed
+			//Adds a cookie storing the username that expires when the browser is closed
 			function addCookie(){
 				var name=document.getElementById("nameBox").value;
+				var isChecked=document.getElementById("staySignedBox").checked;
 				document.cookie="username="+name;
+				//Creates a cookie set to expire upon the closure of the browser
+				if (!isChecked){
+					document.cookie="username="+name;
+				}
+				//Creates a cookie set to expire in one year
+				else{
+					var d = new Date();
+					d.setTime(d.getTime() + 365*24*60*60*1000);
+					var expires = "expires="+d.toUTCString();
+					document.cookie="username="+name+"; "+expires;
+				}
 			}
 			//Reads the username from the cookie
 			function readCookie(){
@@ -20,9 +32,12 @@
 		<p>Lobby Currently Under Construction</p>
 		<div id="loginDiv">
 			<form>
-				Username: <input type="text" name="username" id="nameBox">
-				<input type="button" value="Sign In" onclick="addCookie()">
+				Username: <input type="text" name="username" id="nameBox"><br>
+				<input type="checkbox" value="Remain Signed In" id="staySignedBox">Remember Me
+				<input type="button" value="Sign In" onclick="addCookie()">	
 			</form>
+			<br>
+			<br>
 			<a href="/room.html">Go To Room</a>
 		</div>
 		<div class="gameDisplay", id="room1">
