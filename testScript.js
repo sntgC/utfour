@@ -11,10 +11,7 @@ function requestGameData(game){
 }
 
 function getGameIDS(){
-    // var student=jQuery("#stuID").val();
-    //jQuery("#tit").text(student);
-    //This line assumes that passHistory.php requires a 'student_name' parameter
-
+	$("#table").bootstrapTable('removeAll',"");
     try{
 		ajax=AjaxCaller();
 		//Requests with the specified url
@@ -27,8 +24,10 @@ function getGameIDS(){
                     json=ajax.responseText;
 					json=json.substring(json.indexOf("data")+7,json.length-2);
 					idArray=json.split(" ");
-					for(i=0;i<idArray.length;i++){
-						requestGameData(idArray[i]);
+					var len=idArray.length;
+					for(i=0;i<len;i++){
+					requestGameData(idArray[i]);
+					//requestGameData(idArray[1]);
 					}
 				}
 			}
@@ -59,7 +58,7 @@ function AjaxCaller(){
 }
 
 function callPage(url, div){
-    ajax=AjaxCaller();
+    var ajax=AjaxCaller();
     //Requests with the specified url
     ajax.open("GET", url, true);
     ajax.onreadystatechange=function(){
@@ -69,9 +68,8 @@ function callPage(url, div){
                 //Gets the response from the server and then updates the table based on it
                     json="["+ajax.responseText+"]";
                     json=fixString(json);
-					//alert(json);
                     //div.innerHTML=ajax.responseText;
-				    updateTable(json);
+				   updateTable(json);
             }
         }
     }

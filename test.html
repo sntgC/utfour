@@ -20,7 +20,7 @@
 		<table id="table" class="table table-striped"  data-toggle="table" data-url="x">
 			<thead>
 				<tr>
-					<th data-field='id'>ID</th>
+					<th data-field='id' data-sortable="true">ID</th>
 					<th data-field='player1ID'>P1</th>
 					<th data-field='player2ID'>P2</th>
 					<th data-field='winnerID'>Winner</th>
@@ -28,6 +28,7 @@
 				</tr>
 			</thead>
 		</table>
+		<button class="btn" onclick="getGameIDS()">Refresh</button>
 		<p id="testDisplay"></p>
 	</body>
 </html>

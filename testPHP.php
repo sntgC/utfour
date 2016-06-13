@@ -5,7 +5,7 @@
 	$database = "ut4serverdb";
 
 	$connect = new mysqli($server,$username,$password,$database) or die("Failed to connect to the server");
-	$sql = "SELECT * FROM games WHERE id = '$_GET[gameID]'";
+	$sql = "SELECT * FROM games WHERE id= '$_GET[gameID]'";
 	$result = mysqli_query($connect,$sql);
 
 	if (!$result){
