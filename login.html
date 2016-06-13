@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script>
+			function checkForLoggedIn(){
+				var cookie = document.cookie;
+				if (cookie.length > 0){
+					window.location.replace("loginAlt.html");
+				}
+			} 
+			checkForLoggedIn();
+		</script>
+	</head>
+	<body>
+		<h3>Login</h3>
+		<form action="loginUser.php" method="post">
+			<label>Username:</label><br>
+			<input type="text" name="usernameIn" id="username" required><br>
+			<label>Password:</label><br>
+			<input type="password" name="passwordIn" id="password" required><br>
+			<input type="checkbox" name="staySignedIn" id="staySigned">Remember me<br>
+			<input type="submit" value="Login">
+		</form>
+		<br>
+		Don't have an account? <a href="register.html">Register</a>
+	</body>
+</html>

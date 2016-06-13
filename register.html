@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Registration</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script>
+			function verifyForm(){
+				var password = document.forms["registrationForm"]["passwordIn"].value;
+				var passwordConf = document.forms["registrationForm"]["passwordInConf"].value;
+				if (password !== passwordConf){
+					alert("Passwords do not match");
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h3>Registration</h3>
+		<form onsubmit="return verifyForm()" action="registerUser.php" method="post" name="registrationForm">
+			<!--Will need someway to prevent the creation of duplicate usernames-->
+			<label>Username:</label><br>
+			<input type="text" name="usernameIn" required><br>
+			<label>Password:</label><br>
+			<input type="password" name="passwordIn" id="password" required><br>
+			<label>Password Confirmation:</label><br>
+			<input type="password" name="passwordInConf" id="passwordConf" required><br>
+			<input type="submit" value="Register">
+		</form>
+		<br>
+		Already have an account? <a href="login.html">Login</a>
+	</body>
+</html>
