@@ -6,11 +6,16 @@
 		<script>
 			//Reads the username from the cookie
 			function readCookie(){
-				alert(document.cookie);
+				var origCookie = document.cookie;
+				var splitCookie = document.cookie.split("=");
+				var cookieValue = splitCookie[1];
+				if (origCookie != ""){
+					document.getElementById("welcomeMessage").innerHTML = "Welcome " + cookieValue;
+				}
 			}
 		</script>
 	</head>
-	<body>
+	<body onload="readCookie()">
 		<!--The low quality of graphics is due to both the lack of bootstrap and a competent web designer, will be fixed in the future-->
 		<p>Lobby Currently Under Construction</p>
 		<a href="login.html">Login</a><br>
@@ -19,6 +24,6 @@
 		<div class="gameDisplay", id="room1">
 			<p>The winner of room 1 is <b id="winner1">dat boi</b></p>
 		</div>
-		<input type="button" value="Who Am I?" onclick="readCookie()">
+		<p id="welcomeMessage"></p>
 	</body>
 </html>

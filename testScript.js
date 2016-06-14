@@ -4,7 +4,7 @@ function requestGameData(game){
     //jQuery("#tit").text(student);
     //This line assumes that passHistory.php requires a 'student_name' parameter
     try{
-      callPage('/testPHP.php?gameID='+game,document.getElementById("testDisplay"));
+      callPage('php/testPHP.php?gameID='+game,document.getElementById("testDisplay"));
     }catch(err){
       document.getElementById("testDisplay").innerHTML=err;
 }
@@ -15,7 +15,7 @@ function getGameIDS(){
     try{
 		ajax=AjaxCaller();
 		//Requests with the specified url
-		ajax.open("GET", '/getTournamentGames.php', true);
+		ajax.open("GET", 'php/getTournamentGames.php', true);
 		ajax.onreadystatechange=function(){
         //Request is finished and the response is ready
 			if(ajax.readyState==4){
