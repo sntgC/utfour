@@ -7,22 +7,65 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script>
+			var eligibleUsername=false;
 			function verifyForm(){
 				var password = document.forms["registrationForm"]["passwordIn"].value;
 				var passwordConf = document.forms["registrationForm"]["passwordInConf"].value;
+				if(!eligibleUsername){
+					alert("Username is not suitable");
+					return false;
+				}
 				if (password !== passwordConf){
 					alert("Passwords do not match");
 					return false;
 				}
 			}
+			
+			function init(){
+				document.getElementById("checkmark").style.display = "none";
+				document.getElementById("x").style.display = "none";
+			}
+			
+			function checkUsername(str){
+				if (str == ""){
+					document.getElementById("x").style.display = "none";
+					document.getElementById("checkmark").style.display = "none";
+					eligibleUsername=false;
+					return;
+				}
+				if (window.XMLHttpRequest) {
+					// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					// code for IE6, IE5
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						if(xmlhttp.responseText == "true"){
+							document.getElementById("x").style.display = "inline";
+							document.getElementById("checkmark").style.display = "none";
+							eligibleUsername=false;
+						}
+						else if(xmlhttp.responseText == "false"){
+							document.getElementById("checkmark").style.display = "inline";
+							document.getElementById("x").style.display = "none";
+							eligibleUsername=true;
+						}
+					}
+				};
+				xmlhttp.open("GET","php/checkForUser.php?username="+str,true);
+				xmlhttp.send();
+			}
 		</script>
 	</head>
-	<body>
+	<body onload="init()">
 		<h3>Registration</h3>
-		<form onsubmit="return verifyForm()" action="registerUser.php" method="post" name="registrationForm">
-			<!--Will need someway to prevent the creation of duplicate usernames-->
+		<form onsubmit="return verifyForm()" action="php/registerUser.php" method="post" name="registrationForm">
 			<label>Username:</label><br>
-			<input type="text" name="usernameIn" required><br>
+			<input type="text" name="usernameIn" oninput="checkUsername(this.value)" required>
+			<img src="images/green_checkmark.png" alt="Username available"  title="Username available" width="25" height="23" id="checkmark">
+			<img src="images/red_x.png" alt="Username unavailable"  title="Username unavailable" width="25" height="23" id="x"><br>
 			<label>Password:</label><br>
 			<input type="password" name="passwordIn" id="password" required><br>
 			<label>Password Confirmation:</label><br>

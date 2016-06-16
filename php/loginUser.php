@@ -22,9 +22,9 @@
 			//Creates a cookie set to expire in one year
 			setcookie($cookie_name, $cookie_value, time() + (86400*365), "/" );
 		}
-		header("Location: lobby.html");
+		header("Location: ../lobby.html");
 	}else{
-		header("Location: login.html");
+		header("Location: ../login.html");
 	}
 
 	$connection->close();
