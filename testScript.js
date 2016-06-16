@@ -1,19 +1,11 @@
 
-function requestGameData(game){
-	//alert(game);
-    try{
-      callPage('/testPHP.php?gameID='+game,document.getElementById("testDisplay"));
-    }catch(err){
-      document.getElementById("testDisplay").innerHTML=err;
-}
-}
 
 function getGameIDS(){
-	//$("#table").bootstrapTable('removeAll',"");
+	var json="";
+	var idArray="";
     try{
 		var ajax=AjaxCaller();
 		//Requests with the specified url
-		ajax.open("GET", '/getTournamentGames.php', false);
 		ajax.onreadystatechange=function(){
         //Request is finished and the response is ready
 			if(ajax.readyState==4){
@@ -22,18 +14,30 @@ function getGameIDS(){
                     json=ajax.responseText;
 					json=json.substring(json.indexOf("data")+7,json.length-2);
 					idArray=json.split(" ");
-					var len=idArray.length;
-					for(i=0;i<len;i++){
-						requestGameData(idArray[i]);
-						//alert(idArray[i]);
-					}
+					
 				}
 			}
 		}
-		ajax.send(null);
+		
+		ajax.open("GET", '/getTournamentGames.php', false);
+		ajax.send();
     }catch(err){
       document.getElementById("testDisplay").innerHTML=err;
+	}
+	var len=idArray.length;
+	for(i=0;i<len;i++){
+		console.log(idArray[i]);
+		requestGameData(idArray[i]);
+	}
 }
+
+function requestGameData(game){
+	console.log(game);
+    try{
+      callPage('/testPHP.php?gameID='+game,document.getElementById("testDisplay"));
+    }catch(err){
+      document.getElementById("testDisplay").innerHTML=err;
+	}
 }
 
 function AjaxCaller(){
@@ -97,5 +101,5 @@ function updateTable(jsonString){
 }
 
 jQuery(document).ready(function(){
-	getGameIDS();
+	//getGameIDS();
 });
