@@ -1,8 +1,6 @@
 
 function requestGameData(game){
-    // var student=jQuery("#stuID").val();
-    //jQuery("#tit").text(student);
-    //This line assumes that passHistory.php requires a 'student_name' parameter
+	//alert(game);
     try{
       callPage('/testPHP.php?gameID='+game,document.getElementById("testDisplay"));
     }catch(err){
@@ -11,11 +9,11 @@ function requestGameData(game){
 }
 
 function getGameIDS(){
-	$("#table").bootstrapTable('removeAll',"");
+	//$("#table").bootstrapTable('removeAll',"");
     try{
-		ajax=AjaxCaller();
+		var ajax=AjaxCaller();
 		//Requests with the specified url
-		ajax.open("GET", '/getTournamentGames.php', true);
+		ajax.open("GET", '/getTournamentGames.php', false);
 		ajax.onreadystatechange=function(){
         //Request is finished and the response is ready
 			if(ajax.readyState==4){
@@ -26,8 +24,8 @@ function getGameIDS(){
 					idArray=json.split(" ");
 					var len=idArray.length;
 					for(i=0;i<len;i++){
-					requestGameData(idArray[i]);
-					//requestGameData(idArray[1]);
+						requestGameData(idArray[i]);
+						//alert(idArray[i]);
 					}
 				}
 			}
@@ -58,16 +56,17 @@ function AjaxCaller(){
 }
 
 function callPage(url, div){
+	alert("running");
     var ajax=AjaxCaller();
     //Requests with the specified url
-    ajax.open("GET", url, true);
+    ajax.open("GET", url, false);
     ajax.onreadystatechange=function(){
         //Request is finished and the response is ready
         if(ajax.readyState==4){
             if(ajax.status==200){
                 //Gets the response from the server and then updates the table based on it
                     json="["+ajax.responseText+"]";
-                    json=fixString(json);
+					alert(json);
                     //div.innerHTML=ajax.responseText;
 				   updateTable(json);
             }
