@@ -24,6 +24,9 @@ class Game {
   getWinner(){
 		return this.winner;
   }
+  toString(){
+	  return this.id+" "+this.p1+" "+this.p2+" "+this.winner+" "+this.data;
+  }
 }
 
 function updateBracket(gameArray){
@@ -44,6 +47,20 @@ function updateBracket(gameArray){
 		}
 	}
 	return retArray;
+}
+
+function convertJSONToGameArray(jsonArray){
+	var arr=jsonArray;
+	var names=['"id"','"player1ID"','"player2ID"','"winnerID"','"gameData"'];
+	for(i=0;i<arr.length;i++){
+		var str=arr[i];
+		var spliterate=str.split(",");
+		for(k=0;k<spliterate.length;k+=2){
+			names[Math.floor(k/2)]=spliterate[k].substring(str.indexOf(":"));
+		}
+		arr[i]=new Game(names[0],names[1],names[2],names[3],names[4]);
+	}
+	return arr;
 }
 
 function getGameObjectArray(){
@@ -74,6 +91,7 @@ function getGameObjectArray(){
       document.getElementById("testDisplay").innerHTML=err;
 	}
 	alert(games);
+	alert(convertJSONToGameArray(games));
 }
 
 function requestGameData(game){

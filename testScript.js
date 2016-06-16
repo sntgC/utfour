@@ -1,11 +1,9 @@
-
-
 function getGameIDS(){
-	var json="";
-	var idArray="";
+	var games=new Array();
     try{
-		var ajax=AjaxCaller();
+		ajax=AjaxCaller();
 		//Requests with the specified url
+		ajax.open("GET", '/getTournamentGames.php', false);
 		ajax.onreadystatechange=function(){
         //Request is finished and the response is ready
 			if(ajax.readyState==4){
@@ -14,30 +12,32 @@ function getGameIDS(){
                     json=ajax.responseText;
 					json=json.substring(json.indexOf("data")+7,json.length-2);
 					idArray=json.split(" ");
+					var len=idArray.length;
 					
+					for(i=0;i<len;i++){
+						games.push(requestGameData(idArray[i]));
+						//alert(idArray[i]);
+					}
 				}
 			}
 		}
-		
-		ajax.open("GET", '/getTournamentGames.php', false);
-		ajax.send();
+		ajax.send(null);
     }catch(err){
       document.getElementById("testDisplay").innerHTML=err;
 	}
-	var len=idArray.length;
-	for(i=0;i<len;i++){
-		console.log(idArray[i]);
-		requestGameData(idArray[i]);
+	for(i=0;i<games.length;i++){
+		updateTable(games[i]);
 	}
 }
 
 function requestGameData(game){
-	console.log(game);
+	var ret="";
     try{
-      callPage('/testPHP.php?gameID='+game,document.getElementById("testDisplay"));
+      ret =callPage('/testPHP.php?gameID='+game,document.getElementById("testDisplay"));
     }catch(err){
       document.getElementById("testDisplay").innerHTML=err;
 	}
+	return ret;
 }
 
 function AjaxCaller(){
@@ -60,8 +60,8 @@ function AjaxCaller(){
 }
 
 function callPage(url, div){
-	alert("running");
     var ajax=AjaxCaller();
+	var ret="";
     //Requests with the specified url
     ajax.open("GET", url, false);
     ajax.onreadystatechange=function(){
@@ -69,14 +69,12 @@ function callPage(url, div){
         if(ajax.readyState==4){
             if(ajax.status==200){
                 //Gets the response from the server and then updates the table based on it
-                    json="["+ajax.responseText+"]";
-					alert(json);
-                    //div.innerHTML=ajax.responseText;
-				   updateTable(json);
+                    ret=ajax.responseText;
             }
         }
     }
     ajax.send(null);
+	return ret;
 }
 
 function fixString(fix){
