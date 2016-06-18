@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Welcome to UT4!</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script>
+			function checkForLoggedIn(){
+				var cookie = document.cookie;
+				if (cookie.length > 0){
+					window.location.replace("lobby.html");
+				}
+			} 
+			checkForLoggedIn();
+		</script>
+	</head>
+	<body>
+		<h3>Welcome to Ultimate Tic-Tac-Toe Tournament (UT4)!</h3>
+		<a href="login.html">Login</a><br>
+		<a href="register.html">Register</a><br>
+		<!--Temporary link. Will need to create spectate.html later-->
+		<a href="index.html">Spectate</a>
+	</body>
+</html>

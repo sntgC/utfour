@@ -2,28 +2,37 @@
 <html>
 	<head>
 		<title>Lobby</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script>
+			function checkForLoggedIn(){
+				var cookie = document.cookie;
+				if (cookie.length == 0){
+					window.location.replace("login.html");
+				}
+			} 
+			checkForLoggedIn();
 			//Reads the username from the cookie
 			function readCookie(){
 				var origCookie = document.cookie;
 				var splitCookie = document.cookie.split("=");
 				var cookieValue = splitCookie[1];
 				if (origCookie != ""){
-					document.getElementById("welcomeMessage").innerHTML = "Welcome " + cookieValue;
+					document.getElementById("welcomeMessage").innerHTML = "Welcome <b>" + cookieValue + "</b>";
 				}
 			}
 		</script>
 	</head>
 	<body onload="readCookie()">
 		<!--The low quality of graphics is due to both the lack of bootstrap and a competent web designer, will be fixed in the future-->
-		<p>Lobby Currently Under Construction</p>
-		<a href="login.html">Login</a><br>
-		<a href="register.html">Register</a><br>
+		<p><i>Lobby Currently Under Construction</i></p>
+		<p id="welcomeMessage"></p>
+		<a href="php/logoutUser.php">Sign Out</a><br>
 		<a href="room.html">Go To Room</a>
 		<div class="gameDisplay", id="room1">
 			<p>The winner of room 1 is <b id="winner1">dat boi</b></p>
 		</div>
-		<p id="welcomeMessage"></p>
 	</body>
 </html>
