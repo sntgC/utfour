@@ -7,13 +7,13 @@ class Game {
 	this.data=data;
   }
   hasP1(){
-	  return this.p1!='';
+	  return !(this.p1==''||this.p1=="null");
   }
   hasP2(){
-	  return this.p2!='';
+	  return !(this.p2==''||this.p2=="null");;
   }
   hasWinner(){
-	  return this.winner!='';
+	  return !(this.winner==''||this.winner=="null");
   }
   setP1(p1){
 	  this.p1=p1;
@@ -25,7 +25,7 @@ class Game {
 		return this.winner;
   }
   toString(){
-	  return this.id+" "+this.p1+" "+this.p2+" "+this.winner+" "+this.data;
+	  return "ID: "+this.id+"\n\tP1: "+this.p1+"\n\tP2: "+this.p2+"\n\tWinner: "+this.winner+"\n\tData: "+this.data+"\n";
   }
 }
 
@@ -35,12 +35,13 @@ function updateBracket(gameArray){
 	for(i=0;i<retArray.length;i++){
 		var p1=i%2===0;
 		var childPos=playersInTourney+Math.floor(i/2);
-		if(childPos>retArray.length){
+		if(childPos>=retArray.length){
 			continue;
 		}
 		if(retArray[i].hasWinner()){
 			if(p1&&!retArray[childPos].hasP1()){
 				retArray[childPos].setP1(retArray[i].getWinner());
+				//console.log("For Value i of "+i+" and child pos of "+childPos+", the P1 was set to be "+retArray[i].getWinner());
 			}else if(!(p1||retArray[childPos].hasP2())){
 				retArray[childPos].setP2(retArray[i].getWinner());
 			}
@@ -56,7 +57,7 @@ function convertJSONToGameArray(jsonArray){
 		var str=arr[i];
 		var spliterate=str.split(",");
 		for(k=0;k<spliterate.length;k+=2){
-			names[Math.floor(k/2)]=spliterate[k].substring(str.indexOf(":"));
+			names[Math.floor(k/2)]=spliterate[k].substring(spliterate[k].indexOf(":")+1);
 		}
 		arr[i]=new Game(names[0],names[1],names[2],names[3],names[4]);
 	}
@@ -90,8 +91,8 @@ function getGameObjectArray(){
     }catch(err){
       document.getElementById("testDisplay").innerHTML=err;
 	}
-	alert(games);
-	alert(convertJSONToGameArray(games));
+	var updatedArray=updateBracket(convertJSONToGameArray(games));
+	alert(updatedArray);
 }
 
 function requestGameData(game){
