@@ -14,23 +14,43 @@
 				}
 			} 
 			checkForLoggedIn();
+			
 			//Reads the username from the cookie
-			function readCookie(){
+			function getUsernameFromCookie(){
 				var origCookie = document.cookie;
 				var splitCookie = document.cookie.split("=");
 				var cookieValue = splitCookie[1];
-				if (origCookie != ""){
-					document.getElementById("welcomeMessage").innerHTML = "Welcome <b>" + cookieValue + "</b>";
+				var username = "";
+				
+				if (window.XMLHttpRequest) {
+					// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					// code for IE6, IE5
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 				}
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						username = xmlhttp.responseText;
+						if (origCookie != ""){
+							document.getElementById("welcomeMessage").innerHTML = "Welcome <b>" + username + "</b>";
+						}
+					}
+				};
+				
+				xmlhttp.open("GET","php/getUser.php?userID="+cookieValue,true);
+				xmlhttp.send();
 			}
 		</script>
 	</head>
-	<body onload="readCookie()">
+	<body onload="getUsernameFromCookie()">
 		<!--The low quality of graphics is due to both the lack of bootstrap and a competent web designer, will be fixed in the future-->
 		<p><i>Lobby Currently Under Construction</i></p>
 		<p id="welcomeMessage"></p>
 		<a href="php/logoutUser.php">Sign Out</a><br>
-		<a href="room.html">Go To Room</a>
+		<a href="room.html">Go To Room</a><br>
+		<!--Temporary link. Will need to create spectate.html later-->
+		<a href="index.html">Spectate</a>
 		<div class="gameDisplay", id="room1">
 			<p>The winner of room 1 is <b id="winner1">dat boi</b></p>
 		</div>
