@@ -141,9 +141,3 @@ function callPage(url, div){
     ajax.send(null);
 	return ret;
 }
-
-/*var g=new Game('abc','p1','p2','p1','dat');
-var h=new Game('bcd','hp1','hp2','hp2','dat');
-var i=new Game('cde','','','','');
-var ghi=[g,h,i];
-alert(updateBracket(ghi)[2].p1);*/

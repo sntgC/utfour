@@ -3,26 +3,15 @@
 	<head>
 		<title>Test Room</title>
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-		<script>
-			//Placeholder for a function that will ramdomly pick a winner until the actual game is implemented
-			function pickPlayer(){
-				var choice="";
-				choice+= Math.random()>0.5? "p1":"p2";
-				$( "#choice" ).append( document.createTextNode( choice ) );
-			}
-			function readCookie(){
-				alert(document.cookie);
-			}
-		</script>
+		<script type="text/javascript" src="roomScript.js"></script>
 	</head>
 	<body>
 		<a href="lobby.html">Back To Lobby</a>
 		<p id="p1">Player 1: </p>
 		<p id="p2">Player 2: </p>
 		<form>
-			<input type="button" value="Choose Winner" onclick="pickPlayer()">
+			<input type="checkbox" id="p1Win">P1 Win<br>
+			<input type="button" value="Choose Winner" onclick="setWinner('test')">
 		</form>
-		<p id="choice"><b>Output:</b> </p>
-		<input type="button" value="Who am I?" onclick=readCookie()></input>
 	</body>
 </html>
