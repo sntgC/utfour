@@ -9,14 +9,14 @@
 			function checkForLoggedIn(){
 				var cookie = document.cookie;
 				if (cookie.length > 0){
-					window.location.replace("loginAlt.html");
+					window.location.replace("loginAlt");
 				}
 			} 
 			checkForLoggedIn();
 		</script>
 	</head>
 	<body>
-		<a href="index.html">Home Page</a>
+		<a href="index">Home Page</a>
 		<h3>Login</h3>
 		<form action="php/loginUser.php" method="post">
 			<label>Username:</label><br>
@@ -27,6 +27,6 @@
 			<input type="submit" value="Login">
 		</form>
 		<br>
-		Don't have an account? <a href="register.html">Register</a>
+		Don't have an account? <a href="register">Register</a>
 	</body>
 </html>

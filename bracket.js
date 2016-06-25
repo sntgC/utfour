@@ -69,7 +69,7 @@ function getGameObjectArray(){
     try{
 		ajax=AjaxCaller();
 		//Requests with the specified url
-		ajax.open("GET", '/getTournamentGames.php', false);
+		ajax.open("GET", 'php/getTournamentGames.php', false);
 		ajax.onreadystatechange=function(){
         //Request is finished and the response is ready
 			if(ajax.readyState==4){
@@ -98,7 +98,7 @@ function getGameObjectArray(){
 function requestGameData(game){
 	var ret="";
     try{
-      ret =callPage('/testPHP.php?gameID='+game,document.getElementById("testDisplay"));
+      ret =callPage('php/testPHP.php?gameID='+game,document.getElementById("testDisplay"));
     }catch(err){
       document.getElementById("testDisplay").innerHTML=err;
 	}

@@ -11,9 +11,9 @@
 	VALUES ('$_POST[usernameIn]','$_POST[passwordIn]')";
 
 	if ($connection->query($sql)===TRUE){
-		header("Location: ../login.html");
+		header("Location: ../login");
 	}else{
-		header("Location: ../register.html");
+		header("Location: ../register");
 	}
 	
 	$connection->close();

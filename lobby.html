@@ -10,7 +10,7 @@
 			function checkForLoggedIn(){
 				var cookie = document.cookie;
 				if (cookie.length == 0){
-					window.location.replace("login.html");
+					window.location.replace("login");
 				}
 			} 
 			checkForLoggedIn();
@@ -48,9 +48,9 @@
 		<p><i>Lobby Currently Under Construction</i></p>
 		<p id="welcomeMessage"></p>
 		<a href="php/logoutUser.php">Sign Out</a><br>
-		<a href="room.html">Go To Room</a><br>
+		<a href="room">Go To Room</a><br>
 		<!--Temporary link. Will need to create spectate.html later-->
-		<a href="index.html">Spectate</a>
+		<a href="index">Spectate</a>
 		<div class="gameDisplay", id="room1">
 			<p>The winner of room 1 is <b id="winner1">dat boi</b></p>
 		</div>

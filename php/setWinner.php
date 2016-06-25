@@ -10,7 +10,7 @@
 		die ("The SQL command was not processed correctly");
 	} else{
 		//Redirects to the page where the form was added. This can be avoided using AJAX
-		header( 'Location: ../test.html' ) ;
+		header( 'Location: ../test' ) ;
 	}
 	mysqli_close($connect);
 ?>
