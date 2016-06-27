@@ -7,7 +7,9 @@
 	$connection=mysqli_connect($server,$username,$password) or die("Failed to connect to the server");
 	mysqli_select_db($connection,$database) or die("Failed to connect to the database");
 	
-	$sql = "SELECT * FROM users WHERE id='$_GET[userID]'";
+	$cookie_value = $_COOKIE["userID"];
+	
+	$sql = "SELECT * FROM users WHERE id='$cookie_value'";
 	$results = $connection->query($sql);
 	
 	$row = $results->fetch_assoc();
