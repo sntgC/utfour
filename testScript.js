@@ -99,5 +99,5 @@ function updateTable(jsonString){
 }
 
 jQuery(document).ready(function(){
-	//getGameIDS();
+	getGameIDS();
 });
