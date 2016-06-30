@@ -21,6 +21,7 @@
 				id int NOT NULL AUTO_INCREMENT,
 				username varchar(20) CHARACTER SET utf8 DEFAULT NULL,
 				password varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+				wins int NOT NULL DEFAULT 0,
 				PRIMARY KEY (id)
 				); ";
 				

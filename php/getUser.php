@@ -13,5 +13,5 @@
 	$results = $connection->query($sql);
 	
 	$row = $results->fetch_assoc();
-	echo $row["username"];
+	echo $row["username"] . '(' . $row["wins"] . ')';
 ?>
