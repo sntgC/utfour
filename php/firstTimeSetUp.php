@@ -4,7 +4,9 @@
 	$password = "";
 	$database = "ut4serverdb";
 	$connect = new mysqli($server,$username,$password,$database) or die("Failed to connect to the server");
-	$sql .= "CREATE TABLE IF NOT EXISTS tournaments (
+	
+	$sql = "";
+	$sql .="CREATE TABLE IF NOT EXISTS tournaments (
 				id varchar(8) CHARACTER SET utf8 NOT NULL,
 				data varchar(1024) CHARACTER SET utf8 NOT NULL
 				); ";
@@ -14,13 +16,20 @@
 				player2ID varchar(8) CHARACTER SET utf8 DEFAULT NULL,
 				winnerID varchar(8) CHARACTER SET utf8 DEFAULT NULL,
 				gameData varchar(1024) CHARACTER SET utf8 DEFAULT NULL
-				)";
+				); ";
+	$sql .="CREATE TABLE IF NOT EXISTS users (
+				id int NOT NULL AUTO_INCREMENT,
+				username varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+				password varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+				PRIMARY KEY (id)
+				); ";
+				
 	$result = mysqli_multi_query($connect,$sql);
 	if (!$result){
 		die ("The SQL command was not processed correctly");
 	} else{
 		//Redirects to the page where the form was added. This can be avoided using AJAX
-		header( 'Location: ../index.html' ) ;
+		echo "MySQL tables setup successfully";
 	}
 	mysqli_close($connect);
 ?>
