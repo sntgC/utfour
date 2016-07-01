@@ -18,7 +18,7 @@ function generateRooms(players){
 	for(k=0;k<length;k++){
 		gamesInTournament[k]=new Game(gamesInTournament[k],"","","","");
 	}
-	//Sends game objects to server $¢ Add a player field
+	//Sends game objects to server $¢ Add a player field, register rooms, change this to $.post
 	for(k=0;k<length;k++){
 		var ajax=new XMLHttpRequest();
 		ajax.open("GET", 'php/getARoom.php?fileName='+gamesInTournament[k].id, true);
@@ -33,6 +33,10 @@ function generateRooms(players){
 		ajax.send(null);
 	}
 	console.log(gamesInTournament);
+}
+
+function beginTournament(){
+	jQuery.post('php/registerTournament.php',{'tourID':'abcdefgh', 'tourData':'here come dat boi'}, function(){console.log("callback")});
 }
 
 function generateID(){
