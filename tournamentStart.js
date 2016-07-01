@@ -1,10 +1,38 @@
 function generateRooms(players){
 	/*
-	Generates IDs
-	Creates new tournament
-	Sends requests to the server for new rooms
-	*/
+	Does everything
 	
+	players-number of players
+	*/
+	// $¢ For now it just makes the room, to populate later
+	var tourID=generateID();
+	var gamesInTournament=[];
+	var length=2*Math.pow(2,Math.ceil(Math.log(players)/Math.log(2)))-1;
+	for(k=0; k < length;k++){
+		/* Apparently when I call generateID(), the 'i' I use in the for-loops in that function
+			is the same as the 'i' I use in this loop, so I had to change the name
+		*/
+		gamesInTournament.push(generateID());
+	}
+	//Turns ids into Game objects
+	for(k=0;k<length;k++){
+		gamesInTournament[k]=new Game(gamesInTournament[k],"","","","");
+	}
+	//Sends game objects to server $¢ Add a player field
+	for(k=0;k<length;k++){
+		var ajax=new XMLHttpRequest();
+		ajax.open("GET", 'php/getARoom.php?fileName='+gamesInTournament[k].id, true);
+		ajax.onreadystatechange=function(){
+        //Request is finished and the response is ready
+			if(ajax.readyState==4){
+				if(ajax.status==200){
+						
+				}
+			}
+		}
+		ajax.send(null);
+	}
+	console.log(gamesInTournament);
 }
 
 function generateID(){

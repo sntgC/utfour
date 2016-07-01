@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script>
+			//There is literally nothing more nub than JS in an html file
 			function checkForLoggedIn(){
 				var cookie = document.cookie;
 				if (cookie.length == 0){
@@ -42,6 +43,7 @@
 				xmlhttp.send();
 			}
 		</script>
+		<script type="text/javascript" src="bracket.js"></script>
 		<script type="text/javascript" src="tournamentStart.js"></script>
 	</head>
 	<body onload="getUsernameFromCookie()">
@@ -55,5 +57,6 @@
 		<div class="gameDisplay", id="room1">
 			<p>The winner of room 1 is <b id="winner1">dat boi</b></p>
 		</div>
+		<button onclick=generateRooms(4)>BEEgin Tourney</button>
 	</body>
 </html>
