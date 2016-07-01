@@ -17,11 +17,6 @@
 			
 			//Reads the username from the cookie
 			function getUsernameFromCookie(){
-				var origCookie = document.cookie;
-				var splitCookie = document.cookie.split("=");
-				var cookieValue = splitCookie[1];
-				var username = "";
-				
 				if (window.XMLHttpRequest) {
 					// code for IE7+, Firefox, Chrome, Opera, Safari
 					xmlhttp = new XMLHttpRequest();
@@ -31,10 +26,7 @@
 				}
 				xmlhttp.onreadystatechange = function() {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						username = xmlhttp.responseText;
-						if (origCookie != ""){
-							document.getElementById("welcomeMessage").innerHTML = "Welcome <b>" + username + "</b>";
-						}
+						document.getElementById("welcomeMessage").innerHTML = "Welcome <b>" + xmlhttp.responseText + "</b>";
 					}
 				};
 				
