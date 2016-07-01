@@ -8,7 +8,7 @@
 		<script type="text/javascript">
 			function checkForLoggedIn(){
 				var cookie = document.cookie;
-				if (cookie.length > 0){
+				if (cookie.indexOf("userID") > -1){
 					window.location.replace("lobby");
 				}
 			}
