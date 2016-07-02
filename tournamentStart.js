@@ -1,3 +1,9 @@
+var source = new EventSource('php/lobbySSE.php');
+source.onmessage = function(e) {
+	document.getElementById("players").innerHTML=e.data;
+	//console.log(e.data);
+ };
+
 function generateRooms(players){
 	/*
 	Does everything
@@ -57,3 +63,12 @@ function generateID(){
 	
 	return id;
 }
+
+function whoAmI(){
+	return prompt("Input a number");
+}
+
+jQuery(document).ready(function(){
+	/* $¢ Don't forget to add an unload() */
+	//jQuery.post('php/updateLobby.php',{'id':whoAmI()}, function(){console.log("callback")});
+});
