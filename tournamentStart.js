@@ -70,5 +70,9 @@ function whoAmI(){
 
 jQuery(document).ready(function(){
 	/* $¢ Don't forget to add an unload() */
-	//jQuery.post('php/updateLobby.php',{'id':whoAmI()}, function(){console.log("callback")});
+	jQuery.post('php/updateLobby.php',{'id':document.cookie.substring("userID=".length),'join':'true'}, function(){console.log("callback")});
+});
+
+$( window ).unload(function() {
+	jQuery.post('php/updateLobby.php',{'id':document.cookie.substring("userID=".length),'join':'false'}, function(){console.log("callback")});
 });
