@@ -1,32 +1,33 @@
 class Game {
-  constructor(id, p1,p2, winner, data) {
-    this.id = id;
-	this.p1=p1;
-	this.p2=p2;
-	this.winner=winner;
-	this.data=data;
-  }
-  hasP1(){
-	  return !(this.p1==''||this.p1=="null");
-  }
-  hasP2(){
-	  return !(this.p2==''||this.p2=="null");;
-  }
-  hasWinner(){
-	  return !(this.winner==''||this.winner=="null");
-  }
-  setP1(p1){
-	  this.p1=p1;
-  }
-  setP2(p2){
-	  this.p2=p2;
-  }
-  getWinner(){
+//	$¢ Maybe I should overload this method
+	constructor(id, p1,p2, winner, data) {
+		this.id = id;
+		this.p1=p1;
+		this.p2=p2;
+		this.winner=winner;
+		this.data=data;
+	}
+	hasP1(){
+		return !(this.p1==''||this.p1=="null");
+	}	
+	hasP2(){
+		return !(this.p2==''||this.p2=="null");;
+	}
+	hasWinner(){
+		return !(this.winner==''||this.winner=="null");
+	}
+	setP1(p1){
+		this.p1=p1;
+	}
+	setP2(p2){
+		this.p2=p2;
+	}
+	getWinner(){
 		return this.winner;
-  }
-  toString(){
-	  return "ID: "+this.id+"\n\tP1: "+this.p1+"\n\tP2: "+this.p2+"\n\tWinner: "+this.winner+"\n\tData: "+this.data+"\n";
-  }
+	}
+	toString(){
+		return "ID: "+this.id+"\n\tP1: "+this.p1+"\n\tP2: "+this.p2+"\n\tWinner: "+this.winner+"\n\tData: "+this.data+"\n";
+	}
 }
 
 function updateBracket(gameArray){

@@ -31,12 +31,15 @@
 				beekeeper boolean NOT NULL DEFAULT 0,
 				PRIMARY KEY (id)
 				); ";
+	$sql .="CREATE TABLE IF NOT EXISTS lobby ( 
+				userID int(11) NOT NULL,
+				PRIMARY KEY (userID)	
+				); ";
 				
 	$result = mysqli_multi_query($connect,$sql);
 	if (!$result){
 		die ("The SQL command was not processed correctly");
 	} else{
-		//Redirects to the page where the form was added. This can be avoided using AJAX
 		echo "MySQL tables setup successfully";
 	}
 	mysqli_close($connect);
