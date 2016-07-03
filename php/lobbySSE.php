@@ -14,9 +14,9 @@
 		$connect = new mysqli("localhost","root","","ut4serverdb") or die("Failed to connect to the server");
 		$sql = "SELECT userID FROM lobby";
 		$result = mysqli_query($connect,$sql);
-	
+		$return="";
 		while($row = mysqli_fetch_array($result)){
-			$return .=$row[userID]."<br>";
+			$return .=$row['userID']."<br>";
 		}
 		mysqli_close($connect);
 		

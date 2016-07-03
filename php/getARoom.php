@@ -1,6 +1,6 @@
 <?php
-	$newFile = fopen("$_POST[fileName]".".html", "w") or die("Unable to open file!");
-	$roomTemplate = fopen('../room.html','r');
+	$newFile = fopen("../matches/"."$_POST[fileName]".".html", "w") or die("Unable to open file!");
+	$roomTemplate = fopen('../matches/room.html','r');
 	while ($line = fgets($roomTemplate)) {
 		fwrite($newFile, $line);
 	}
@@ -14,9 +14,9 @@
 	}else{
 		$sql = "INSERT INTO games (id) VALUES ('$_POST[fileName]')";
 	}
-
+	
 	if ($connection->query($sql)===TRUE){
-		echo "Data succesfully inputted";
+		echo "<p><a href='/matches/".$_POST['fileName'].".html"."'>Go To Room</a> for ".$_POST['player1ID']." and ".$_POST['player2ID']."</p>";
 	}else{
 		echo "Something seems to have gone wrong";
 	}

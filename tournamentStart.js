@@ -1,19 +1,16 @@
 var source = new EventSource('php/lobbySSE.php');
 source.onmessage = function(e) {
 	document.getElementById("players").innerHTML=e.data;
-	//console.log(e.data);
  };
 
-function generateRooms(players){
+function generateRooms(players, playerNames){
 	/*
 	Generates the rooms for the server
 	
 	players-number of players
 	*/
-	// $¢ For now it just makes the room, to populate later
-	//var tourID=generateID();
 	var gamesInTournament=[];
-	var length=2*Math.pow(2,Math.ceil(Math.log(players)/Math.log(2)))-1;
+	var length=2*Math.pow(2,Math.ceil(Math.log(players/2)/Math.log(2)))-1;
 	for(k=0; k < length;k++){
 		/* Apparently when I call generateID(), the 'i' I use in the for-loops in that function
 			is the same as the 'i' I use in this loop, so I had to change the name
@@ -24,31 +21,48 @@ function generateRooms(players){
 	for(k=0;k<length;k++){
 		gamesInTournament[k]=new Game(gamesInTournament[k],"","","","");
 	}
-	//Sends game objects to server $¢ Add a player field, register rooms, change this to $.post
+	//Sends game objects to server
+	populate(playerNames,gamesInTournament);
 	for(k=0;k<length;k++){
-		/*var ajax=new XMLHttpRequest();
-		ajax.open("GET", 'php/getARoom.php?fileName='+gamesInTournament[k].id, true);
-		ajax.onreadystatechange=function(){
-        //Request is finished and the response is ready
-			if(ajax.readyState==4){
-				if(ajax.status==200){
-						
-				}
-			}
-		}
-		ajax.send(null);*/
 		jQuery.post('php/getARoom.php',
 						 {'fileName':gamesInTournament[k].id,'player1ID':gamesInTournament[k].p1,'player2ID':gamesInTournament[k].p2},
-							function(data){console.log(data)});
+							function(data){
+								document.getElementById("notification").innerHTML+=data;
+								});
 	}
 	return(gamesInTournament);
 }
 
+function populate(players, games){
+	/* $¢Room for improvement */
+	var pIndex=0;
+	for(g=0;g<games.length;g++){
+		if(pIndex>players.length)
+			break;
+		if(!games[g].hasP1()){
+			games[g].setP1(players[pIndex++]);
+			g--;
+		}else if(!games[g].hasP2()){
+			games[g].setP2(players[pIndex++]);
+		}
+	}
+}
+
+
 function beginTournament(){
-	var tourID=generateID();
-	//jQuery.post('php/registerTournament.php',{'tourID':'abcdefgh', 'tourData':'here come dat boi'}, function(){console.log("callback")});
-	var rooms=generateRooms(4);
-	console.log(rooms);
+	jQuery.get('php/getLobbyPlayers.php',function(data){
+		console.log(data);
+		var tourID=generateID();
+		var tourData="";
+		data=data.substring(0,data.length-1);
+		var ids=data.split(" ");
+		var rooms=generateRooms(ids.length,ids);
+		for(g=0;g<rooms.length;g++){
+			tourData+=rooms[g].id+" ";
+		}
+		tourData=tourData.substring(0,tourData.length-1);
+		jQuery.post('php/registerTournament.php',{'tourID':tourID, 'tourData':tourData}, function(){console.log("callback")});
+	});
 }
 
 function generateID(){
@@ -70,12 +84,7 @@ function generateID(){
 	return id;
 }
 
-function whoAmI(){
-	return prompt("Input a number");
-}
-
 jQuery(document).ready(function(){
-	/* $¢ Don't forget to add an unload() */
 	var userID=document.cookie.substring("userID=".length);
 	jQuery.post('php/updateLobby.php',{'id':userID,'join':'true'}, function(){console.log(userID+" joined the lobby")});
 });
