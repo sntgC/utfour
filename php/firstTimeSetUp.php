@@ -3,7 +3,12 @@
 	$username = "root";
 	$password = "";
 	$database = "ut4serverdb";
-	$connect = new mysqli($server,$username,$password,$database) or die("Failed to connect to the server");
+	
+	$connect = new mysqli($server,$username,$password) or die("Failed to connect to the server");
+	$createDB = "CREATE DATABASE IF NOT EXISTS ut4serverdb; ";
+	$connect->query($createDB);
+	
+	mysqli_select_db($connect,$database) or die("Failed to connect to the database");
 	
 	$sql = "";
 	$sql .="CREATE TABLE IF NOT EXISTS tournaments (
