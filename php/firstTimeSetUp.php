@@ -32,7 +32,7 @@
 				PRIMARY KEY (id)
 				); ";
 	$sql .="CREATE TABLE IF NOT EXISTS lobby ( 
-				userID int(11) NOT NULL,
+				userID varchar(7) CHARACTER SET utf8 NOT NULL,
 				PRIMARY KEY (userID)	
 				); ";
 				
