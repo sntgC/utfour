@@ -7,7 +7,7 @@
 	$connection=mysqli_connect($server,$username,$password) or die("Failed to connect to the server");
 	mysqli_select_db($connection,$database) or die("Failed to connect to the database");
 	if($_POST['join']==="true"){
-		$sql = "INSERT INTO lobby (userID)
+		$sql = "REPLACE INTO lobby (userID)
 		VALUES ('$_POST[id]')";
 	}else{
 		$sql = "DELETE FROM lobby WHERE userID='$_POST[id]'";

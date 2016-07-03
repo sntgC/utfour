@@ -25,7 +25,9 @@
 				PRIMARY KEY (id)
 				); ";
 	$sql .="CREATE TABLE IF NOT EXISTS lobby ( 
-				userID int(11) NOT NULL ); ";
+				userID int(11) NOT NULL,
+				PRIMARY KEY (userID)	
+				); ";
 				
 	$result = mysqli_multi_query($connect,$sql);
 	if (!$result){

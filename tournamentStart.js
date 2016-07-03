@@ -6,12 +6,12 @@ source.onmessage = function(e) {
 
 function generateRooms(players){
 	/*
-	Does everything
+	Generates the rooms for the server
 	
 	players-number of players
 	*/
 	// $¢ For now it just makes the room, to populate later
-	var tourID=generateID();
+	//var tourID=generateID();
 	var gamesInTournament=[];
 	var length=2*Math.pow(2,Math.ceil(Math.log(players)/Math.log(2)))-1;
 	for(k=0; k < length;k++){
@@ -26,7 +26,7 @@ function generateRooms(players){
 	}
 	//Sends game objects to server $¢ Add a player field, register rooms, change this to $.post
 	for(k=0;k<length;k++){
-		var ajax=new XMLHttpRequest();
+		/*var ajax=new XMLHttpRequest();
 		ajax.open("GET", 'php/getARoom.php?fileName='+gamesInTournament[k].id, true);
 		ajax.onreadystatechange=function(){
         //Request is finished and the response is ready
@@ -36,13 +36,19 @@ function generateRooms(players){
 				}
 			}
 		}
-		ajax.send(null);
+		ajax.send(null);*/
+		jQuery.post('php/getARoom.php',
+						 {'fileName':gamesInTournament[k].id,'player1ID':gamesInTournament[k].p1,'player2ID':gamesInTournament[k].p2},
+							function(data){console.log(data)});
 	}
-	console.log(gamesInTournament);
+	return(gamesInTournament);
 }
 
 function beginTournament(){
-	jQuery.post('php/registerTournament.php',{'tourID':'abcdefgh', 'tourData':'here come dat boi'}, function(){console.log("callback")});
+	var tourID=generateID();
+	//jQuery.post('php/registerTournament.php',{'tourID':'abcdefgh', 'tourData':'here come dat boi'}, function(){console.log("callback")});
+	var rooms=generateRooms(4);
+	console.log(rooms);
 }
 
 function generateID(){
@@ -70,7 +76,8 @@ function whoAmI(){
 
 jQuery(document).ready(function(){
 	/* $¢ Don't forget to add an unload() */
-	jQuery.post('php/updateLobby.php',{'id':document.cookie.substring("userID=".length),'join':'true'}, function(){console.log("callback")});
+	var userID=document.cookie.substring("userID=".length);
+	jQuery.post('php/updateLobby.php',{'id':userID,'join':'true'}, function(){console.log(userID+" joined the lobby")});
 });
 
 $( window ).unload(function() {
