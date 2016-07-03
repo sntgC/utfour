@@ -2,6 +2,11 @@ var source = new EventSource('php/lobbySSE.php');
 source.onmessage = function(e) {
 	document.getElementById("players").innerHTML=e.data;
  };
+ 
+var notificationSource = new EventSource('php/notificationSSE.php?userID='+document.cookie.substring("userID=".length));
+notificationSource.onmessage = function(e) {
+	document.getElementById("notification").innerHTML=e.data;
+ };
 
 function generateRooms(players, playerNames){
 	/*
