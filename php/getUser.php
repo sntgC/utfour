@@ -9,7 +9,7 @@
 	
 	$cookie_value = $_COOKIE["userID"];
 	
-	$sql = "SELECT * FROM users WHERE id='$cookie_value'";
+	$sql = "SELECT * FROM users WHERE userID='$cookie_value'";
 	$results = $connection->query($sql);
 	
 	$row = $results->fetch_assoc();

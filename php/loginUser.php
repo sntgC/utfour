@@ -13,10 +13,10 @@
 	if(mysqli_num_rows($results)==1){
 		$remember = isset($_POST['staySignedIn']);
 		$cookie_name = "userID";
-		$sql2 = "SELECT id FROM users WHERE username='$_POST[usernameIn]' AND password='$_POST[passwordIn]'";
+		$sql2 = "SELECT userID FROM users WHERE username='$_POST[usernameIn]' AND password='$_POST[passwordIn]'";
 		$results2 = $connection->query($sql2);
 		$row = $results2->fetch_assoc();
-		$cookie_value = $row["id"];
+		$cookie_value = $row["userID"];
 		if (!$remember){
 			//Creates a cookie set to expire upon the closure of the browser
 			setcookie($cookie_name, $cookie_value, 0, "/" );

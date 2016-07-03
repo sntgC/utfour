@@ -19,9 +19,11 @@
 				); ";
 	$sql .="CREATE TABLE IF NOT EXISTS users (
 				id int NOT NULL AUTO_INCREMENT,
+				userID varchar(7) CHARACTER SET utf8 DEFAULT NULL,
 				username varchar(20) CHARACTER SET utf8 DEFAULT NULL,
 				password varchar(20) CHARACTER SET utf8 DEFAULT NULL,
 				wins int NOT NULL DEFAULT 0,
+				beekeeper boolean NOT NULL DEFAULT 0,
 				PRIMARY KEY (id)
 				); ";
 				
