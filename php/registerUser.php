@@ -11,11 +11,10 @@
 		$charList1 = "abcdefghijklmnopqrstuvwxyz";
 		$charList2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		$charList3 = "1234567890";
-		$charList4 = "!@#$%^&*";
 		
 		$generatedID = "";
 		for($i = 0; $i < 7; $i++){
-			$chooseList = mt_rand(1,4);
+			$chooseList = mt_rand(1,3);
 			if($chooseList == 1){
 				$selectChar = mt_rand(0,25);
 				$char = $charList1{$selectChar};
@@ -26,14 +25,9 @@
 				$char = $charList2{$selectChar};
 				$generatedID .= $char;
 			}
-			else if($chooseList == 3){
+			else{
 				$selectChar = mt_rand(0,9);
 				$char = $charList3{$selectChar};
-				$generatedID .= $char;
-			}
-			else{
-				$selectChar = mt_rand(0,7);
-				$char = $charList4{$selectChar};
 				$generatedID .= $char;
 			}
 		}
