@@ -32,6 +32,7 @@
 				); ";
 	$sql .="CREATE TABLE IF NOT EXISTS lobby ( 
 				userID varchar(7) CHARACTER SET utf8 NOT NULL,
+				lastActive timestamp NOT NULL,
 				PRIMARY KEY (userID)	
 				); ";
 				

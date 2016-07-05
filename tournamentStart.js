@@ -1,4 +1,4 @@
-var source = new EventSource('php/lobbySSE.php');
+var source = new EventSource('php/lobbySSE.php?user='+document.cookie.substring("userID=".length));
 source.onmessage = function(e) {
 	document.getElementById("players").innerHTML=e.data;
  };
