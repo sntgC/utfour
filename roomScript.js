@@ -6,7 +6,8 @@ function getRoomID(){
 	/*
 	Returns the id of the room, which will probably just be the name of the file. Need to find a way to read the url
 	*/
-	return window.location.href.substring(window.location.href.lastIndexOf("/")+1);
+	var url=window.location.href;
+	return url.substring(url.lastIndexOf("/")+1,url.indexOf(".html"));
 }
 
 function AjaxCaller(){
@@ -38,7 +39,7 @@ function getPlayerIDS(){
 		anything with it, which leaves an issue for a later time.
 		*/
 		var ajax=AjaxCaller();
-		ajax.open("GET", 'php/getMatchPlayers.php?gameID='+"testID1", false);
+		ajax.open("GET", '../php/getMatchPlayers.php?gameID='+getRoomID(), false);
 		ajax.onreadystatechange=function(){
 			if(ajax.readyState==4){
 				if(ajax.status==200){
@@ -59,7 +60,8 @@ function getPlayerID(){
 	/*
 	Returns the id of this player based on a cookie
 	*/
-	return "p1";
+	var userID=document.cookie.substring("userID=".length);
+	return userID;
 }
 
 function setWinner(oneOrTwo){
@@ -71,22 +73,9 @@ function setWinner(oneOrTwo){
 		}else{
 			p1=playerIDs[1];
 		}
-		try{
-			var ajax=AjaxCaller();
-			ajax.open("GET", 'php/setWinner.php?gameID='+"testID1"+'&winID='+p1, true);
-			ajax.onreadystatechange=function(){
-				if(ajax.readyState==4){
-					if(ajax.status==200){
-						
-					}
-				}
-			}
-			ajax.send(null);
-		}catch(err){
-		console.log(err);
-		}
+		jQuery.post('../php/setWinner.php',{'gameID':getRoomID(),'winID':p1},function(data){console.log(data)});
 	}else{
-		var winner=playerIDs[parseInt(oneOrTwo,10)-1];
+		jQuery.post('../php/setWinner.php',{'gameID':getRoomID(),'winID':getPlayerID},function(data){console.log(data)});
 	}
 }
 
@@ -94,5 +83,7 @@ jQuery(document).ready(function(){
 	playerIDs=getPlayerIDS();
 	inRoundID = playerIDs[0]===getPlayerID()? '1':playerIDs[1]===getPlayerID()? '2':'s';
 	console.log(inRoundID);
+	console.log(playerIDs);
+	console.log(getPlayerID());
 	console.log(getRoomID());
 });
