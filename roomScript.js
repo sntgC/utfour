@@ -2,6 +2,14 @@ var playerIDs;
 //A character denoting if this is player 1 ('1'), 2 ('2'), or possibly a spectator ('s') 
 var inRoundID;
 
+var redirectSource = new EventSource('../php/roomSSE.php?gameID='+getRoomID());
+redirectSource.onmessage = function(e) {
+	console.log(e.data);
+	if(e.data!=''){
+		window.location.replace("../lobby");
+	}
+ };
+
 function getRoomID(){
 	/*
 	Returns the id of the room, which will probably just be the name of the file. Need to find a way to read the url
