@@ -26,7 +26,7 @@
 	function timeStamp(){
 		$connect = new mysqli("localhost","root","","ut4serverdb") or die("Failed to connect to the server");
 		$sql = "UPDATE lobby SET lastActive='".date("Y-m-d H:i:s",time())."' WHERE userID='$_GET[user]'; ";
-		$sql .= "DELETE FROM lobby WHERE lastActive < '".date("Y-m-d H:i:s",time()-30)."'; ";
+		$sql .= "DELETE FROM lobby WHERE lastActive < '".date("Y-m-d H:i:s",time()-5)."'; ";
 		$result = mysqli_multi_query($connect,$sql);
 		if (!$result){
 			die ("The SQL command was not processed correctly");
