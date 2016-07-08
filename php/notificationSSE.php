@@ -16,7 +16,7 @@
 		$result = mysqli_query($connect,$sql);
 		$return="";
 		while($row = mysqli_fetch_array($result)){
-			$return .="<p>You have a game in room <a href='/matches/".$row['id']."'>".$row['id']."</a></p>";
+			$return .="<p>You have a game in room <a href='matches/".$row['id']."'>".$row['id']."</a></p>";
 		}
 		mysqli_close($connect);
 		
