@@ -28,11 +28,20 @@ function generateRooms(players, playerNames){
 	}
 	//Sends game objects to server
 	populate(playerNames,gamesInTournament);
+	var initialRooms=(gamesInTournament.length+1)/2;
 	for(k=0;k<length;k++){
+		var p1=i%2===0;
+		var childPos=playersInTourney+Math.floor(i/2);
+		var pointerString=p1? "P1":"P2";
+		if(childPos<gamesInTournament.length){
+			pointerString+="_OF_"+gamesInTournament[childPos].id;
+		}else{
+			pointerString="WINNER";
+		}
 		jQuery.post('php/getARoom.php',
-						 {'fileName':gamesInTournament[k].id,'player1ID':gamesInTournament[k].p1,'player2ID':gamesInTournament[k].p2},
+						 {'fileName':gamesInTournament[k].id,'player1ID':gamesInTournament[k].p1,'player2ID':gamesInTournament[k].p2,'pointer':pointerString},
 							function(data){
-								document.getElementById("notification").innerHTML+=data;
+								//document.getElementById("notification").innerHTML+=data;
 								});
 	}
 	return(gamesInTournament);

@@ -1,8 +1,15 @@
 <?php
 	$newFile = fopen("../matches/"."$_POST[fileName]".".html", "w") or die("Unable to open file!");
 	$roomTemplate = fopen('../matches/room.html','r');
+	$cnt=0;
 	while ($line = fgets($roomTemplate)) {
-		fwrite($newFile, $line);
+		if(strpos($line,"<!--PLACEHOLDER-->")===false){
+			fwrite($newFile, $line);
+		}else{
+			fwrite($newFile,"<div id='pointer'>\n");
+			fwrite($newFile,"<div id='$_POST[pointer]'></div>\n");
+			fwrite($newFile,"</div>\n");
+		}
 	}
 	fclose($newFile);
 	fclose($roomTemplate);
