@@ -4,7 +4,7 @@ var inRoundID;
 
 var redirectSource = new EventSource('../php/roomSSE.php?gameID='+getRoomID());
 redirectSource.onmessage = function(e) {
-	console.log(e.data);
+	//console.log(e.data);
 	if(e.data!=''){
 		window.location.replace("../lobby");
 	}
@@ -15,7 +15,7 @@ function getRoomID(){
 	Returns the id of the room, which will probably just be the name of the file. Need to find a way to read the url
 	*/
 	var url=window.location.href;
-	return url.substring(url.lastIndexOf("/")+1,url.indexOf(".html"));
+	return url.substring(url.lastIndexOf("/")+1);
 }
 
 function AjaxCaller(){
@@ -81,10 +81,24 @@ function setWinner(oneOrTwo){
 		}else{
 			p1=playerIDs[1];
 		}
-		jQuery.post('../php/setWinner.php',{'gameID':getRoomID(),'winID':p1},function(data){console.log(data)});
+		jQuery.post('../php/setWinner.php',{'gameID':getRoomID(),'winID':p1,'pointerRoom':getPointerData()[1],'player':getPointerData()[0]},function(data){console.log(data)});
 	}else{
-		jQuery.post('../php/setWinner.php',{'gameID':getRoomID(),'winID':getPlayerID},function(data){console.log(data)});
+		jQuery.post('../php/setWinner.php',{'gameID':getRoomID(),'winID':getPlayerID(),'pointerRoom':getPointerData()[1],'player':getPointerData()[0]},function(data){console.log(data)});
 	}
+}
+
+function getPointerData(){
+	var loc=document.getElementById("pointer").innerHTML;
+	var pointer=loc.substring(loc.indexOf("id=")+"id=".length+1);
+	pointer=pointer.substring(0,pointer.indexOf("\""));
+	var retArray=[];
+	if(pointer==="WINNER"){
+		retArray=["NONE","NONE"];
+		return retArray;
+	}
+	retArray.push(pointer.substring(0,2));
+	retArray.push(pointer.substring(6));
+	return retArray;
 }
 
 jQuery(document).ready(function(){
@@ -94,4 +108,5 @@ jQuery(document).ready(function(){
 	console.log(playerIDs);
 	console.log(getPlayerID());
 	console.log(getRoomID());
+	console.log(getPointerData());
 });

@@ -100,4 +100,9 @@ function updateTable(jsonString){
 
 jQuery(document).ready(function(){
 	console.log(document.cookie);
+	jQuery.post('php/getARoom.php',
+						 {'fileName':'test','player1ID':'testp1','player2ID':'testp2','pointer':'hello'},
+							function(data){
+								document.getElementById("notification").innerHTML+=data;
+								});
 });

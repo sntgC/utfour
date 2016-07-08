@@ -30,8 +30,8 @@ function generateRooms(players, playerNames){
 	populate(playerNames,gamesInTournament);
 	var initialRooms=(gamesInTournament.length+1)/2;
 	for(k=0;k<length;k++){
-		var p1=i%2===0;
-		var childPos=playersInTourney+Math.floor(i/2);
+		var p1=k%2===0;
+		var childPos=initialRooms+Math.floor(k/2);
 		var pointerString=p1? "P1":"P2";
 		if(childPos<gamesInTournament.length){
 			pointerString+="_OF_"+gamesInTournament[childPos].id;

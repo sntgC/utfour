@@ -12,11 +12,11 @@
 	
 	function getPlayers(){
 		$connect = new mysqli("localhost","root","","ut4serverdb") or die("Failed to connect to the server");
-		$sql = "SELECT id FROM games WHERE (player1ID='$_GET[userID]' OR player2ID='$_GET[userID]') AND winnerID IS NULL";
+		$sql = "SELECT id FROM games WHERE (player1ID='$_GET[userID]' OR player2ID='$_GET[userID]') AND player1ID IS NOT NULL AND player2ID IS NOT NULL AND winnerID IS NULL";
 		$result = mysqli_query($connect,$sql);
 		$return="";
 		while($row = mysqli_fetch_array($result)){
-			$return .="<p>You have a game in room <a href='/matches/".$row['id'].".html'>".$row['id']."</a></p>";
+			$return .="<p>You have a game in room <a href='/matches/".$row['id']."'>".$row['id']."</a></p>";
 		}
 		mysqli_close($connect);
 		
