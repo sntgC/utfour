@@ -108,5 +108,5 @@ jQuery(document).ready(function(){
 	console.log(playerIDs);
 	console.log(getPlayerID());
 	console.log(getRoomID());
-	console.log(getPointerData());
+	//console.log(getPointerData());
 });

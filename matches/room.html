@@ -4,6 +4,7 @@
 		<title>Test Room</title>
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script type="text/javascript" src="../roomScript.js"></script>
+		<script type="text/javascript" src="../TTTScript.js"></script>
 	</head>
 	<body>
 		<a href="../lobby">Back To Lobby</a>
@@ -12,6 +13,11 @@
 		<form>
 			<input type="checkbox" id="p1Win">P1 Win<br>
 			<input type="button" value="Choose Winner" onclick="setWinner('')">
+		</form>
+		<form>
+			ID <input type="text" id="gameID"><br>
+			Data <input type="text" id="gData"><br>
+			<input type="button" value="Send" onclick="sendData()">
 		</form>
 <!--PLACEHOLDER-->
 	</body>
