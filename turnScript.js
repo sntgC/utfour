@@ -6,6 +6,8 @@ var dataSource = new EventSource('../php/gameDataSSE.php?gameID='+getRoomID());
 dataSource.onmessage = function(e) {
 	if(gameData===""){
 		gameData=e.data;
+		console.log(e.data.length);
+		board.decode(gameData);
 		var firstChar=e.data.charAt(0);
 		if(firstChar===inRoundID){
 			isMyTurn=true;
@@ -17,7 +19,7 @@ dataSource.onmessage = function(e) {
 	}
 	if(gameDataSent&&e.data.charAt(0)===inRoundID){
 		gameData=e.data;
-		//Redraw & Logic
+		board.decode(gameData);
 		gameDataSent=false;
 		isMyTurn=true;
 	}
@@ -36,6 +38,6 @@ dataSource.onmessage = function(e) {
  
  jQuery(document).ready(function(){
 	 window.setInterval(function () {
-        document.getElementById("p2").innerHTML="My Turn?:"+isMyTurn+" IRID:"+inRoundID+" Sent?:"+gameDataSent;
-    }, 1000	); // repeat forever, polling every 3 seconds
+        document.getElementById("p2").innerHTML="My Turn?:"+isMyTurn+" Square: "+board.onPlay;
+    }, 1000	); 
 });

@@ -31,13 +31,13 @@ class MiniGrid{
 	isWon(){
         if(this.winner!='0')
             return true;
-        for(var r=0;r<3;r++){
-            if(this.cells[r][0]!='0'&&this.cells[r][0]===this.cells[r][1]&&this.cells[r][1]===this.cells[r][2]){
-                this.winner=this.cells[r][0];
+        for(var t=0;t<3;t++){
+            if(this.cells[t][0]!='0'&&this.cells[t][0]===this.cells[t][1]&&this.cells[t][1]===this.cells[t][2]){
+                this.winner=this.cells[t][0];
                 return true;
             }
-            if(this.cells[0][r]!='0'&&this.cells[0][r]===this.cells[1][r]&&this.cells[1][r]===this.cells[2][r]){
-                this.winner=this.cells[0][r];
+            if(this.cells[0][t]!='0'&&this.cells[0][t]===this.cells[1][t]&&this.cells[1][t]===this.cells[2][t]){
+                this.winner=this.cells[0][t];
                 return true;
             }
         }
@@ -69,6 +69,7 @@ class MiniGrid{
 				this.cells[r][c]=data.charAt(r*3+c);
 			}
 		}
+		console.log(data);
 		this.isWon();
 	}
 	
@@ -96,11 +97,11 @@ class MiniGrid{
 	}
 	
 	toString(){
-		var ret=""+this.drawData[0]+","+this.drawData[1]+" "+this.drawData[2]+"\n";
+		var ret="";//+this.drawData[0]+","+this.drawData[1]+" "+this.drawData[2]+"\n";
 		for(var mgr=0;mgr<3;mgr++){
 			for(var mgc=0;mgc<3;mgc++)
 				ret+=this.cells[mgr][mgc];
-			ret+="\n";
+			//ret+="\n";
 		}
 		return ret;	
 	}
@@ -112,6 +113,9 @@ class Grid {
 		this.onPlay=9;
 		var xIndex=x;
 		var yIndex=y;
+		this.posData=[x,y,scale];
+		this.noWinner=true;
+		this.winner='';
 		for(var gr=0;gr<3;gr++){
 			var tempGrid=[];
 			for(var gc=0;gc<3;gc++){
@@ -126,15 +130,24 @@ class Grid {
 	
 	gameWon(){
         for(var r=0;r<3;r++){
-            if(this.grid[r][0].getWinner()!='0'&&this.grid[r][0].getWinner()==this.grid[r][1].getWinner()&&this.grid[r][1].getWinner()==this.grid[r][2].getWinner())
+			console.log(this.grid[2][0].toString());
+            if(this.grid[r][0].getWinner()!='0'&&this.grid[r][0].getWinner()===this.grid[r][1].getWinner()&&this.grid[r][1].getWinner()===this.grid[r][2].getWinner()){
+				this.winner=this.grid[r][0].getWinner();
                 return true;
-            if(this.grid[0][r].getWinner()!='0'&&this.grid[0][r].getWinner()==this.grid[1][r].getWinner()&&this.grid[1][r].getWinner()==this.grid[2][r].getWinner())
+			}
+            if(this.grid[0][r].getWinner()!='0'&&this.grid[0][r].getWinner()===this.grid[1][r].getWinner()&&this.grid[1][r].getWinner()===this.grid[2][r].getWinner()){
+				this.winner=this.grid[0][r].getWinner();
                 return true;
+			}
         }
-        if(this.grid[0][0].getWinner()!='0'&&this.grid[0][0].getWinner()==this.grid[1][1].getWinner()&&this.grid[1][1].getWinner()==this.grid[2][2].getWinner())
+        if(this.grid[0][0].getWinner()!='0'&&this.grid[0][0].getWinner()===this.grid[1][1].getWinner()&&this.grid[1][1].getWinner()===this.grid[2][2].getWinner()){
+			this.winner=this.grid[0][0].getWinner();
             return true;
-        if(this.grid[0][2].getWinner()!='0'&&this.grid[0][2].getWinner()==this.grid[1][1].getWinner()&&this.grid[1][1].getWinner()==this.grid[2][0].getWinner())
+		}
+        if(this.grid[0][2].getWinner()!='0'&&this.grid[0][2].getWinner()===this.grid[1][1].getWinner()&&this.grid[1][1].getWinner()===this.grid[2][0].getWinner()){
+			this.winner=this.grid[0][2].getWinner();
             return true;
+		}
         return false;
     }
 	
@@ -164,15 +177,54 @@ class Grid {
     }
 	
 	getCoords(x,y){
-		
+		var coords=[];
+		var xIndex=this.posData[0];
+		var yIndex=this.posData[1];
+		var scale=this.posData[2]/39;
+        for(var or=0;or<3;or++){
+            for(var oc=0;oc<3;oc++){
+                for(var ir=0;ir<3;ir++){
+                    for(var ic=0;ic<3;ic++){
+                        if(x>=xIndex&&x<xIndex+scale*3&&y>=yIndex&&y<yIndex+scale*3)
+                            return [or,oc,ir,ic];
+						xIndex+=scale*4;
+					}
+					xIndex-=scale*12;
+					yIndex+=scale*4;
+				}
+				xIndex+=scale*14;
+				yIndex-=scale*12;
+			}
+			xIndex=0;
+			yIndex+=scale*14;
+		}
+        return null;
 	}
 	
 	encode(){
-		
+		console.log("ENCODING>>>");
+		var bulk=this.toString();
+		var turn=inRoundID==='1'? '2':'1';
+		this.noWinner=!this.gameWon();
+		this.draw();
+		return turn+this.onPlay+bulk;
 	}
 	
-	decode(gameData){
-		
+	decode(encodedString){
+		console.log(encodedString);
+		this.onPlay=parseInt(encodedString.charAt(1));
+		encodedString=encodedString.substring(2);
+		for(var decR=0;decR<3;decR++){
+			for(var decC=0;decC<3;decC++){
+				this.grid[decR][decC].loadGrid(encodedString.substring(0,9));
+				encodedString=encodedString.substring(9);
+			}
+		}
+		this.noWinner=!this.gameWon();
+		this.draw();
+		if(!this.noWinner){
+			setWinner(board.winner);
+		}
 	}
 	
 	draw(){
@@ -180,6 +232,7 @@ class Grid {
 			for(var dc=0;dc<3;dc++)
 				this.grid[dr][dc].draw();
 		}
+		console.log("DRAWN");
 	}
 	
 	toString(){
@@ -187,15 +240,10 @@ class Grid {
 		for(var gr=0;gr<3;gr++){
 			for(var gc=0;gc<3;gc++)
 				ret+=this.grid[gr][gc];
-			ret+="\n";
+			//ret+="\n";
 		}
 		return ret;	
 	}
-}
-
-
-function draw(){
-	ctx.fillRect(0,0,20,50);
 }
 
 /*var miniBoard=new MiniGrid(1,2,3);
@@ -213,9 +261,27 @@ miniBoard.loadGrid("011021001");
 console.log(miniBoard.toString());
 console.log(miniBoard.isWon());*/
 
+var board=new Grid(0,0,156);
+
 jQuery(document).ready(function(){
-	var board=new Grid(0,0,156);
 	c=document.getElementById("display");
 	ctx=c.getContext("2d");
+	
+	c.addEventListener('click', function(evt) {
+		if(isMyTurn){
+			var rect = c.getBoundingClientRect();
+			var x=evt.clientX-rect.left;
+			var y=evt.clientY-rect.top;
+			//console.log(x+","+y);
+			var coords=board.getCoords(x,y);
+			if(coords!=null){
+				if(board.noWinner&&board.setCell(coords,inRoundID)){
+					console.log('2');
+					sendData(board.encode());	
+				}
+			}
+		}
+      }, false);
+	//board.decode("19222222222222222222222222222222222222222222222222222222222222222222222222222222222");
 	board.draw();
 });

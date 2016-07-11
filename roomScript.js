@@ -74,9 +74,9 @@ function getPlayerID(){
 
 function setWinner(oneOrTwo){
 	//If the function is called for testing purposes, the function looks at the state of a checkbox, otherwise this function is only called internally
-	if(oneOrTwo==="test"){
-		var p1=document.getElementById("p1Win").checked;
-		if(p1){
+	if(oneOrTwo!=''){
+		var p1="";
+		if(oneOrTwo==='1'){
 			p1=playerIDs[0];
 		}else{
 			p1=playerIDs[1];
