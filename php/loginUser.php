@@ -33,7 +33,7 @@
 		$results3 = $connection->query($sql4);
 		$row2 = $results3->fetch_assoc();
 		$value = $row2["sessionID"];
-		setcookie("sessionID", $value, 0, "/");
+		setcookie("sessionID", $value, time() + (86400*365), "/");
 		
 		header("Location: ../lobby");
 	}else{
