@@ -5,14 +5,14 @@
 		<title>Login</title>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-			function checkForLoggedIn(){
-				var cookie = document.cookie;
-				if (cookie.indexOf("userID") > -1){
+			function redirect(){
+				if(checkForLoggedIn() == true){
 					window.location.replace("loginAlt");
 				}
 			} 
-			checkForLoggedIn();
+			redirect();
 		</script>
 	</head>
 	<body>

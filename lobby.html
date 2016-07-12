@@ -6,15 +6,14 @@
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
-			//There is literally nothing more nub than JS in an html file
-			function checkForLoggedIn(){
-				var cookie = document.cookie;
-				if (cookie.indexOf("userID") == -1){
+			function redirect(){
+				if(checkForLoggedIn() == false){
 					window.location.replace("login");
 				}
 			} 
-			checkForLoggedIn();
+			redirect();
 			
 			//Reads the username from the cookie
 			function getUsernameFromCookie(){
@@ -27,7 +26,7 @@
 				}
 				xmlhttp.onreadystatechange = function() {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						document.getElementById("welcomeMessage").innerHTML = "Welcome <b>" + xmlhttp.responseText + "</b>";
+						document.getElementById("welcomeMessage").innerHTML = "<b>" + xmlhttp.responseText + "</b>";
 					}
 				};
 				
@@ -41,7 +40,7 @@
 	<body onload="getUsernameFromCookie()">
 		<!--The low quality of graphics is due to both the lack of bootstrap and a competent web designer, will be fixed in the future-->
 		<p><i>Lobby Currently Under Construction</i></p>
-		<p id="welcomeMessage"></p>
+		Welcome <span id="welcomeMessage"></span><br>
 		<a href="php/logoutUser.php">Sign Out</a><br>
 		<!--Temporary link. Will need to create spectate.html later-->
 		<a href="index">Spectate</a>

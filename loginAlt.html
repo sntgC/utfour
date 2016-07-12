@@ -5,6 +5,15 @@
 		<title>Already Logged In!</title>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript">
+			function redirect(){
+				if(checkForLoggedIn() == false){
+					window.location.replace("login");
+				}
+			}
+			redirect();
+		</script>
 	</head>
 	<body>
 		<h3>You are already logged in! Would you like to <a href="php/logoutUser.php">sign out</a> or return to the <a href="lobby">lobby</a>?</h3>
