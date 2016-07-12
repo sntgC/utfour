@@ -25,6 +25,16 @@
 			//Creates a cookie set to expire in one year
 			setcookie($cookie_name, $cookie_value, time() + (86400*365), "/" );
 		}
+		
+		$sha1Time = sha1( time() );
+		$sql3 = "UPDATE users SET sessionID=UNHEX('$sha1Time') WHERE userID='$cookie_value'";
+		$connection->query($sql3);
+		$sql4 = "SELECT sessionID FROM users WHERE userID='$cookie_value'";
+		$results3 = $connection->query($sql4);
+		$row2 = $results3->fetch_assoc();
+		$value = $row2["sessionID"];
+		setcookie("sessionID", $value, 0, "/");
+		
 		header("Location: ../lobby");
 	}else{
 		header("Location: ../login");

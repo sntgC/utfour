@@ -26,6 +26,7 @@
 				userID varchar(7) CHARACTER SET utf8 NOT NULL,
 				username varchar(20) CHARACTER SET utf8 DEFAULT NULL,
 				password varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+				sessionID binary(20) DEFAULT NULL,
 				wins int NOT NULL DEFAULT 0,
 				beekeeper boolean NOT NULL DEFAULT 0,
 				PRIMARY KEY (userID)

@@ -1,6 +1,7 @@
 <?php
-	$cookie_name="userID";
-	unset($_COOKIE[$cookie_name]);
-	setcookie($cookie_name,"",time() - (86400*366),"/");
+	unset($_COOKIE["userID"]);
+	setcookie("userID","",time() - (86400*366),"/");
+	unset($_COOKIE["sessionID"]);
+	setcookie("sessionID","",time() - (86400*366), "/");
 	header("Location: ../index");
 ?>

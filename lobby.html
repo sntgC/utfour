@@ -8,6 +8,7 @@
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
+			authenticateUser();
 			function redirect(){
 				if(checkForLoggedIn() == false){
 					window.location.replace("login");
