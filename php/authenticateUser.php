@@ -17,7 +17,7 @@
 	$db_value = $row["sessionID"];
 	
 	if ($db_value != $cookie_value){
-		header("Location: logoutUser.php");
+		include 'logoutUser.php';
 	}
 	
 	$connection->close();
