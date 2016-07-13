@@ -13,5 +13,15 @@
 	$results = $connection->query($sql);
 	
 	$row = $results->fetch_assoc();
-	echo $row["username"] . '(' . $row["wins"] . ')';
+	
+	if($winsOnly == "true"){
+		echo $row["wins"];
+	}
+	
+	if($includeWins == "true"){
+		echo $row["username"] . '(' . $row["wins"] . ')';
+	}
+	else if($includeWins == "false"){
+		echo $row["username"];
+	}
 ?>

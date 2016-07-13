@@ -17,6 +17,6 @@ function authenticateUser(){
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	
-	xmlhttp.open("GET","php/authenticateUser.php",true);
+	xmlhttp.open("GET","php/authenticateUser.php",false);
 	xmlhttp.send();
 }

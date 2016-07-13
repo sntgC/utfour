@@ -1,9 +1,9 @@
-var source = new EventSource('php/lobbySSE.php?user='+document.cookie.substring("userID=".length));
+var source = new EventSource('php/lobbySSE.php?user='+document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14));
 source.onmessage = function(e) {
 	document.getElementById("players").innerHTML=e.data;
  };
  
-var notificationSource = new EventSource('php/notificationSSE.php?userID='+document.cookie.substring("userID=".length));
+var notificationSource = new EventSource('php/notificationSSE.php?userID='+document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14));
 notificationSource.onmessage = function(e) {
 	document.getElementById("notification").innerHTML=e.data;
  };
@@ -99,10 +99,13 @@ function generateID(){
 }
 
 jQuery(document).ready(function(){
-	var userID=document.cookie.substring("userID=".length);
+	var loc = document.cookie.indexOf("userID=") + 7;
+	var userID=document.cookie.substring(loc, loc+7);
 	jQuery.post('php/updateLobby.php',{'id':userID,'join':'true'}, function(){console.log(userID+" joined the lobby")});
 });
 
-$( window ).unload(function() {
-	jQuery.post('php/updateLobby.php',{'id':document.cookie.substring("userID=".length),'join':'false'}, function(){console.log("callback")});
+$( window ).on('unload',function() {
+	var loc = document.cookie.indexOf("userID=") + 7;
+	var userID=document.cookie.substring(loc, loc+7);
+	jQuery.post('php/updateLobby.php',{'id':userID,'join':'false'}, function(){console.log("callback")});
 });

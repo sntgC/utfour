@@ -5,7 +5,6 @@
 		<title>Registration</title>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script type="text/javascript">
 			var availableUsername=false;
 			function verifyForm(){
@@ -13,6 +12,9 @@
 				var username = document.forms["registrationForm"]["usernameIn"].value;
 				var password = document.forms["registrationForm"]["passwordIn"].value;
 				var passwordConf = document.forms["registrationForm"]["passwordInConf"].value;
+				
+				document.getElementById("usernameNotif").style.display = "none";
+				document.getElementById("usernameNotif").innerHTML = "";
 				
 				if (username.length < 6){
 					document.getElementById("usernameNotif").style.display = "block";
@@ -34,6 +36,11 @@
 					document.getElementById("usernameNotif").innerHTML = "";
 				}
 				
+				document.getElementById("passwordNotif").style.display = "none";
+				document.getElementById("passwordNotif").innerHTML = "";
+				document.getElementById("passwordConfNotif").style.display = "none";
+				document.getElementById("passwordConfNotif").innerHTML = "";
+				
 				if (password.length < 6){
 					document.getElementById("passwordNotif").style.display = "block";
 					document.getElementById("passwordNotif").innerHTML = "Password is too short";
@@ -44,7 +51,7 @@
 					document.getElementById("passwordNotif").innerHTML = "Password is too long";
 					goodEntry = false;
 				}
-				else if (password !== passwordConf){
+				else if (password != passwordConf){
 					document.getElementById("passwordNotif").style.display = "block";
 					document.getElementById("passwordNotif").innerHTML = "Passwords do not match";
 					document.getElementById("passwordConfNotif").style.display = "block";
@@ -58,9 +65,7 @@
 					document.getElementById("passwordConfNotif").innerHTML = "";
 				}
 				
-				if (!goodEntry){
-					return false;
-				}
+				return goodEntry;
 			}
 			
 			function init(){

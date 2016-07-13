@@ -15,40 +15,19 @@
 				}
 			} 
 			redirect();
-			
-			//Reads the username from the cookie
-			function getUsernameFromCookie(){
-				if (window.XMLHttpRequest) {
-					// code for IE7+, Firefox, Chrome, Opera, Safari
-					xmlhttp = new XMLHttpRequest();
-				} else {
-					// code for IE6, IE5
-					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-				xmlhttp.onreadystatechange = function() {
-					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						document.getElementById("welcomeMessage").innerHTML = "<b>" + xmlhttp.responseText + "</b>";
-					}
-				};
-				
-				xmlhttp.open("GET","php/getUser.php",true);
-				xmlhttp.send();
-			}
 		</script>
 		<script type="text/javascript" src="bracket.js"></script>
 		<script type="text/javascript" src="tournamentStart.js"></script>
 	</head>
-	<body onload="getUsernameFromCookie()">
+	<body>
 		<!--The low quality of graphics is due to both the lack of bootstrap and a competent web designer, will be fixed in the future-->
-		<p><i>Lobby Currently Under Construction</i></p>
-		Welcome <span id="welcomeMessage"></span><br>
+		<h3>Lobby</h3>
+		Welcome <b><?php $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></b><br>
 		<a href="php/logoutUser.php">Sign Out</a><br>
+		<a href="account">My Account</a><br>
 		<!--Temporary link. Will need to create spectate.html later-->
-		<a href="index">Spectate</a>
-		<div class="gameDisplay", id="room1">
-			<p>The winner of room 1 is <b id="winner1">dat boi</b></p>
-		</div>
-		<button onclick=beginTournament()>BEEgin Tourney</button>
+		<a href="index">Spectate</a><br><br>
+		<button onclick=beginTournament()>Begin Tournament</button>
 		<div id="players">
 		
 		</div>

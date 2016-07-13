@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>My Account</title>
 		<meta charset="utf-8">
-		<title>Already Logged In!</title>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script type="text/javascript" src="script.js"></script>
@@ -17,6 +17,10 @@
 		</script>
 	</head>
 	<body>
-		<h3>You are already logged in! Would you like to <a href="php/logoutUser.php">sign out</a> or return to the <a href="lobby">lobby</a>?</h3>
+		<a href="lobby">Home Page</a>
+		<h3>My Account</h3>
+		Username: <b><?php $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b><br>
+		Number of wins: <b><?php $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b></br>
+		<a href="changePassword">Change my password</a>
 	</body>
 </html>
