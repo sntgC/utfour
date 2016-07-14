@@ -22,7 +22,7 @@
 	<body>
 		<!--The low quality of graphics is due to both the lack of bootstrap and a competent web designer, will be fixed in the future-->
 		<h3>Lobby</h3>
-		Welcome <b><?php $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></b><br>
+		Welcome <b><?php include 'php/loadUserImg.php'; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></b><br>
 		<a href="php/logoutUser.php">Sign Out</a><br>
 		<a href="account">My Account</a><br>
 		<!--Temporary link. Will need to create spectate.html later-->
