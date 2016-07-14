@@ -68,7 +68,7 @@ function getPlayerID(){
 	/*
 	Returns the id of this player based on a cookie
 	*/
-	var userID=document.cookie.substring("userID=".length);
+	var userID=document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14);
 	return userID;
 }
 
