@@ -35,9 +35,9 @@
 		$value = $row2["sessionID"];
 		setcookie("sessionID", $value, time() + (86400*365), "/");
 		
-		header("Location: ../lobby");
+		echo "Login successful";
 	}else{
-		header("Location: ../login");
+		echo "Login failed";
 	}
 
 	$connection->close();

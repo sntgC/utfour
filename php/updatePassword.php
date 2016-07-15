@@ -11,10 +11,10 @@
 	$connection->query($sql);
 	
 	if($connection->affected_rows > 0){
-		header("Location: ../lobby");
+		echo "Password change successful";
 	}
 	else{
-		header("Location: ../changePassword");
+		echo "Password change failed";
 	}
 	
 	$connection->close();
