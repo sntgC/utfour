@@ -16,15 +16,30 @@
 			}
 			redirect();
 		
-			$(function(){
+			$(document).ready(function(){
 				$('#upload_link').on('click',function(e) {
 					e.preventDefault();
 					$('#fileToUpload').trigger('click');
 					$('#fileToUpload').on('change',function(){
 						if(document.getElementById("fileToUpload").value.length > 0){
-							document.getElementById("submit").click();
+							$("#submit").click(); 
 						}
 					});
+				});
+				$(document).on('submit','form#picForm',function(e){
+					var formData = new FormData($("#picForm")[0]);
+					$.ajax({
+						url: $("#picForm").attr("action"),
+						type: "POST",
+						data: formData,
+						cache: false,
+						contentType: false,
+						processData: false,
+						success: function(data){
+							$("#alert").html(data);
+						}
+					});
+					return false;
 				});
 			});
 		</script>
@@ -32,11 +47,13 @@
 	<body>
 		<a href="lobby">Home Page</a>
 		<h3>My Account</h3>
+		<p id="alert"></p>
 		Username: <b><?php $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b><br>
 		Profile picture: <?php include 'php/loadUserImg.php'; ?><br>
 		Number of wins: <b><?php $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b><br><br>
 		<a href="changePassword">Change my password</a><br>
 		<a href="" id="upload_link" title="The selected image must be no larger than 500 kB">Change my profile picture</a><br>
+		<a href="php/resetUserImg.php" id="reset_link" title="This will reset your profile picture to the default user image">Reset my profile picture</a><br>
 		<form id="picForm" action="php/uploadUserImg.php" method="post" enctype="multipart/form-data">
 			<input id="fileToUpload" name="fileToUpload" type="file" accept="image/*" style="display:none;">
 			<input type="submit" id="submit" name="submit" style="display:none;">
