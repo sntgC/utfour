@@ -45,7 +45,7 @@
 		</script>
 	</head>
 	<body>
-		<a href="lobby">Home Page</a>
+		<a href="lobby.php">Home Page</a>
 		<h3>My Account</h3>
 		<p id="alert"></p>
 		Username: <b><?php $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b><br>

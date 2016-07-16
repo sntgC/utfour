@@ -17,5 +17,5 @@
 		}
 	} catch(Exception $e){}
 	
-	header("Location: ../account");
+	header("Location: ../account.php");
 ?>

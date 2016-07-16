@@ -24,7 +24,7 @@
 		<h3>Lobby</h3>
 		Welcome <b><?php include 'php/loadUserImg.php'; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></b><br>
 		<a href="php/logoutUser.php">Sign Out</a><br>
-		<a href="account">My Account</a><br>
+		<a href="account.php">My Account</a><br>
 		<!--Temporary link. Will need to create spectate.html later-->
 		<a href="index">Spectate</a><br><br>
 		<button onclick=beginTournament()>Begin Tournament</button>
