@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Account</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript">
+			authenticateUser();
+			function redirect(){
+				if(checkForLoggedIn() == false){
+					window.location.replace("login");
+				}
+			}
+			redirect();
+			
+			$(document).ready(function(){
+				$(window).keydown(function(event){
+					if(event.keyCode == 13){
+						event.preventDefault();
+						return false;
+					}
+				});
+				$("#submit").on('click',function(){
+					$.post($("#deleteForm").attr("action"),
+						   $("#deleteForm :input").serializeArray(),
+						   function(data){
+								if(data == "Account deletion successful"){
+									window.location.replace("index");
+								}
+								else{
+									$("#alert").html(data);
+								}
+						   }
+					);
+					return false;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<a href="lobby">Home Page</a> - <a href="account">Back to My Account</a>
+		<h3>Delete My Account</h3>
+		<p id="alert"></p>
+		<p>WARNING! By entering your password and clicking the delete button, you understand that all of your current progress will be destroyed and will be unrecoverable.</p>
+		<form id="deleteForm" action="php/deleteUser.php" method="post">
+			<label>Password:</label><br>
+			<input id="password" name="password" type="password"><br>
+			<input id="submit" name="submit" type="submit"><br>
+		</form>
+	</body>
+</html>

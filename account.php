@@ -54,6 +54,7 @@
 		<a href="changePassword">Change my password</a><br>
 		<a href="" id="upload_link" title="The selected image must be no larger than 500 kB">Change my profile picture</a><br>
 		<a href="php/resetUserImg.php" id="reset_link" title="This will reset your profile picture to the default user image">Reset my profile picture</a><br>
+		<a href="deleteAccount">Delete my account</a>
 		<form id="picForm" action="php/uploadUserImg.php" method="post" enctype="multipart/form-data">
 			<input id="fileToUpload" name="fileToUpload" type="file" accept="image/*" style="display:none;">
 			<input type="submit" id="submit" name="submit" style="display:none;">
