@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Forgot Username</title>
 		<meta charset="utf-8">
-		<title>Already Logged In!</title>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
 			authenticateUser();
-			function redirect(){
-				if(checkForLoggedIn() == false){
-					window.location.replace("login");
-				}
-			}
-			redirect();
 		</script>
 	</head>
 	<body>
-		<h3>You are already logged in! Would you like to <a href="php/logoutUser.php">sign out</a> or return to the <a href="lobby">lobby</a>?</h3>
+		<a href="login">Back to Login</a>
+		<h3>Forgot Username</h3>
+		<p>Please enter your email address below and an email containing your username will be sent to you momentarily.</p>
 	</body>
 </html>

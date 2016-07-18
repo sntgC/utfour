@@ -5,128 +5,36 @@
 		<title>Registration</title>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script type="text/javascript">
-			var availableUsername=false;
-			function verifyForm(){
-				var goodEntry = true;
-				var username = document.forms["registrationForm"]["usernameIn"].value;
-				var password = document.forms["registrationForm"]["passwordIn"].value;
-				var passwordConf = document.forms["registrationForm"]["passwordInConf"].value;
-				
-				document.getElementById("usernameNotif").style.display = "none";
-				document.getElementById("usernameNotif").innerHTML = "";
-				
-				if (username.length < 6){
-					document.getElementById("usernameNotif").style.display = "block";
-					document.getElementById("usernameNotif").innerHTML = "Username is too short";
-					goodEntry = false;
-				}
-				else if (username.length > 20){
-					document.getElementById("usernameNotif").style.display = "block";
-					document.getElementById("usernameNotif").innerHTML = "Username is too long";
-					goodEntry = false;
-				}
-				else if(!availableUsername){
-					document.getElementById("usernameNotif").style.display = "block";
-					document.getElementById("usernameNotif").innerHTML = "Username is not available";
-					goodEntry = false;
-				}
-				else{
-					document.getElementById("usernameNotif").style.display = "none";
-					document.getElementById("usernameNotif").innerHTML = "";
-				}
-				
-				document.getElementById("passwordNotif").style.display = "none";
-				document.getElementById("passwordNotif").innerHTML = "";
-				document.getElementById("passwordConfNotif").style.display = "none";
-				document.getElementById("passwordConfNotif").innerHTML = "";
-				
-				if (password.length < 6){
-					document.getElementById("passwordNotif").style.display = "block";
-					document.getElementById("passwordNotif").innerHTML = "Password is too short";
-					goodEntry = false;
-				}
-				else if (password.length > 20){
-					document.getElementById("passwordNotif").style.display = "block";
-					document.getElementById("passwordNotif").innerHTML = "Password is too long";
-					goodEntry = false;
-				}
-				else if (password != passwordConf){
-					document.getElementById("passwordNotif").style.display = "block";
-					document.getElementById("passwordNotif").innerHTML = "Passwords do not match";
-					document.getElementById("passwordConfNotif").style.display = "block";
-					document.getElementById("passwordConfNotif").innerHTML = "Passwords do not match";
-					goodEntry = false;
-				}
-				else{
-					document.getElementById("passwordNotif").style.display = "none";
-					document.getElementById("passwordNotif").innerHTML = "";
-					document.getElementById("passwordConfNotif").style.display = "none";
-					document.getElementById("passwordConfNotif").innerHTML = "";
-				}
-				
-				return goodEntry;
-			}
-			
-			function init(){
-				document.getElementById("checkmark").style.display = "none";
-				document.getElementById("x").style.display = "none";
-				document.getElementById("usernameNotif").style.display = "none";
-				document.getElementById("passwordNotif").style.display = "none";
-				document.getElementById("passwordConfNotif").style.display = "none";
-			}
-			
-			function checkUsername(str){
-				if (str == ""){
-					document.getElementById("x").style.display = "none";
-					document.getElementById("checkmark").style.display = "none";
-					availableUsername=false;
-					return;
-				}
-				if (window.XMLHttpRequest) {
-					// code for IE7+, Firefox, Chrome, Opera, Safari
-					xmlhttp = new XMLHttpRequest();
-				} else {
-					// code for IE6, IE5
-					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-				xmlhttp.onreadystatechange = function() {
-					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						if(xmlhttp.responseText == "true"){
-							document.getElementById("x").style.display = "inline";
-							document.getElementById("checkmark").style.display = "none";
-							availableUsername=false;
-						}
-						else if(xmlhttp.responseText == "false"){
-							document.getElementById("checkmark").style.display = "inline";
-							document.getElementById("x").style.display = "none";
-							availableUsername=true;
-						}
-					}
-				};
-				xmlhttp.open("POST","php/checkForUser.php",true);
-				xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xmlhttp.send("username="+str);
-			}
-		</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="register.js"></script>
 	</head>
 	<body onload="init()">
 		<a href="index">Home Page</a>
 		<h3>Registration</h3>
+		<p id="alert"></p>
 		<p>Please hover your mouse over the input boxes for the requirements regarding that field.</p>
-		<form onsubmit="return verifyForm()" action="php/registerUser.php" method="post" name="registrationForm">
+		<form id="registrationForm" onsubmit="return verifyForm()" action="php/registerUser.php" method="post" name="registrationForm">
 			<label>Username:</label><br>
-			<input type="text" name="usernameIn" oninput="checkUsername(this.value)" title="Your username must be 6 to 20 characters in length and must not already be in use." required>
-			<img src="images/green_checkmark.png" alt="Username available"  title="Username available" width="25" height="23" id="checkmark">
-			<img src="images/red_x.png" alt="Username unavailable"  title="Username unavailable" width="25" height="23" id="x"><br>
+			<input type="text" id="username" name="usernameIn" oninput="checkUsername(this.value)" title="Your username must be 6 to 20 characters in length and must not already be in use.">
+			<img src="images/green_checkmark.png" alt="Username available"  title="Username available" width="25" height="25" id="checkmarkUsr">
+			<img src="images/red_x.png" alt="Username unavailable"  title="Username unavailable" width="25" height="25" id="xUsr"><br>
 			<p id="usernameNotif"></p>
+			<label>Email Address:</label><br>
+			<input id="email" type="text" name="emailIn" oninput="checkEmail(this.value)" title="Please enter a valid email address that is no more than 100 characters in length and is not already in use.">
+			<img src="images/green_checkmark.png" alt="Email available"  title="Email available" width="25" height="25" id="checkmarkEmail">
+			<img src="images/red_x.png" alt="Email unavailable"  title="Email unavailable" width="25" height="25" id="xEmail"><br>
+			<p id="emailNotif"></p>
+			<label>Email Address Confirmation:</label><br>
+			<input id="emailConf" type="text" name="emailInConf" title="Please re-enter your email address."><br>
+			<p id="emailConfNotif"></p>
 			<label>Password:</label><br>
-			<input type="password" name="passwordIn" id="password" title="Your password must be 6 to 20 characters in length." required><br>
+			<input type="password" name="passwordIn" id="password" title="Your password must be 6 to 20 characters in length."><br>
 			<p id="passwordNotif"></p>
 			<label>Password Confirmation:</label><br>
-			<input type="password" name="passwordInConf" id="passwordConf" title="Please re-enter your password." required><br>
+			<input type="password" name="passwordInConf" id="passwordConf" title="Please re-enter your password."><br>
 			<p id="passwordConfNotif"></p>
-			<input type="submit" value="Register">
+			<input id="submit" type="submit" value="Register">
 		</form>
 		<br>
 		Already have an account? <a href="login">Login</a>

@@ -14,6 +14,10 @@
 	
 	$row = $results->fetch_assoc();
 	
+	if($emailOnly == "true"){
+		echo $row["email"];
+	}
+	
 	if($winsOnly == "true"){
 		echo $row["wins"];
 	}

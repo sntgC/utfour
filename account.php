@@ -48,9 +48,10 @@
 		<a href="lobby">Home Page</a>
 		<h3>My Account</h3>
 		<p id="alert"></p>
-		Username: <b><?php $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b><br>
+		Username: <b><?php $emailOnly=""; $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b><br>
+		Email address: <b><?php $emailOnly="true"; $includeWins=""; $winsOnly=""; include 'php/getUser.php';?></b><br>
 		Profile picture: <?php include 'php/loadUserImg.php'; ?><br>
-		Number of wins: <b><?php $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b><br><br>
+		Number of wins: <b><?php $emailOnly=""; $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b><br><br>
 		<a href="changePassword">Change my password</a><br>
 		<a href="" id="upload_link" title="The selected image must be no larger than 500 kB">Change my profile picture</a><br>
 		<a href="php/resetUserImg.php" id="reset_link" title="This will reset your profile picture to the default user image">Reset my profile picture</a><br>
