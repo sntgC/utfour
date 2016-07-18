@@ -3,9 +3,25 @@
 	<head>
 		<title>Test Room</title>
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="../script.js"></script>
 		<script type="text/javascript" src="../roomScript.js"></script>
 		<script type="text/javascript" src="../turnScript.js"></script>
 		<script type="text/javascript" src="../UTTTScript.js"></script>
+		<script type="text/javascript">
+			function authenticateUser(){
+				$.ajax({
+					url: "../php/authenticateUser.php",
+					async: false
+				});
+			}
+			authenticateUser();
+			function redirect(){
+				if(checkForLoggedIn() == false){
+					window.location.replace("../login");
+				}
+			}
+			redirect();
+		</script>
 	</head>
 	<body>
 		<a href="../lobby">Back To Lobby</a>

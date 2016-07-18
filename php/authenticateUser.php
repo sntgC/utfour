@@ -8,8 +8,8 @@
 	mysqli_select_db($connection,$database) or die("Failed to connect to the database");
 	
 	$cookie_value = $_COOKIE["sessionID"];
-	
 	$userID = $_COOKIE["userID"];
+	
 	$sql = "SELECT sessionID FROM users WHERE userID='$userID'";
 	$results = $connection->query($sql);
 	$row = $results->fetch_assoc();
