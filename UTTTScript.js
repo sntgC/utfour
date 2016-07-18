@@ -261,7 +261,7 @@ miniBoard.loadGrid("011021001");
 console.log(miniBoard.toString());
 console.log(miniBoard.isWon());*/
 
-var board=new Grid(0,0,156);
+var board=new Grid(0,0,468);
 
 jQuery(document).ready(function(){
 	c=document.getElementById("display");
