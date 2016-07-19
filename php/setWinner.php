@@ -11,6 +11,8 @@
 		}else{
 			$sql.="UPDATE games SET player2ID = '$_POST[winID]' WHERE id='$_POST[pointerRoom]'; ";
 		}
+	}else{
+		$sql.="UPDATE users SET wins = wins+1 WHERE userID='$_POST[winID]'; ";
 	}
 	$result = mysqli_multi_query($connect,$sql);
 	if (!$result){
