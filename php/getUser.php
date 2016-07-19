@@ -14,6 +14,13 @@
 	
 	$row = $results->fetch_assoc();
 	
+	//This is added in order to get the username from a js file. It will not affect any previous functionality
+	//Only runs if the file is called using POST, not include
+	if(isset($_POST['jsCall'])){
+		echo $row['username'];
+		exit;
+	}
+	
 	if($emailOnly == "true"){
 		echo $row["email"];
 	}

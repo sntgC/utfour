@@ -8,7 +8,7 @@
 	mysqli_select_db($connection,$database) or die("Failed to connect to the database");
 	$sql="";
 	if($_POST['join']==="true"){
-		$sql .= "REPLACE INTO lobby (userID,lastActive) VALUES ('$_POST[id]','".date("Y-m-d H:i:s",time())."')";
+		$sql .= "REPLACE INTO lobby (userID,username,lastActive) VALUES ('$_POST[id]','$_POST[name]','".date("Y-m-d H:i:s",time())."')";
 	}else{
 		$sql .= "DELETE FROM lobby WHERE userID='$_POST[id]'";
 	}

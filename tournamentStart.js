@@ -101,7 +101,9 @@ function generateID(){
 jQuery(document).ready(function(){
 	var loc = document.cookie.indexOf("userID=") + 7;
 	var userID=document.cookie.substring(loc, loc+7);
-	jQuery.post('php/updateLobby.php',{'id':userID,'join':'true'}, function(){console.log(userID+" joined the lobby")});
+	jQuery.post('php/getUser.php',{'jsCall':'$¢'},function(data){
+		jQuery.post('php/updateLobby.php',{'id':userID,'join':'true','name':data}, function(){console.log(data+" joined the lobby")});
+	});
 });
 
 $( window ).on('unload',function() {
