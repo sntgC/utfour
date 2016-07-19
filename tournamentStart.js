@@ -104,6 +104,11 @@ jQuery(document).ready(function(){
 	jQuery.post('php/getUser.php',{'jsCall':'$¢'},function(data){
 		jQuery.post('php/updateLobby.php',{'id':userID,'join':'true','name':data}, function(){console.log(data+" joined the lobby")});
 	});
+	jQuery.get('php/authenticateBeeKeeper.php',function(data){
+		if(data!='false'){
+			document.getElementById("adminControls").innerHTML=data;
+		}
+	});
 });
 
 $( window ).on('unload',function() {

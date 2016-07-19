@@ -27,11 +27,8 @@
 		<a href="account">My Account</a><br>
 		<!--Temporary link. Will need to create spectate.html later-->
 		<a href="index">Spectate</a><br><br>
-		<button onclick=beginTournament()>Begin Tournament</button>
-		<div id="players">
-		
-		</div>
-		<div id="notification">
-		</div>
+		<div id="adminControls"></div>
+		<div id="players"></div>
+		<div id="notification"></div>
 	</body>
 </html>
