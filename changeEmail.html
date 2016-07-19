@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Change Email Address</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript">
+			authenticateUser();
+			function redirect(){
+				if(checkForLoggedIn() == false){
+					window.location.replace("login");
+				}
+			}
+			redirect();
+			
+			function init(){
+				document.getElementById("checkmarkEmail").style.display = "none";
+				document.getElementById("xEmail").style.display = "none";
+				document.getElementById("emailNotif").style.display = "none";
+				document.getElementById("emailConfNotif").style.display = "none";
+			}
+			
+			var availableEmail=false;
+			var goodEntry = true;
+			function verifyForm(){
+				var email = document.forms["changeEmailForm"]["emailIn"].value;
+				var emailConf = document.forms["changeEmailForm"]["emailInConf"].value;
+				goodEntry = true;
+				
+				document.getElementById("emailNotif").style.display = "none";
+				document.getElementById("emailNotif").innerHTML = "";
+				document.getElementById("emailConfNotif").style.display = "none";
+				document.getElementById("emailConfNotif").innerHTML = "";
+				
+				var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				if(!availableEmail){
+					document.getElementById("emailNotif").style.display = "block";
+					document.getElementById("emailNotif").innerHTML = "Email is not available";
+					goodEntry = false;
+				}
+				else if(!re.test(email)){
+					document.getElementById("emailNotif").style.display = "block";
+					document.getElementById("emailNotif").innerHTML = "Email is invalid";
+					goodEntry = false;
+				}
+				else if(email.length > 100){
+					document.getElementById("emailNotif").style.display = "block";
+					document.getElementById("emailNotif").innerHTML = "Email is too long";
+					goodEntry = false;
+				}
+				else if(email != emailConf){
+					document.getElementById("emailNotif").style.display = "block";
+					document.getElementById("emailNotif").innerHTML = "Emails do not match";
+					document.getElementById("emailConfNotif").style.display = "block";
+					document.getElementById("emailConfNotif").innerHTML = "Emails do not match";
+					goodEntry = false;
+				}
+				else{
+					document.getElementById("emailNotif").style.display = "none";
+					document.getElementById("emailNotif").innerHTML = "";
+					document.getElementById("emailConfNotif").style.display = "none";
+					document.getElementById("emailConfNotif").innerHTML = "";
+				}
+				
+				return goodEntry;
+			}
+			
+			function checkEmail(str){
+				if (str == ""){
+					document.getElementById("xEmail").style.display = "none";
+					document.getElementById("checkmarkEmail").style.display = "none";
+					availableEmail=false;
+					return;
+				}
+				$.post("php/checkForEmail.php",
+					   {email : str},
+					   function(data){
+							if(data == "true"){
+								document.getElementById("xEmail").style.display = "inline";
+								document.getElementById("checkmarkEmail").style.display = "none";
+								availableEmail=false;
+							}
+							else if(data == "false"){
+								document.getElementById("checkmarkEmail").style.display = "inline";
+								document.getElementById("xEmail").style.display = "none";
+								availableEmail=true;
+							}
+					   }
+				);
+			}
+			
+			$(document).ready(function(){
+				$("#submit").on('click',function(){
+					verifyForm();
+					if(verifyForm() == false){
+						return false;
+					}
+					$.post($("#changeEmailForm").attr("action"),
+						   $("#changeEmailForm :input").serializeArray(),
+						   function(data){
+								if(data == "Email address change successful"){
+									$("#alert").html(data);
+									$("#currEmail").val("");
+									$("#email").val("");
+									$("#emailConf").val("");
+								}
+								else{
+									$("#alert").html(data);
+									$("#currEmail").val("");
+								}
+						   }
+					);
+					return false;
+				});
+			});
+		</script>
+	</head>
+	<body onload="init()">
+		<a href="lobby">Home Page</a> - <a href="account">Back to My Account</a>
+		<h3>Change Email Address</h3>
+		<p id="alert"></p>
+		<form onsubmit="return verifyForm()" action="php/updateEmail.php" method="post" name="changeEmailForm" id="changeEmailForm">
+			<label>Current Email Address:</label><br>
+			<input id="currEmail" type="text" name="currEmailIn" title="Please enter your current email."><br>
+			<label>New Email Address:</label><br>
+			<input id="email" type="text" name="emailIn" oninput="checkEmail(this.value)" title="Please enter a valid email address that is no more than 100 characters in length and is not already in use.">
+			<img src="images/green_checkmark.png" alt="Email available"  title="Email available" width="25" height="25" id="checkmarkEmail">
+			<img src="images/red_x.png" alt="Email unavailable"  title="Email unavailable" width="25" height="25" id="xEmail"><br>
+			<p id="emailNotif"></p>
+			<label>New Email Address Confirmation:</label><br>
+			<input id="emailConf" type="text" name="emailInConf" title="Please re-enter your new email address."><br>
+			<p id="emailConfNotif"></p>
+			<input type="submit" id="submit" value="Change Email Address">
+		</form>
+	</body>
+</html>
