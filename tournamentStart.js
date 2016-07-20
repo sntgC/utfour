@@ -41,7 +41,7 @@ function generateRooms(players, playerNames){
 		jQuery.post('php/getARoom.php',
 						 {'fileName':gamesInTournament[k].id,'player1ID':gamesInTournament[k].p1,'player2ID':gamesInTournament[k].p2,'pointer':pointerString},
 							function(data){
-								//document.getElementById("notification").innerHTML+=data;
+									console.log(data);
 								});
 	}
 	return(gamesInTournament);

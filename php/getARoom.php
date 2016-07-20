@@ -16,13 +16,18 @@
 	$connection=mysqli_connect("localhost","root","") or die("Failed to connect to the server");
 	mysqli_select_db($connection,"ut4serverdb") or die("Failed to connect to the database");
 	$sql="";
+	$quotes="";
+	//If the player2ID is simply an id, the quotes are added
+	//Otherwise it is probably an SQL command from a trusted source 
+	if(strpos($_POST['player2ID'],'SELECT')===false){
+		$quotes="'";
+	}
 	//$¢ Try something similar to an SQL injection
 	if($_POST['player1ID']!=""){
-		$sql = "INSERT INTO games (id, player1ID, player2ID) VALUES ('$_POST[fileName]','$_POST[player1ID]',$_POST[player2ID])";
+		$sql = "INSERT INTO games (id, player1ID, player2ID) VALUES ('$_POST[fileName]','$_POST[player1ID]',".$quotes."$_POST[player2ID]".$quotes.")";
 	}else{
 		$sql = "INSERT INTO games (id) VALUES ('$_POST[fileName]')";
 	}
-	
 	if ($connection->query($sql)===TRUE){
 		echo "Thumbs Up";
 	}else{
