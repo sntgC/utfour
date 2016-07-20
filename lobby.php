@@ -27,6 +27,11 @@
 		<a href="account">My Account</a><br>
 		<!--Temporary link. Will need to create spectate.html later-->
 		<a href="index">Spectate</a><br><br>
+		
+		<div id="privateRoom">
+			Username<input type="text" id="requestedUsername"></input>
+			<button onclick="generatePrivateGame()">Create Custom Match</button>
+		</div>
 		<div id="adminControls"></div>
 		<div id="players"></div>
 		<div id="notification"></div>

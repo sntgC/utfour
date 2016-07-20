@@ -47,6 +47,24 @@ function generateRooms(players, playerNames){
 	return(gamesInTournament);
 }
 
+function generatePrivateGame(){
+	var username=document.getElementById("requestedUsername").value;
+	//$¢ Change the pointer to something else that doesn't trigger a win upgrade
+	console.log(username);
+	jQuery.post('php/getARoom.php',
+					{'fileName':generateID(),
+					  'player1ID':document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14),
+					  'player2ID':"(SELECT userID FROM users WHERE username='"+username+"')",
+					'pointer':"WINNER"},function(data){
+						console.log(data);
+					});
+}
+
+function cleanString(dat){
+	//$¢Prevents SQL Injection
+	return dat;
+}
+
 function populate(players, games){
 	/* $¢Room for improvement */
 	var pIndex=0;
