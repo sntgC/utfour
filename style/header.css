@@ -1,8 +1,8 @@
-body{
+body {
     margin: 0;
 }
 
-ul{
+ul {
 	list-style-type: none;
     margin: 0;
     padding: 0;
@@ -14,17 +14,19 @@ li {
     float: right;
 }
 
-li p, .dropbtn{
+a.dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
-li p:hover, .dropdown:hover .dropbtn{
+
+.dropdown:hover .dropbtn {
     background-color: #a3a3c2;
 }
-li.dropdown {
+
+.dropdown {
     display: inline-block;
 }
 
@@ -44,8 +46,6 @@ li.dropdown {
     text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.show{
-	display: block;
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
 }

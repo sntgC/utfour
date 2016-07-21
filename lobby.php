@@ -16,25 +16,22 @@
 				}
 			} 
 			redirect();
-		</script>
-		<script>
-		// This is from w3schools, not my code
-		function dropUserMenu() {
-			document.getElementById("accountSettings").classList.toggle("show");
-		}
+			
+			var isOpen = false;
+			function dropUserMenu() {
+				$("#accountSettings").toggle();
+				isOpen = !isOpen;
+			}
 
-		// Close the dropdown if the user clicks outside of it
-		window.onclick = function(e) {
-		if (!e.target.matches('.dropbtn')) {
-			var dropdowns = document.getElementsByClassName("dropdown-content");
-			for (var d = 0; d < dropdowns.length; d++) {
-			var openDropdown = dropdowns[d];
-			if (openDropdown.classList.contains('show')) {
-			openDropdown.classList.remove('show');
+			// Close the dropdown if the user clicks outside of the button or image
+			window.onclick = function(e) {
+				if (!e.target.matches('.dropbtn') && !e.target.matches('#usrImg')) {
+					if(isOpen){
+						$("#accountSettings").toggle();
+						isOpen = !isOpen;
+					}
+				}
 			}
-			}
-		}
-		}
 		</script>
 		<script type="text/javascript" src="bracket.js"></script>
 		<script type="text/javascript" src="tournamentStart.js"></script>
@@ -42,7 +39,7 @@
 	<body>
 		<ul>
 			<li class="dropdown">
-			<a class="dropbtn" onclick="dropUserMenu()"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
+			<a href="javascript:dropUserMenu();" class="dropbtn"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 			<div class="dropdown-content" id="accountSettings">
 				<a href="account">My Account</a>
 				<a href="php/logoutUser.php">Sign Out</a>
