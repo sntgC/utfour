@@ -28,19 +28,34 @@
 			function hideNotifications(){
 				$("#notification").toggle();
 			}
-			
-			var isOpen = false;
-			function dropUserMenu() {
-				$("#accountSettings").toggle();
-				isOpen = !isOpen;
+			//Made this into an object with ids as keys in order to support multiple dropdown
+			var isOpen = {};
+			function dropMenu(id) {
+				if(isOpen[id]===undefined){
+					isOpen[id]=false;
+				}
+				//Closes all other divs
+				var keys=Object.keys(isOpen);
+				for(o=0;o<keys.length;o++){
+						if(isOpen[keys[o]]&&keys[o]!=id){
+							$("#"+keys[o]).toggle();
+							isOpen[keys[o]] = !isOpen[keys[o]];
+						}
+				}
+				$("#"+id).toggle();
+				isOpen[id] = !isOpen[id];
 			}
 
 			// Close the dropdown if the user clicks outside of the button or image
 			window.onclick = function(e) {
-				if (!e.target.matches('.dropbtn') && !e.target.matches('#usrImg')) {
-					if(isOpen){
-						$("#accountSettings").toggle();
-						isOpen = !isOpen;
+				//.dropdownLink is the class for anything that does not hide the dropdowns
+				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")) {
+					var keys=Object.keys(isOpen);
+					for(o=0;o<keys.length;o++){
+						if(isOpen[keys[o]]){
+							$("#"+keys[o]).toggle();
+							isOpen[keys[o]] = !isOpen[keys[o]];
+						}
 					}
 				}
 			}
@@ -51,11 +66,18 @@
 	<body style="display:none">
 		<ul>
 			<li class="dropdown">
-			<a href="javascript:dropUserMenu();" class="dropbtn"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
+			<a href="javascript:dropMenu('lobbySettings');" class="dropbtn dropdownLink"><img src="images/settings.png" height="30" width="30" class="dropdownLink"></a>
+			<div class="dropdown-content" id="lobbySettings">
+				<a href="javascript:hideLobbyUsrs()" class="dropdownLink">Toggle Players</a>
+				<a href="javascript:hideNotifications()" class="dropdownLink">Toggle Notifications</a>
+			</div>
+			</li>
+			<li class="dropdown">
+			<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 			<div class="dropdown-content" id="accountSettings">
-				<a href="account">My Account</a>
-				<a href="php/logoutUser.php">Sign Out</a>
-				<a href="index">Spectate</a>
+				<a href="account" class="dropdownLink">My Account</a>
+				<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
+				<a href="index" class="dropdownLink">Spectate</a>
 			</div>
 			</li>
 		</ul>
