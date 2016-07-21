@@ -21,6 +21,10 @@
 		setcookie("userID","",time() - (86400*366),"/");
 		unset($_COOKIE["sessionID"]);
 		setcookie("sessionID","",time() - (86400*366), "/");
+		echo "User authentication failed";
+	}
+	else{
+		echo "User authentication successful";
 	}
 	
 	$connection->close();

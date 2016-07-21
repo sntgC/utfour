@@ -44,7 +44,7 @@
 			});
 		</script>
 	</head>
-	<body>
+	<body style="display:none">
 		<a href="lobby">Home Page</a>
 		<h3>My Account</h3>
 		<p id="alert"></p>

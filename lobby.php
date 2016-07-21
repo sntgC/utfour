@@ -36,7 +36,7 @@
 		<script type="text/javascript" src="bracket.js"></script>
 		<script type="text/javascript" src="tournamentStart.js"></script>
 	</head>
-	<body>
+	<body style="display:none">
 		<ul>
 			<li class="dropdown">
 			<a href="javascript:dropUserMenu();" class="dropbtn"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
@@ -49,6 +49,7 @@
 		</ul>
 		<br>
 		<div id="privateRoom">
+			<p id="alert"></p>
 			Username: <input type="text" id="requestedUsername">
 			<button onclick="generatePrivateGame()">Create Custom Match</button>
 		</div>

@@ -14,7 +14,14 @@
 			function authenticateUser(){
 				$.ajax({
 					url: "../php/authenticateUser.php",
-					async: false
+					success: function(data){
+						if(data == "User authentication successful"){
+							$('body').show();
+						}
+						else if(data == "User authentication failed"){
+							redirect();
+						}
+					}
 				});
 			}
 			authenticateUser();
@@ -26,7 +33,7 @@
 			redirect();
 		</script>
 	</head>
-	<body>
+	<body style="display:none">
 		<a href="../lobby">Back To Lobby</a>
 		<p id="p1">Player 1: </p>
 		<p id="p2">Player 2: </p>

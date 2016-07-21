@@ -48,16 +48,28 @@ function generateRooms(players, playerNames){
 }
 
 function generatePrivateGame(){
-	var username=document.getElementById("requestedUsername").value;
-	//$¢ Change the pointer to something else that doesn't trigger a win upgrade
-	console.log(username);
-	jQuery.post('php/getARoom.php',
-					{'fileName':generateID(),
-					  'player1ID':document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14),
-					  'player2ID':"(SELECT userID FROM users WHERE username='"+username+"')",
-					'pointer':"WINNER"},function(data){
-						console.log(data);
-					});
+	var usernameIn=document.getElementById("requestedUsername").value;
+	$.post("php/checkForUser.php",
+		   {username : usernameIn},
+		   function(data){
+			   if(data == "false"){
+					$("#alert").html("This user does not exist.");
+			   }
+			   else if(data == "true"){
+					//$¢ Change the pointer to something else that doesn't trigger a win upgrade
+					console.log(usernameIn);
+					jQuery.post('php/getARoom.php',
+								{'fileName':generateID(),
+								'player1ID':document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14),
+								'player2ID':"(SELECT userID FROM users WHERE username='"+usernameIn+"')",
+								'pointer':"WINNER"},
+								function(data){
+									$("#alert").html(data);
+								}
+					);
+			   }
+		   }
+	);
 }
 
 function cleanString(dat){
