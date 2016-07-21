@@ -59,6 +59,13 @@
 					}
 				}
 			}
+			//This is a cheeky way of setting the menu width equal to the parent button
+			window.onload=function(){
+				window.setTimeout(function(){
+					var width=Math.floor($("#userData").width());
+					document.getElementById("accountSettings").style.minWidth=width+"px";
+				},500);
+			};	
 		</script>
 		<script type="text/javascript" src="bracket.js"></script>
 		<script type="text/javascript" src="tournamentStart.js"></script>
@@ -72,7 +79,7 @@
 				<a href="javascript:hideNotifications()" class="dropdownLink">Toggle Notifications</a>
 			</div>
 			</li>
-			<li class="dropdown">
+			<li class="dropdown" id="userData">
 			<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 			<div class="dropdown-content" id="accountSettings">
 				<a href="account" class="dropdownLink">My Account</a>
