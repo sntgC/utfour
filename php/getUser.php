@@ -18,9 +18,10 @@
 	//Only runs if the file is called using POST, not include
 	if(isset($_POST['jsCall'])){
 		echo $row['username'];
-		exit;
+		exit();
 	}
 	
+	//Uses previously set variables to echo fixed content only
 	if($emailOnly == "true"){
 		echo $row["email"];
 	}

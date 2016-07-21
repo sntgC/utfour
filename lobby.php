@@ -17,6 +17,18 @@
 			} 
 			redirect();
 			
+			function showPrvtMatch(){
+				$("#privateRoom").toggle();
+			}
+			
+			function hideLobbyUsrs(){
+				$("#players").toggle();
+			}
+			
+			function hideNotifications(){
+				$("#notification").toggle();
+			}
+			
 			var isOpen = false;
 			function dropUserMenu() {
 				$("#accountSettings").toggle();
@@ -47,17 +59,19 @@
 			</div>
 			</li>
 		</ul>
-		<br>
-		<div id="privateRoom">
-			<p id="alert"></p>
+		<div id="adminControls" style="display:none"></div>
+		<!--Will later replace this and other similar links with small icons that function the same-->
+		<a href="javascript:showPrvtMatch();" class="dropdown"><h3>Create 1v1 Private Match</h3></a>
+		<div id="privateRoom" style="display:none">
+			<span id="alert" style="display:none"></span>
 			Username: <input type="text" id="requestedUsername">
-			<button onclick="generatePrivateGame()">Create Custom Match</button>
+			<button onclick="generatePrivateGame()">Create Private Match</button>
 		</div>
 		<br>
-		<div id="adminControls"></div>
-		<br>
+		<a href="javascript:hideLobbyUsrs();" class="dropdown"><h3>Players in Lobby</h3></a>
 		<div id="players"></div>
 		<br>
+		<a href="javascript:hideNotifications();" class="dropdown"><h3>Notifications</h3></a>
 		<div id="notification"></div>
 	</body>
 </html>

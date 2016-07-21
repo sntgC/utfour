@@ -47,12 +47,18 @@ function generateRooms(players, playerNames){
 	return(gamesInTournament);
 }
 
+var createdBreak = false;
 function generatePrivateGame(){
 	var usernameIn=document.getElementById("requestedUsername").value;
 	$.post("php/checkForUser.php",
 		   {username : usernameIn},
 		   function(data){
 			   if(data == "false"){
+					$("#alert").show();
+					if(createdBreak == false){
+						$("#alert").after("<br>");
+						createdBreak = true;
+					}
 					$("#alert").html("This user does not exist.");
 			   }
 			   else if(data == "true"){
@@ -64,6 +70,11 @@ function generatePrivateGame(){
 								'player2ID':"(SELECT userID FROM users WHERE username='"+usernameIn+"')",
 								'pointer':"WINNER"},
 								function(data){
+									$("#alert").show();
+									if(createdBreak == false){
+										$("#alert").after("<br>");
+										createdBreak = true;
+									}
 									$("#alert").html(data);
 								}
 					);
@@ -136,6 +147,7 @@ jQuery(document).ready(function(){
 	});
 	jQuery.get('php/authenticateBeeKeeper.php',function(data){
 		if(data!='false'){
+			$("#adminControls").show();
 			document.getElementById("adminControls").innerHTML=data;
 		}
 	});

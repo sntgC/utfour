@@ -1,8 +1,13 @@
-body{
-	font-family: 'Open Sans', sans-serif;
+html *{
+	font-family: 'Open Sans', sans-serif !important;
 }
 
 a:link, a:visited, a:hover, a:active{
+	display: inline-block;
 	text-decoration: none;
 	color:#0000FF;
+}
+
+a.dropdown{
+	color:#5c5c8a;
 }
