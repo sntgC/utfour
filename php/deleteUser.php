@@ -10,10 +10,12 @@
 	$userID = $_COOKIE["userID"];
 	$password = $_POST["password"];
 	
-	$sql = "SELECT * FROM users WHERE userID='$userID' AND password='$password'";
+	$sql = "SELECT * FROM users WHERE userID='$userID'";
 	$results = $connection->query($sql);
+	$row = $results->fetch_assoc();
+	$dbpassword = $row["password"];
 	
-	if(mysqli_num_rows($results)==0){
+	if(!password_verify($password,$dbpassword)){
 		echo "Invalid password";
 		$connection->close();
 		exit();

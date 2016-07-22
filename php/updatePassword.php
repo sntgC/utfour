@@ -18,8 +18,10 @@
 		exit();
 	}
 	
+	$hashedPwd = password_hash($_POST["newPasswordIn"],PASSWORD_BCRYPT);
+	
 	if(isset($_POST["resetCode"])){
-		$sql = "UPDATE users SET password='$_POST[newPasswordIn]' WHERE pwdReset='$_POST[resetCode]'";
+		$sql = "UPDATE users SET password='$hashedPwd' WHERE pwdReset='$_POST[resetCode]'";
 		$connection->query($sql);
 		
 		if($connection->affected_rows > 0){
@@ -30,6 +32,7 @@
 			$row = $results->fetch_assoc();
 			$email = $row["email"];
 			$username = $row["username"];
+			
 			require_once '../libs/PHPMailer/PHPMailerAutoload.php';
 			
 			$m = new PHPMailer();
@@ -70,8 +73,22 @@
 		exit();
 	}
 	
-	$sql = "UPDATE users SET password='$_POST[newPasswordIn]' WHERE password='$_POST[currPasswordIn]' AND userID='$_COOKIE[userID]'";
-	$connection->query($sql);
+	$sql = "SELECT password FROM users WHERE userID='$_COOKIE[userID]'";
+	$results = $connection->query($sql);
+	$row = $results->fetch_assoc();
+	$dbpassword = $row["password"];
+	$password = $_POST["currPasswordIn"];
+	$verify = password_verify($password,$dbpassword);
+	
+	if($verify){
+		$sql = "UPDATE users SET password='$hashedPwd' WHERE userID='$_COOKIE[userID]'";
+		$connection->query($sql);
+	}
+	else{
+		echo "Password change failed";
+		$connection->close();
+		exit();
+	}
 	
 	if($connection->affected_rows > 0){
 		echo "Password changed successfully";

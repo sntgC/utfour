@@ -110,8 +110,10 @@
 		}
 	}
 	
+	$hashedPwd = password_hash($password,PASSWORD_BCRYPT);
+	
 	$sql2 = "INSERT INTO users (userID, username, password, email)
-	VALUES ('$createdID','$username','$password','$email')";
+	VALUES ('$createdID','$username','$hashedPwd','$email')";
 
 	if ($connection->query($sql2)===TRUE){
 		echo "Registration successful";
