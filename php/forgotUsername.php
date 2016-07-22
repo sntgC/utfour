@@ -43,7 +43,7 @@
 		$m->addAddress($email,$username);
 		$m->isHTML(true);
 		
-		$m->Subject = 'Username Requested';
+		$m->Subject = 'UT4 Username Requested';
 		$m->Body = 'Username: <b>' . $username . '</b>';
 		$m->AltBody = 'Username: ' . $username;
 	

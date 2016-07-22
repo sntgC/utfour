@@ -41,7 +41,7 @@
 	$connection->query($sql);
 	
 	if($connection->affected_rows > 0){
-		echo "Email address change successful";
+		echo "Email address changed successfully";
 	}
 	else{
 		echo "Email address change failed";

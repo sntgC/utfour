@@ -30,6 +30,7 @@
 				sessionID binary(20) DEFAULT NULL,
 				wins int NOT NULL DEFAULT 0,
 				beekeeper boolean NOT NULL DEFAULT 0,
+				pwdReset varchar(10) CHARACTER SET utf8 DEFAULT NULL,
 				PRIMARY KEY (userID)
 				) CHARACTER SET utf8; ";
 	$sql .="CREATE TABLE IF NOT EXISTS lobby( 

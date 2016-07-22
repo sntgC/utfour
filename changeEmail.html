@@ -101,7 +101,7 @@
 					$.post($("#changeEmailForm").attr("action"),
 						   $("#changeEmailForm :input").serializeArray(),
 						   function(data){
-								if(data == "Email address change successful"){
+								if(data == "Email address changed successfully"){
 									$("#alert").html(data);
 									$("#currEmail").val("");
 									$("#email").val("");
@@ -119,7 +119,7 @@
 		</script>
 	</head>
 	<body onload="init()" style="display:none">
-		<a href="lobby">Home Page</a> - <a href="account">Back to My Account</a>
+		<a href="lobby">Homepage</a> - <a href="account">Back to My Account</a>
 		<h3>Change Email Address</h3>
 		<p id="alert"></p>
 		<form onsubmit="return verifyForm()" action="php/updateEmail.php" method="post" name="changeEmailForm" id="changeEmailForm">

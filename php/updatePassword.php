@@ -18,11 +18,63 @@
 		exit();
 	}
 	
+	if(isset($_POST["resetCode"])){
+		$sql = "UPDATE users SET password='$_POST[newPasswordIn]' WHERE pwdReset='$_POST[resetCode]'";
+		$connection->query($sql);
+		
+		if($connection->affected_rows > 0){
+			echo "Password changed successfully";
+			
+			$sql = "SELECT * FROM users WHERE pwdReset='$_POST[resetCode]'";
+			$results = $connection->query($sql);
+			$row = $results->fetch_assoc();
+			$email = $row["email"];
+			$username = $row["username"];
+			require_once '../libs/PHPMailer/PHPMailerAutoload.php';
+			
+			$m = new PHPMailer();
+			
+			$m->isSMTP();
+			$m->SMTPAuth = true;
+			
+			$m->Host = 'smtp.gmail.com';
+			
+			//The authentication below uses a Google account in order to send the emails. This will be
+			//changed in the future when we have our webhost and domain name selected, however, for testing
+			//purposes you must currently enter you username and password for your Google account.
+			$m->Username = '';
+			$m->Password = '';
+			
+			$m->SMTPSecure = 'tls';
+			$m->Port = 587;
+			
+			//Enter email for the first parameter
+			$m->setFrom('', 'UT4');
+			$m->addAddress($email,$username);
+			$m->isHTML(true);
+			
+			$m->Subject = 'UT4 Password Recently Reset';
+			$m->Body = "This message was sent to notify you that your UT4 account password was recently reset.";
+			$m->AltBody = "This message was sent to notify you that your UT4 account password was recently reset.";
+		
+			$m->send();
+			
+			$sql = "UPDATE users SET pwdReset=NULL WHERE pwdReset='$_POST[resetCode]'";
+			$connection->query($sql);
+		}
+		else{
+			echo "Password change failed";
+		}
+		
+		$connection->close();
+		exit();
+	}
+	
 	$sql = "UPDATE users SET password='$_POST[newPasswordIn]' WHERE password='$_POST[currPasswordIn]' AND userID='$_COOKIE[userID]'";
 	$connection->query($sql);
 	
 	if($connection->affected_rows > 0){
-		echo "Password change successful";
+		echo "Password changed successfully";
 	}
 	else{
 		echo "Password change failed";

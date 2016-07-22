@@ -39,6 +39,7 @@
                           $("#forgotUsernameForm :input").serializeArray(),
                           function(data){
                             $("#alert").html(data);
+							$("#email").val("");
                     });
 					return false;
 				});
