@@ -90,15 +90,21 @@ function cleanString(dat){
 
 function populate(players, games){
 	/* $¢Room for improvement */
+	var shuffledPlayers=[];
+	var playersCopy=players.slice(0);
+	while(playersCopy.length>0){
+		var randInd=Math.floor(Math.random()*playersCopy.length);
+		shuffledPlayers.push(playersCopy.splice(randInd,1)[0]);
+	}
 	var pIndex=0;
 	for(g=0;g<games.length;g++){
-		if(pIndex>players.length)
+		if(pIndex>=shuffledPlayers.length)
 			break;
 		if(!games[g].hasP1()){
-			games[g].setP1(players[pIndex++]);
+			games[g].setP1(shuffledPlayers[pIndex++]);
 			g--;
 		}else if(!games[g].hasP2()){
-			games[g].setP2(players[pIndex++]);
+			games[g].setP2(shuffledPlayers[pIndex++]);
 		}
 	}
 }

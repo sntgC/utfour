@@ -25,6 +25,9 @@ class Game {
 	getWinner(){
 		return this.winner;
 	}
+	clone(){
+		return new Game(this.id,this.p1,this.p2,this.winner,this.data);
+	}
 	toString(){
 		return "ID: "+this.id+"\n\tP1: "+this.p1+"\n\tP2: "+this.p2+"\n\tWinner: "+this.winner+"\n\tData: "+this.data+"\n";
 	}
