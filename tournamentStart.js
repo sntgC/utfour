@@ -47,19 +47,15 @@ function generateRooms(players, playerNames){
 	return(gamesInTournament);
 }
 
-var createdBreak = false;
 function generatePrivateGame(){
 	var usernameIn=document.getElementById("requestedUsername").value;
 	$.post("php/checkForUser.php",
 		   {username : usernameIn},
 		   function(data){
 			   if(data == "false"){
-					$("#alert").show();
-					if(createdBreak == false){
-						$("#alert").after("<br>");
-						createdBreak = true;
-					}
+					$("#tmpbr").show();
 					$("#alert").html("This user does not exist.");
+					$("#alert").show();
 			   }
 			   else if(data == "true"){
 					//$¢ Change the pointer to something else that doesn't trigger a win upgrade
@@ -70,12 +66,9 @@ function generatePrivateGame(){
 								'player2ID':"(SELECT userID FROM users WHERE username='"+usernameIn+"')",
 								'pointer':"WINNER"},
 								function(data){
-									$("#alert").show();
-									if(createdBreak == false){
-										$("#alert").after("<br>");
-										createdBreak = true;
-									}
+									$("#tmpbr").show();
 									$("#alert").html(data);
+									$("#alert").show();
 								}
 					);
 			   }

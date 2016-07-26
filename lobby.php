@@ -18,6 +18,10 @@
 			redirect();
 			
 			function showPrvtMatch(){
+				$("#alert").hide();
+				$("#alert").html("");
+				$("#tmpbr").hide();
+				$("#requestedUsername").val("");
 				$("#privateRoom").toggle();
 			}
 			
@@ -28,6 +32,7 @@
 			function hideNotifications(){
 				$("#notification").toggle();
 			}
+
 			//Made this into an object with ids as keys in order to support multiple dropdown
 			var isOpen = {};
 			function dropMenu(id) {
@@ -92,7 +97,7 @@
 		<!--Will later replace this and other similar links with small icons that function the same-->
 		<a href="javascript:showPrvtMatch();" class="menu"><h3>Create 1v1 Private Match</h3></a>
 		<div id="privateRoom" style="display:none">
-			<span id="alert" style="display:none"></span>
+			<span id="alert" style="display:none"></span><br id="tmpbr" style="display:none">
 			Username: <input type="text" id="requestedUsername">
 			<button onclick="generatePrivateGame()">Create Private Match</button>
 		</div>
