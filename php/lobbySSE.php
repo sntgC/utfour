@@ -12,11 +12,11 @@
 	
 	function getPlayers(){
 		$connect = new mysqli("localhost","root","","ut4serverdb") or die("Failed to connect to the server");
-		$sql = "SELECT username FROM lobby";
+		$sql = "SELECT * FROM lobby";
 		$result = mysqli_query($connect,$sql);
 		$return="";
 		while($row = mysqli_fetch_array($result)){
-			$return .=$row['username']."<br>";
+			$return .=$row['username']." <b>(".$row['wins'].")</b><br>";
 		}
 		mysqli_close($connect);
 		

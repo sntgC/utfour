@@ -36,6 +36,7 @@
 	$sql .="CREATE TABLE IF NOT EXISTS lobby( 
 				userID varchar(7) CHARACTER SET utf8 NOT NULL,
 				username varchar(20) CHARACTER SET utf8 NOT NULL,
+				wins int NOT NULL DEFAULT 0,
 				lastActive timestamp NOT NULL,
 				PRIMARY KEY (userID)	
 				) CHARACTER SET utf8; ";
