@@ -7,7 +7,7 @@ ul {
     margin: 0;
     padding: 0;
 	overflow:hidden;
-    background-color: #5c5c8a;
+    background-color: #DE9A57;
 }
 
 li {
@@ -23,7 +23,7 @@ a.dropbtn {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #a3a3c2;
+    background-color: #DEBD9B;
 }
 
 .dropdown {
@@ -53,4 +53,9 @@ a.dropbtn {
 
 #lobbySettings{
 	right:0px;
+}
+
+a.menu{
+	text-decoration: none;
+	color:#DE9A57;
 }

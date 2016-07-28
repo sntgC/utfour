@@ -29,6 +29,7 @@
 				email varchar(100) CHARACTER SET utf8 DEFAULT NULL,
 				sessionID binary(20) DEFAULT NULL,
 				wins int NOT NULL DEFAULT 0,
+				theme varchar(15) CHARACTER SET utf8 NOT NULL DEFAULT 'blue',
 				beekeeper boolean NOT NULL DEFAULT 0,
 				pwdReset varchar(10) CHARACTER SET utf8 DEFAULT NULL,
 				PRIMARY KEY (userID)

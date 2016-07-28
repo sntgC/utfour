@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link rel="stylesheet" type="text/css" href="style/header.css">
+		<link rel="stylesheet" type="text/css" href="style/headerblue.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
@@ -16,7 +16,8 @@
 				}
 			} 
 			redirect();
-			
+			adjustTheme();
+
 			function showPrvtMatch(){
 				$("#alert").hide();
 				$("#alert").html("");

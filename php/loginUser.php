@@ -31,12 +31,15 @@
 			$sha1Time = sha1( time() );
 			$sql = "UPDATE users SET sessionID=UNHEX('$sha1Time') WHERE userID='$cookie_value'";
 			$connection->query($sql);
-			$sql = "SELECT sessionID FROM users WHERE userID='$cookie_value'";
+			$sql = "SELECT * FROM users WHERE userID='$cookie_value'";
 			$results = $connection->query($sql);
 			$row = $results->fetch_assoc();
 			$value = $row["sessionID"];
 			setcookie("sessionID", $value, time() + (86400*365), "/");
-			
+
+			$color = $row["theme"];
+			setcookie("theme", $color, time() + (86400*365), "/");
+
 			echo "Login successful";
 		}
 		else{
