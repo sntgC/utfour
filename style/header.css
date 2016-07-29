@@ -2,12 +2,36 @@ body {
     margin: 0;
 }
 
-ul {
+ul.blue{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+	overflow:hidden;
+    background-color: #5c5c8a;
+}
+
+ul.green{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+	overflow:hidden;
+    background-color: #41B56C;
+}
+
+ul.orange{
 	list-style-type: none;
     margin: 0;
     padding: 0;
 	overflow:hidden;
     background-color: #DE9A57;
+}
+
+ul.red{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+	overflow:hidden;
+    background-color: #E8517C;
 }
 
 li {
@@ -22,8 +46,20 @@ a.dropbtn {
     text-decoration: none;
 }
 
-.dropdown:hover .dropbtn {
+.dropdown:hover .dropbtn.blue {
+    background-color: #a3a3c2;
+}
+
+.dropdown:hover .dropbtn.green {
+    background-color: #7FB593;
+}
+
+.dropdown:hover .dropbtn.orange {
     background-color: #DEBD9B;
+}
+
+.dropdown:hover .dropbtn.red {
+    background-color: #E8A2B6;
 }
 
 .dropdown {
@@ -55,7 +91,22 @@ a.dropbtn {
 	right:0px;
 }
 
-a.menu{
+a.menu.blue{
+	text-decoration: none;
+	color:#5c5c8a;
+}
+
+a.menu.green{
+	text-decoration: none;
+	color:#41B56C;
+}
+
+a.menu.orange{
 	text-decoration: none;
 	color:#DE9A57;
+}
+
+a.menu.red{
+	text-decoration: none;
+	color:#E8517C;
 }

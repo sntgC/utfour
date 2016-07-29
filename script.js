@@ -24,11 +24,13 @@ function authenticateUser(){
 	});
 }
 
-function adjustTheme(){
+function getCookie(cookie_name){
+	if(document.cookie.indexOf(cookie_name + "=") < 0){
+		return;
+	}
 	var endOfCookie = document.cookie.length - 1;
-	var start = document.cookie.indexOf("theme=") + 6;
+	var start = document.cookie.indexOf(cookie_name+"=") + cookie_name.length + 1;
 	var end = -1;
-
 	var i = 0;
 	while(true){
 		var current = document.cookie.substring(start + i, start + i + 1);
@@ -43,19 +45,25 @@ function adjustTheme(){
 		i++;
 	}
 
-	var color = "";
+	var cookie_value = "";
 	if(end == -2){
-		color = document.cookie.substring(start);
+		cookie_value = document.cookie.substring(start);
 	}
 	else{
-		color = document.cookie.substring(start, end);
+		cookie_value = document.cookie.substring(start, end);
 	}
 
+	return cookie_value;
+}
+
+function adjustTheme(){
+	var color = getCookie("theme");
 	if(color == "blue"){
 		return;
 	}
 	else{
-		var cssLink = $('link[href*="style/headerblue.css"]');
-		cssLink.replaceWith('<link href="style/header' + color + '.css" type="text/css" rel="stylesheet">');
+		$(document).ready(function(){
+			$(".blue").removeClass("blue").addClass(color);
+		});
 	}
 }

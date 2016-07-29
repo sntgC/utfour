@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link rel="stylesheet" type="text/css" href="style/headerblue.css">
+		<link rel="stylesheet" type="text/css" href="style/header.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
@@ -77,16 +77,16 @@
 		<script type="text/javascript" src="tournamentStart.js"></script>
 	</head>
 	<body style="display:none">
-		<ul>
+		<ul class="blue">
 			<li class="dropdown">
-			<a href="javascript:dropMenu('lobbySettings');" class="dropbtn dropdownLink"><img src="images/settings.png" height="30" width="30" class="dropdownLink"></a>
+			<a href="javascript:dropMenu('lobbySettings');" class="dropbtn dropdownLink blue"><img src="images/settings.png" height="30" width="30" class="dropdownLink"></a>
 			<div class="dropdown-content" id="lobbySettings">
 				<a href="javascript:hideLobbyUsrs()" class="dropdownLink">Toggle Players</a>
 				<a href="javascript:hideNotifications()" class="dropdownLink">Toggle Notifications</a>
 			</div>
 			</li>
 			<li class="dropdown" id="userData">
-			<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
+			<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 			<div class="dropdown-content" id="accountSettings">
 				<a href="account" class="dropdownLink">My Account</a>
 				<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
@@ -96,17 +96,17 @@
 		</ul>
 		<div id="adminControls" style="display:none"></div>
 		<!--Will later replace this and other similar links with small icons that function the same-->
-		<a href="javascript:showPrvtMatch();" class="menu"><h3>Create 1v1 Private Match</h3></a>
+		<a href="javascript:showPrvtMatch();" class="menu blue"><h3>Create 1v1 Private Match</h3></a>
 		<div id="privateRoom" style="display:none">
 			<span id="alert" style="display:none"></span><br id="tmpbr" style="display:none">
 			Username: <input type="text" id="requestedUsername">
 			<button onclick="generatePrivateGame()">Create Private Match</button>
 		</div>
 		<br>
-		<a href="javascript:hideLobbyUsrs();" class="menu"><h3>Players in Lobby</h3></a>
+		<a href="javascript:hideLobbyUsrs();" class="menu blue"><h3>Players in Lobby</h3></a>
 		<div id="players"></div>
 		<br>
-		<a href="javascript:hideNotifications();" class="menu"><h3>Notifications</h3></a>
+		<a href="javascript:hideNotifications();" class="menu blue"><h3>Notifications</h3></a>
 		<div id="notification"></div>
 	</body>
 </html>
