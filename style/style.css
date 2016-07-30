@@ -13,3 +13,195 @@ a:hover, a:active{
 	text-decoration: underline;
 	color:#0000FF;
 }
+
+.formSection.blue{
+	margin: auto;
+	width: 25%;
+	border: 3px solid #5c5c8a;
+	border-radius: 25px;
+	padding: 10px 10px;
+}
+
+.formSection.green{
+	margin: auto;
+	width: 25%;
+	border: 3px solid #41B56C;
+	border-radius: 25px;
+	padding: 10px 10px;
+}
+
+.formSection.orange{
+	margin: auto;
+	width: 25%;
+	border: 3px solid #DE9A57;
+	border-radius: 25px;
+	padding: 10px 10px;
+}
+
+.formSection.red{
+	margin: auto;
+	width: 25%;
+	border: 3px solid #E8517C;
+	border-radius: 25px;
+	padding: 10px 10px;
+}
+
+.formSectionTitle{
+	font-size: 35px;
+	margin: auto;
+	margin-top: 15px;
+	width: 25%;
+	padding: 25px 25px;
+}
+
+input{
+	margin-top: 10px
+}
+
+input[type=text].blue, input[type=password].blue {
+	margin: 6px 0;
+	padding: 11px 11px;
+	width: 100%;
+	box-sizing: border-box;
+	border: 2px solid #a3a3c2;
+	border-radius: 20px;
+	background-color: #F5F5F5;
+	outline: none;
+}
+
+input[type=text].green, input[type=password].green {
+	margin: 6px 0;
+	padding: 11px 11px;
+	width: 100%;
+	box-sizing: border-box;
+	border: 2px solid #7FB593;
+	border-radius: 20px;
+	background-color: #F5F5F5;
+	outline: none;
+}
+
+input[type=text].orange, input[type=password].orange {
+	margin: 6px 0;
+	padding: 11px 11px;
+	width: 100%;
+	box-sizing: border-box;
+	border: 2px solid #DEBD9B;
+	border-radius: 20px;
+	background-color: #F5F5F5;
+	outline: none;
+}
+
+input[type=text].red, input[type=password].red {
+	margin: 6px 0;
+	padding: 11px 11px;
+	width: 100%;
+	box-sizing: border-box;
+	border: 2px solid #E8A2B6;
+	border-radius: 20px;
+	background-color: #F5F5F5;
+	outline: none;
+}
+
+input[type=text]:focus.blue, input[type=password]:focus.blue {
+	border: 2px solid #5c5c8a;
+}
+
+input[type=text]:focus.green, input[type=password]:focus.green {
+	border: 2px solid #41B56C;
+}
+
+input[type=text]:focus.orange, input[type=password]:focus.orange {
+	border: 2px solid #DE9A57;
+}
+
+input[type=text]:focus.red, input[type=password]:focus.red {
+	border: 2px solid #E8517C;
+}
+
+input[type=submit].blue{
+	margin-top: 10px;
+	padding: 10px 10px;
+	width: 100%;
+	outline: none;
+	color: white;
+	text-decoration: none;
+	background-color: #a3a3c2;
+	cursor: pointer;
+	border: 2px solid #5c5c8a;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
+input[type=submit].green{
+	margin-top: 10px;
+	padding: 10px 10px;
+	width: 100%;
+	outline: none;
+	color: white;
+	text-decoration: none;
+	background-color: #7FB593;
+	cursor: pointer;
+	border: 2px solid #41B56C;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
+input[type=submit].orange{
+	margin-top: 10px;
+	padding: 10px 10px;
+	width: 100%;
+	outline: none;
+	color: white;
+	text-decoration: none;
+	background-color: #DEBD9B;
+	cursor: pointer;
+	border: 2px solid #DE9A57;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
+input[type=submit].red{
+	margin-top: 10px;
+	padding: 10px 10px;
+	width: 100%;
+	outline: none;
+	color: white;
+	text-decoration: none;
+	background-color: #E8A2B6;
+	cursor: pointer;
+	border: 2px solid #E8517C;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
+input[type=submit]:hover.blue{
+	background-color: #5c5c8a;
+}
+
+input[type=submit]:hover.green{
+	background-color: #41B56C;
+}
+
+input[type=submit]:hover.orange{
+	background-color: #DE9A57;
+}
+
+input[type=submit]:hover.red{
+	background-color: #E8517C;
+}
+
+.formSection input.shortInput{
+	width: 90%;
+}
+
+.warningText {
+	margin: auto;
+	margin-bottom: 15px;
+	font-size: 18px;
+	color: red;
+}
+
+.alertText {
+	font-size: 18px;
+	color: green;
+}
