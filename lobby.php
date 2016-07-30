@@ -78,20 +78,23 @@
 	</head>
 	<body style="display:none">
 		<ul class="blue">
-			<li class="dropdown">
+			<li class="dropdown right">
 			<a href="javascript:dropMenu('lobbySettings');" class="dropbtn dropdownLink blue"><img src="images/settings.png" height="30" width="30" class="dropdownLink"></a>
 			<div class="dropdown-content" id="lobbySettings">
 				<a href="javascript:hideLobbyUsrs()" class="dropdownLink">Toggle Players</a>
 				<a href="javascript:hideNotifications()" class="dropdownLink">Toggle Notifications</a>
 			</div>
 			</li>
-			<li class="dropdown" id="userData">
+			<li class="dropdown right" id="userData">
 			<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 			<div class="dropdown-content" id="accountSettings">
 				<a href="account" class="dropdownLink">My Account</a>
 				<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
 				<a href="index" class="dropdownLink">Spectate</a>
 			</div>
+			</li>
+			<li class="dropdown left">
+				<a class="dropbtn title noclick">UT4</a>
 			</li>
 		</ul>
 		<div id="adminControls" style="display:none"></div>

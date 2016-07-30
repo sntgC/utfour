@@ -2,6 +2,12 @@
 	$dir = "images/userIcons/";
 	$imageName = $_COOKIE["userID"];
 	
+	if (isset($from)) {
+		if($from == "room"){
+			$dir = "../images/userIcons/";
+		}
+	}
+	
 	if (file_exists($dir . $imageName . ".jpg")) {
 		$source = $dir . $imageName . ".jpg";
 		echo "<img id='usrImg' src='$source' width='30' height='30'> ";

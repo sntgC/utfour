@@ -21,8 +21,8 @@
 	}
 	
 	//Create room file
-	$newFile = fopen("../matches/"."$_POST[fileName]".".html", "w") or die("Unable to open file!");
-	$roomTemplate = fopen('../matches/room.html','r');
+	$newFile = fopen("../matches/"."$_POST[fileName]".".php", "w") or die("Unable to open file!");
+	$roomTemplate = fopen('../matches/room.php','r');
 	$cnt=0;
 	while ($line = fgets($roomTemplate)) {
 		if(strpos($line,"<!--PLACEHOLDER-->")===false){

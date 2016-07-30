@@ -1,4 +1,5 @@
 authenticateUser();
+adjustTheme();
 
 var availableUsername=false;
 var availableEmail=false;

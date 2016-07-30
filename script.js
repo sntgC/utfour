@@ -26,7 +26,7 @@ function authenticateUser(){
 
 function getCookie(cookie_name){
 	if(document.cookie.indexOf(cookie_name + "=") < 0){
-		return;
+		return null;
 	}
 	var endOfCookie = document.cookie.length - 1;
 	var start = document.cookie.indexOf(cookie_name+"=") + cookie_name.length + 1;
@@ -58,6 +58,9 @@ function getCookie(cookie_name){
 
 function adjustTheme(){
 	var color = getCookie("theme");
+	if (color === null){
+		return;
+	}
 	if(color == "blue"){
 		return;
 	}

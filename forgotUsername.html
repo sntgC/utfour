@@ -5,11 +5,13 @@
 		<meta charset="utf-8">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
+		<link rel="stylesheet" type="text/css" href="style/header.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
 			authenticateUser();
-			
+			adjustTheme();
+
             var goodEntry = true;
             function verifyForm(){
                 var email = document.forms["forgotUsernameForm"]["email"].value;
@@ -47,7 +49,14 @@
 		</script>
 	</head>
 	<body>
-		<a href="login">Back to Login</a>
+		<ul class="blue">
+			<li class="dropdown left">
+				<a href="index" class="dropbtn title blue">UT4</a>
+			</li>
+			<li class="dropdown left">
+				<a href="login" class="dropbtn title blue">Login</a>
+			</li>
+		</ul>
 		<h3>Forgot Username</h3>
 		<p id="alert"></p>
 		<p>Please enter your email address below and an email containing your username will be sent to you momentarily.</p>

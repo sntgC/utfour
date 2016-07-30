@@ -34,8 +34,12 @@ ul.red{
     background-color: #E8517C;
 }
 
-li {
+li.right {
     float: right;
+}
+
+li.left {
+    float: left;
 }
 
 a.dropbtn {
@@ -109,4 +113,18 @@ a.menu.orange{
 a.menu.red{
 	text-decoration: none;
 	color:#E8517C;
+}
+
+a.title{
+    font-size: 25px;
+}
+
+a.noclick{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default; 
 }
