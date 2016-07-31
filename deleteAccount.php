@@ -100,7 +100,7 @@
 		<h1 class="formSectionTitle">Delete My Account</h1>
 		<div class="formSection blue">
 			<p id="alert" class="warningText"></p>
-			<p>WARNING! By entering your password and clicking the delete button, you understand that all of your current progress will be destroyed and will be unrecoverable.</p>
+			<p class="warningText">WARNING! By entering your password and clicking the delete button, you understand that all of your current progress will be destroyed and will be unrecoverable.</p>
 			<form id="deleteForm" action="php/deleteUser.php" method="post">
 				<label>Password</label><br>
 				<input class="blue" id="password" name="password" type="password"><br>
