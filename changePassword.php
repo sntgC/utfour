@@ -66,12 +66,14 @@
 						   function(data){
 								if(data == "Password changed successfully"){
 									$("#alert").html(data);
+									$("#alert").removeClass("warningText").addClass("alertText");
 									$("#currPassword").val("");
 									$("#newPassword").val("");
 									$("#newPasswordConf").val("");
 								}
 								else{
 									$("#alert").html(data);
+									$("#alert").removeClass("alertText").addClass("warningText");
 									$("#currPassword").val("");
 								}
 						   }
@@ -136,19 +138,21 @@
 				<a href="account" class="dropbtn title blue">My Account</a>
 			</li>
 		</ul>
-		<h3>Change Password</h3>
-		<p id="alert"></p>
-		<p>Please hover your mouse over the input boxes for the requirements regarding that field.</p>
-		<form action="php/updatePassword.php" method="post" name="changePassForm" id="changePassForm">
-			<label>Current Password:</label><br>
-			<input type="password" name="currPasswordIn" id="currPassword" title="Please enter your current password."><br>
-			<label>New Password:</label><br>
-			<input type="password" name="newPasswordIn" id="newPassword" title="Your new password must be 6 to 20 characters in length."><br>
-			<p id="passwordNotif"></p>
-			<label>New Password Confirmation:</label><br>
-			<input type="password" name="newPasswordInConf" id="newPasswordConf" title="Please re-enter your new password."><br>
-			<p id="passwordConfNotif"></p>
-			<input id="submit" type="submit" value="Change Password">
-		</form>
+		<h1 class="formSectionTitle">Change Password</h1>
+		<div class="formSection blue">
+			<p id="alert"></p>
+			<p>Please hover your mouse over the input boxes for the requirements regarding that field.</p>
+			<form action="php/updatePassword.php" method="post" name="changePassForm" id="changePassForm">
+				<label>Current Password</label><br>
+				<input class="blue" type="password" name="currPasswordIn" id="currPassword" title="Please enter your current password."><br>
+				<label>New Password</label><br>
+				<input class="blue" type="password" name="newPasswordIn" id="newPassword" title="Your new password must be 6 to 20 characters in length."><br>
+				<p id="passwordNotif" class="warningText"></p>
+				<label>New Password Confirmation</label><br>
+				<input class="blue" type="password" name="newPasswordInConf" id="newPasswordConf" title="Please re-enter your new password."><br>
+				<p id="passwordConfNotif" class="warningText"></p>
+				<input class="blue" id="submit" type="submit" value="Change Password">
+			</form>
+		</div>
 	</body>
 </html>

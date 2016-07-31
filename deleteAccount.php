@@ -97,13 +97,15 @@
 				<a href="account" class="dropbtn title blue">My Account</a>
 			</li>
 		</ul>
-		<h3>Delete My Account</h3>
-		<p id="alert"></p>
-		<p>WARNING! By entering your password and clicking the delete button, you understand that all of your current progress will be destroyed and will be unrecoverable.</p>
-		<form id="deleteForm" action="php/deleteUser.php" method="post">
-			<label>Password:</label><br>
-			<input id="password" name="password" type="password"><br>
-			<input id="submit" name="submit" type="submit" value="Delete Account"><br>
-		</form>
+		<h1 class="formSectionTitle">Delete My Account</h1>
+		<div class="formSection blue">
+			<p id="alert" class="warningText"></p>
+			<p>WARNING! By entering your password and clicking the delete button, you understand that all of your current progress will be destroyed and will be unrecoverable.</p>
+			<form id="deleteForm" action="php/deleteUser.php" method="post">
+				<label>Password</label><br>
+				<input class="blue" id="password" name="password" type="password"><br>
+				<input class="blue" id="submit" name="submit" type="submit" value="Delete Account"><br>
+			</form>
+		</div>
 	</body>
 </html>
