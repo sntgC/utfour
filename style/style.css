@@ -207,3 +207,8 @@ input[type=submit]:hover.red{
 	font-size: 18px;
 	color: green;
 }
+
+#optionsMenu{
+	margin: auto;
+	padding: 25px 25px;
+}

@@ -55,6 +55,7 @@ function generatePrivateGame(){
 			   if(data == "false"){
 					$("#tmpbr").show();
 					$("#alert").html("This user does not exist.");
+					$("#alert").removeClass("alertText").addClass("warningText");
 					$("#alert").show();
 			   }
 			   else if(data == "true"){
@@ -66,6 +67,12 @@ function generatePrivateGame(){
 								'player2ID':"(SELECT userID FROM users WHERE username='"+usernameIn+"')",
 								'pointer':"WINNER"},
 								function(data){
+									if(data == "Game created."){
+										$("#alert").removeClass("warningText").addClass("alertText");
+									}
+									else{
+										$("#alert").removeClass("alertText").addClass("warningText");
+									}
 									$("#tmpbr").show();
 									$("#alert").html(data);
 									$("#alert").show();

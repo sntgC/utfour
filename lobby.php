@@ -6,6 +6,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<link rel="stylesheet" type="text/css" href="style/header.css">
+		<link rel="stylesheet" type="text/css" href="style/fontello.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
@@ -23,15 +24,18 @@
 				$("#alert").html("");
 				$("#tmpbr").hide();
 				$("#requestedUsername").val("");
+				$("#prvtMatchDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
 				$("#privateRoom").toggle();
 			}
 			
 			function hideLobbyUsrs(){
 				$("#players").toggle();
+				$("#playersDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
 			}
 			
 			function hideNotifications(){
 				$("#notification").toggle();
+				$("#notifDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
 			}
 
 			//Made this into an object with ids as keys in order to support multiple dropdown
@@ -97,19 +101,21 @@
 				<a class="dropbtn title noclick">UT4</a>
 			</li>
 		</ul>
-		<div id="adminControls" style="display:none"></div>
-		<!--Will later replace this and other similar links with small icons that function the same-->
-		<a href="javascript:showPrvtMatch();" class="menu blue"><h3>Create 1v1 Private Match</h3></a>
-		<div id="privateRoom" style="display:none">
-			<span id="alert" style="display:none"></span><br id="tmpbr" style="display:none">
-			Username: <input type="text" id="requestedUsername">
-			<button onclick="generatePrivateGame()">Create Private Match</button>
+		<div id="optionsMenu">
+			<h1>Lobby</h1>
+			<div id="adminControls" style="display:none"></div>
+			<a href="javascript:showPrvtMatch();" class="menu blue"><h3 id="prvtMatchDisplayLink" class="icon-down-open">Create 1v1 Private Match</h3></a>
+			<div id="privateRoom" style="display:none">
+				<span id="alert" style="display:none"></span><br id="tmpbr" style="display:none">
+				Username: <input type="text" id="requestedUsername">
+				<button onclick="generatePrivateGame()">Create Private Match</button>
+			</div>
+			<br>
+			<a href="javascript:hideLobbyUsrs();" class="menu blue"><h3 id="playersDisplayLink" class="icon-up-open">Players in Lobby</h3></a>
+			<div id="players"></div>
+			<br>
+			<a href="javascript:hideNotifications();" class="menu blue"><h3 id="notifDisplayLink" class="icon-up-open">Notifications</h3></a>
+			<div id="notification"></div>
 		</div>
-		<br>
-		<a href="javascript:hideLobbyUsrs();" class="menu blue"><h3>Players in Lobby</h3></a>
-		<div id="players"></div>
-		<br>
-		<a href="javascript:hideNotifications();" class="menu blue"><h3>Notifications</h3></a>
-		<div id="notification"></div>
 	</body>
 </html>
