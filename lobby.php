@@ -101,7 +101,7 @@
 				<a class="dropbtn title noclick">UT4</a>
 			</li>
 		</ul>
-		<div id="optionsMenu">
+		<div id="lobbyMenu">
 			<h1>Lobby</h1>
 			<div id="adminControls" style="display:none"></div>
 			<a href="javascript:showPrvtMatch();" class="menu blue"><h3 id="prvtMatchDisplayLink" class="icon-down-open">Create 1v1 Private Match</h3></a>

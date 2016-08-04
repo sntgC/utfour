@@ -53,6 +53,12 @@
 						processData: false,
 						success: function(data){
 							$("#alert").html(data);
+							if (data == "Your new profile picture has been uploaded successfully. Please <a href='javascript:window.location.reload();'>refresh</a> the webpage in order for the change to be visible on your end."){
+								$("#alert").removeClass("warningText").addClass("alertText");
+							}
+							else{
+								$("#alert").removeClass("alertText").addClass("warningText");
+							}
 						}
 					});
 					return false;
@@ -65,6 +71,7 @@
 								   window.location.reload();
 								   return;
 							   }
+							   $("#alert").removeClass("alertText").addClass("warningText");
 							   $("#alert").html(data);
 						   }
 					);
@@ -125,31 +132,33 @@
 				<a href="lobby" class="dropbtn title blue">UT4</a>
 			</li>
 		</ul>
-		<h3>My Account</h3>
-		<p id="alert"></p>
-		Username: <b><?php $emailOnly=""; $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b><br>
-		Email address: <b><?php $emailOnly="true"; $includeWins=""; $winsOnly=""; include 'php/getUser.php';?></b><br>
-		Profile picture: <?php include 'php/loadUserImg.php'; ?><br>
-		Number of wins: <b><?php $emailOnly=""; $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b><br><br>
-		<a href="changeEmail">Change my email address</a><br>
-		<a href="changePassword">Change my password</a><br>
-		<a href="javascript: showThemeChanger();" id="changeThemeLink">Change theme color</a><br>
-		<form id="changeThemeForm" name="changeThemeForm" action="php/updateTheme.php" method="post" style="display:none">
-			<select name="colorSelector">
-				<option value="blue">Blue</option>
-				<option value="green">Green</option>
-				<option value="orange">Orange</option>
-				<option value="red">Red</option>
-			</select>
-			<input id="submitTheme" type="submit" name="submit" value="Change Theme">
-		</form>
-		<br id="changeThemeBr" style="display:none">
-		<a href="" id="upload_link" title="The selected image must be no larger than 500 kB">Change my profile picture</a><br>
-		<a href="php/resetUserImg.php" id="reset_link" title="This will reset your profile picture to the default user image">Reset my profile picture</a><br>
-		<a href="deleteAccount">Delete my account</a>
-		<form id="picForm" action="php/uploadUserImg.php" method="post" enctype="multipart/form-data">
-			<input id="fileToUpload" name="fileToUpload" type="file" accept="image/*" style="display:none;">
-			<input type="submit" id="submit" name="submit" style="display:none;">
-		</form>
+		<h3 id="accountTitle">My Account</h3>
+		<p id="alert" class="accountMenuAlert"></p>
+		<div id="accountMenu" class="blue">
+			Username: <b><?php $emailOnly=""; $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b><br>
+			Email address: <b><?php $emailOnly="true"; $includeWins=""; $winsOnly=""; include 'php/getUser.php';?></b><br><br>
+			Profile picture: <?php include 'php/loadUserImg.php'; ?><br>
+			Number of wins: <b><?php $emailOnly=""; $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b><br><br>
+			<a href="changeEmail">Change my email address</a><br>
+			<a href="changePassword">Change my password</a><br>
+			<a href="javascript: showThemeChanger();" id="changeThemeLink">Change theme color</a><br>
+			<form id="changeThemeForm" name="changeThemeForm" action="php/updateTheme.php" method="post" style="display:none">
+				<select name="colorSelector">
+					<option value="blue">Blue</option>
+					<option value="green">Green</option>
+					<option value="orange">Orange</option>
+					<option value="red">Red</option>
+				</select>
+				<input id="submitTheme" type="submit" name="submit" value="Change Theme">
+			</form>
+			<br id="changeThemeBr" style="display:none">
+			<a href="" id="upload_link" title="The selected image must be no larger than 500 kB">Change my profile picture</a><br>
+			<a href="php/resetUserImg.php" id="reset_link" title="This will reset your profile picture to the default user image">Reset my profile picture</a><br>
+			<a href="deleteAccount">Delete my account</a>
+			<form id="picForm" action="php/uploadUserImg.php" method="post" enctype="multipart/form-data">
+				<input id="fileToUpload" name="fileToUpload" type="file" accept="image/*" style="display:none;">
+				<input type="submit" id="submit" name="submit" style="display:none;">
+			</form>
+		</div>
 	</body>
 </html>

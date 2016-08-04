@@ -123,7 +123,7 @@ input[type=submit].blue{
 	padding: 10px 10px;
 	width: 100%;
 	outline: none;
-	color: white;
+	color: black;
 	text-decoration: none;
 	background-color: #a3a3c2;
 	cursor: pointer;
@@ -137,7 +137,7 @@ input[type=submit].green{
 	padding: 10px 10px;
 	width: 100%;
 	outline: none;
-	color: white;
+	color: black;
 	text-decoration: none;
 	background-color: #7FB593;
 	cursor: pointer;
@@ -151,7 +151,7 @@ input[type=submit].orange{
 	padding: 10px 10px;
 	width: 100%;
 	outline: none;
-	color: white;
+	color: black;
 	text-decoration: none;
 	background-color: #DEBD9B;
 	cursor: pointer;
@@ -165,7 +165,7 @@ input[type=submit].red{
 	padding: 10px 10px;
 	width: 100%;
 	outline: none;
-	color: white;
+	color: black;
 	text-decoration: none;
 	background-color: #E8A2B6;
 	cursor: pointer;
@@ -175,18 +175,22 @@ input[type=submit].red{
 }
 
 input[type=submit]:hover.blue{
+	color: white;
 	background-color: #5c5c8a;
 }
 
 input[type=submit]:hover.green{
+	color: white;
 	background-color: #41B56C;
 }
 
 input[type=submit]:hover.orange{
+	color: white;
 	background-color: #DE9A57;
 }
 
 input[type=submit]:hover.red{
+	color: white;
 	background-color: #E8517C;
 }
 
@@ -208,7 +212,132 @@ input[type=submit]:hover.red{
 	color: green;
 }
 
-#optionsMenu{
+#lobbyMenu{
 	margin: auto;
 	padding: 25px 25px;
+}
+
+#indexTitle {
+	margin: auto;
+	margin-top: 175px;
+	font-size: 35px;
+	text-align: center;
+}
+
+#indexMenu {
+	margin: auto;
+	margin-top: 45px;
+	text-align: center;
+	width: 35%;
+}
+
+#indexMenu a{
+	margin-top: 10px;
+	padding: 10px 10px;
+	width: 100%;
+	color: black;
+	text-decoration: none;
+	background-color: #a3a3c2;
+	cursor: pointer;
+	border: 2px solid #5c5c8a;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+#indexMenu a:hover{
+	color: white;
+	background-color: #5c5c8a;
+}
+
+#accountTitle {
+	margin: auto;
+	margin-top: 10px;
+	font-size: 35px;
+	text-align: center;
+}
+
+#accountMenu {
+	margin: auto;
+	margin-top: 45px;
+	text-align: center;
+	width: 35%;
+}
+
+.accountMenuAlert{
+	margin: auto;
+	margin-top: 35px;
+	text-align: center;
+	width: 35%;
+}
+
+#accountMenu.blue a{
+	margin-top: 10px;
+	padding: 10px 10px;
+	width: 100%;
+	color: black;
+	text-decoration: none;
+	background-color: #a3a3c2;
+	cursor: pointer;
+	border: 2px solid #5c5c8a;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+#accountMenu.blue a:hover{
+	color: white;
+	background-color: #5c5c8a;
+}
+
+#accountMenu.green a{
+	margin-top: 10px;
+	padding: 10px 10px;
+	width: 100%;
+	color: black;
+	text-decoration: none;
+	background-color: #7FB593;
+	cursor: pointer;
+	border: 2px solid #41B56C;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+#accountMenu.green a:hover{
+	color: white;
+	background-color: #41B56C;
+}
+
+#accountMenu.orange a{
+	margin-top: 10px;
+	padding: 10px 10px;
+	width: 100%;
+	color: black;
+	text-decoration: none;
+	background-color: #DEBD9B;
+	cursor: pointer;
+	border: 2px solid #DE9A57;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+#accountMenu.orange a:hover{
+	color: white;
+	background-color: #DE9A57;
+}
+
+#accountMenu.red a{
+	margin-top: 10px;
+	padding: 10px 10px;
+	width: 100%;
+	color: black;
+	text-decoration: none;
+	background-color: #E8A2B6;
+	cursor: pointer;
+	border: 2px solid #E8517C;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+#accountMenu.red a:hover{
+	color: white;
+	background-color: #E8517C;
 }
