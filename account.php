@@ -135,10 +135,24 @@
 		<h3 id="accountTitle">My Account</h3>
 		<p id="alert" class="accountMenuAlert"></p>
 		<div id="accountMenu" class="blue">
-			Username: <b><?php $emailOnly=""; $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b><br>
-			Email address: <b><?php $emailOnly="true"; $includeWins=""; $winsOnly=""; include 'php/getUser.php';?></b><br><br>
-			Profile picture: <?php include 'php/loadUserImg.php'; ?><br>
-			Number of wins: <b><?php $emailOnly=""; $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b><br><br>
+			<table>
+				<tr>
+					<td class="label">Username:</td>
+					<td class="input"><b><?php $emailOnly=""; $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b></td>
+				</tr>
+				<tr>
+					<td class="label">Email Address:</td>
+					<td class="input"><b><?php $emailOnly="true"; $includeWins=""; $winsOnly=""; include 'php/getUser.php';?></b></td>
+				</tr>
+				<tr>
+					<td class="label">Profile Picture:</td>
+					<td class="input"><?php include 'php/loadUserImg.php'; ?></td>
+				</tr>
+				<tr>
+					<td class="label">Number of Wins:</td>
+					<td class="input"><b><?php $emailOnly=""; $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b></td>
+				</tr>
+			</table>
 			<a href="changeEmail">Change my email address</a><br>
 			<a href="changePassword">Change my password</a><br>
 			<a href="javascript: showThemeChanger();" id="changeThemeLink">Change theme color</a><br>

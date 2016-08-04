@@ -263,6 +263,20 @@ input[type=submit]:hover.red{
 	width: 35%;
 }
 
+#accountMenu table {
+	margin: auto;
+	width: 60%;
+	margin-bottom: 25px;
+}
+
+#accountMenu table td.input {
+	text-align: right;
+}
+
+#accountMenu table td.label {
+	text-align: left;
+}
+
 .accountMenuAlert{
 	margin: auto;
 	margin-top: 35px;
