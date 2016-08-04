@@ -273,7 +273,7 @@ input[type=submit]:hover.red{
 #accountMenu.blue a{
 	margin-top: 10px;
 	padding: 10px 10px;
-	width: 100%;
+	width: 60%;
 	color: black;
 	text-decoration: none;
 	background-color: #a3a3c2;
@@ -291,7 +291,7 @@ input[type=submit]:hover.red{
 #accountMenu.green a{
 	margin-top: 10px;
 	padding: 10px 10px;
-	width: 100%;
+	width: 60%;
 	color: black;
 	text-decoration: none;
 	background-color: #7FB593;
@@ -309,7 +309,7 @@ input[type=submit]:hover.red{
 #accountMenu.orange a{
 	margin-top: 10px;
 	padding: 10px 10px;
-	width: 100%;
+	width: 60%;
 	color: black;
 	text-decoration: none;
 	background-color: #DEBD9B;
@@ -327,7 +327,7 @@ input[type=submit]:hover.red{
 #accountMenu.red a{
 	margin-top: 10px;
 	padding: 10px 10px;
-	width: 100%;
+	width: 60%;
 	color: black;
 	text-decoration: none;
 	background-color: #E8A2B6;
