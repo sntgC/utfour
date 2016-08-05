@@ -49,6 +49,7 @@ function generateRooms(players, playerNames){
 
 function generatePrivateGame(){
 	var usernameIn=document.getElementById("requestedUsername").value;
+	usernameIn=cleanString(usernameIn);
 	$.post("php/checkForUser.php",
 		   {username : usernameIn},
 		   function(data){
@@ -85,6 +86,9 @@ function generatePrivateGame(){
 
 function cleanString(dat){
 	//$¢Prevents SQL Injection
+	if(dat.indexOf("'")>-1||dat.indexOf(';')>-1){
+		return 'null' 	
+	}
 	return dat;
 }
 
