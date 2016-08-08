@@ -37,6 +37,8 @@
 		exit();
 	}
 	
+	$email = mysqli_real_escape_string($connection,$email);
+
 	$sql = "UPDATE users SET email='$email' WHERE email='$_POST[currEmailIn]' AND userID='$_COOKIE[userID]'";
 	$connection->query($sql);
 	

@@ -19,7 +19,8 @@
 	}
 	
 	$hashedPwd = password_hash($_POST["newPasswordIn"],PASSWORD_BCRYPT);
-	
+	$hashedPwd = mysqli_real_escape_string($connection,$hashedPwd);
+
 	if(isset($_POST["resetCode"])){
 		$sql = "UPDATE users SET password='$hashedPwd' WHERE pwdReset='$_POST[resetCode]'";
 		$connection->query($sql);

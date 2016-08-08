@@ -17,7 +17,7 @@
 			}
 			redirect();
 			adjustTheme();
-
+			
 			var showing = false;
 			function showThemeChanger(){
 				$("#changeThemeForm").toggle();

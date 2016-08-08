@@ -110,8 +110,10 @@
 		}
 	}
 	
-	$hashedPwd = password_hash($password,PASSWORD_BCRYPT);
-	
+	$hashedPwd = mysqli_real_escape_string($connection,password_hash($password,PASSWORD_BCRYPT));
+	$username = mysqli_real_escape_string($connection,$username);
+	$email = mysqli_real_escape_string($connection,$email);
+
 	$sql2 = "INSERT INTO users (userID, username, password, email)
 	VALUES ('$createdID','$username','$hashedPwd','$email')";
 
