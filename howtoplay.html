@@ -4,6 +4,46 @@
 	<link rel="stylesheet" type="text/css" href="style/scroll.css">
 	<title>How To Play</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+  			$("a").on('click', function(event) {
+    				if (this.hash !== "") {
+      					event.preventDefault();
+      					var hash = this.hash;
+      					$('html, body').animate({
+        					scrollTop: $(hash).offset().top
+      						}, 800, function(){
+        					window.location.hash = hash;
+      					});
+    				}
+  			});
+		});
+	</script>
+	<style>
+		body{
+			margin:0;
+		}
+		ul {
+   			list-style-type: none;
+    			margin: 0;
+    			padding: 0;
+			overflow:hidden;
+			background-color: #333;
+		}
+		li {
+			float:left;
+		}
+		li a {
+    			display: block;
+    			color: white;
+    			text-align: center;
+    			padding: 14px 16px;
+ 			text-decoration: none;
+		}
+		li a:hover {
+    			background-color: #111;
+		}
+	</style>
 </head>
 <body>
 <div id="nav">
