@@ -101,6 +101,16 @@ function getPointerData(){
 	return retArray;
 }
 
+function loadPlayers(){
+	$.post("../php/getUser.php",{ twoPlayers : JSON.stringify(playerIDs) },function(data){
+		var array = JSON.parse(data);
+		var p1 = array[0];
+		var p2 = array[1];
+		$("#p1").html("Player 1: " + p1);
+		$("#p2").html("Player 2: " + p2);
+	});
+}
+
 jQuery(document).ready(function(){
 	playerIDs=getPlayerIDS();
 	inRoundID = playerIDs[0]===getPlayerID()? '1':playerIDs[1]===getPlayerID()? '2':'s';
@@ -109,4 +119,5 @@ jQuery(document).ready(function(){
 	console.log(getPlayerID());
 	console.log(getRoomID());
 	//console.log(getPointerData());
+	loadPlayers();
 });

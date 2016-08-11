@@ -38,6 +38,26 @@ dataSource.onmessage = function(e) {
  
  jQuery(document).ready(function(){
 	 window.setInterval(function () {
-        document.getElementById("p2").innerHTML="My Turn?:"+isMyTurn+" Square: "+board.onPlay;
+		 if(isMyTurn){
+			 if(getCookie("userID") == playerIDs[0]){
+				 $("#p1").addClass("icon-right-dir");
+				 $("#p2").removeClass("icon-right-dir");
+			 }
+			 else if(getCookie("userID") == playerIDs[1]){
+				 $("#p2").addClass("icon-right-dir");
+				 $("#p1").removeClass("icon-right-dir");
+			 }
+		 }
+		 else{
+			 if(getCookie("userID") == playerIDs[0]){
+				 $("#p2").addClass("icon-right-dir");
+				 $("#p1").removeClass("icon-right-dir");
+			 }
+			 else if(getCookie("userID") == playerIDs[1]){
+				 $("#p1").addClass("icon-right-dir");
+				 $("#p2").removeClass("icon-right-dir");
+			 }
+		 }
+        document.getElementById("turn").innerHTML="My Turn?:"+isMyTurn+" Square: "+board.onPlay;
     }, 1000	); 
 });

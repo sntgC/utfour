@@ -325,6 +325,9 @@ function setColors(){
 			}
 			//Will call board.draw() once the AJAX call has completed rather than have the AJAX call be synchronous
 			board.draw();
+			//Temporary way to display which player is which token color
+			$("#p1").attr("style","color:"+colorA+";");
+			$("#p2").attr("style","color:"+colorB+";");
 		}
 	});
 }
