@@ -205,7 +205,7 @@ class Grid {
 	
 	encode(){
 		console.log("ENCODING>>>");
-		var bulk=this.toString();
+		var bulk=encodeBaseThree(this.toString(),'compress');
 		var turn=inRoundID==='1'? '2':'1';
 		this.noWinner=!this.gameWon();
 		this.draw();
@@ -215,7 +215,7 @@ class Grid {
 	decode(encodedString){
 		console.log(encodedString);
 		this.onPlay=parseInt(encodedString.charAt(1));
-		encodedString=encodedString.substring(2);
+		encodedString=encodeBaseThree(encodedString.substring(2),'expand');
 		for(var decR=0;decR<3;decR++){
 			for(var decC=0;decC<3;decC++){
 				this.grid[decR][decC].loadGrid(encodedString.substring(0,9));
@@ -330,6 +330,30 @@ function setColors(){
 			$("#p2").attr("style","color:"+colorB+";");
 		}
 	});
+}
+
+function encodeBaseThree(fullString, direction){
+    //Takes in a string and shortens it by dividing it into groups of three, and assigning a value to each of those groups
+	var ret="";
+	if(direction=='compress'){
+		if(fullString.length%3!=0){
+			fullString+=fullString.length%1? '00':'0';
+		}
+		for(s=0;s<fullString.length;s+=3){
+			var conv=parseInt(fullString.substring(s,s+3),3);
+			ret+=String.fromCharCode(64+conv);
+		}
+	}else if(direction='expand'){
+		for(s=0;s<fullString.length;s++){
+			var conv=fullString.charCodeAt(s)-64;
+			var ternary=conv.toString(3);
+            while(ternary.length<3){
+                ternary='0'+ternary;
+            }
+            ret+=ternary;
+		}
+	}
+	return ret;
 }
 
 jQuery(document).ready(function(){
