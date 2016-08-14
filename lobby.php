@@ -98,7 +98,7 @@
 			</div>
 			</li>
 			<li class="dropdown left">
-				<a class="dropbtn title noclick">UT4</a>
+				<a class="dropbtn title noclick">UT<sup>4</sup></a>
 			</li>
 		</ul>
 		<div id="lobbyMenu">
