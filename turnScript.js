@@ -58,6 +58,6 @@ dataSource.onmessage = function(e) {
 				 $("#p2").removeClass("icon-right-dir");
 			 }
 		 }
-        document.getElementById("turn").innerHTML="My Turn?:"+isMyTurn+" Square: "+board.onPlay;
+        document.getElementById("turn").innerHTML="Square: "+board.onPlay;
     }, 1000	); 
 });
