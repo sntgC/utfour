@@ -95,6 +95,7 @@
 				<a href="account" class="dropdownLink">My Account</a>
 				<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
 				<a href="index" class="dropdownLink">Spectate</a>
+				<a href="howtoplay" class="dropdownLink">How to Play</a>
 			</div>
 			</li>
 			<li class="dropdown left">
