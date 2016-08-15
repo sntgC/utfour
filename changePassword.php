@@ -71,6 +71,9 @@
 									$("#newPassword").val("");
 									$("#newPasswordConf").val("");
 								}
+								else if(data == "Authentication failed"){
+									window.location.replace("login");
+								}
 								else{
 									$("#alert").html(data);
 									$("#alert").removeClass("alertText").addClass("warningText");
@@ -132,7 +135,7 @@
 				</div>
 			</li>
 			<li class="dropdown left">
-				<a href="lobby" class="dropbtn title blue">UT4</a>
+				<a href="lobby" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 			<li class="dropdown left">
 				<a href="account" class="dropbtn title blue">My Account</a>

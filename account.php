@@ -129,7 +129,7 @@
 				</div>
 			</li>
 			<li class="dropdown left">
-				<a href="lobby" class="dropbtn title blue">UT4</a>
+				<a href="lobby" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 		</ul>
 		<h3 id="accountTitle">My Account</h3>

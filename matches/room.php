@@ -17,11 +17,15 @@
 				$.ajax({
 					url: "../php/authenticateUser.php",
 					success: function(data){
-						if(data == "User authentication successful"){
-							$('body').show();
+						if(data == "Authentication successful"){
+							$(document).ready(function(){
+								$("body").show();
+							});
 						}
-						else if(data == "User authentication failed"){
-							redirect();
+						else if(data == "Authentication failed"){
+							try{
+								redirect();
+							}catch(error){}
 						}
 					}
 				});
@@ -86,7 +90,7 @@
 				</div>
 			</li>
 			<li class="dropdown left">
-				<a href="../lobby" class="dropbtn title blue">UT4</a>
+				<a href="../lobby" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 		</ul>
 		<p id="p1" class="">Player 1: </p>

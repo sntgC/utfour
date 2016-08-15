@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>Already Logged In!</title>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="style/header.css">
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
@@ -15,9 +16,22 @@
 				}
 			}
 			redirect();
+			adjustTheme();
 		</script>
+		<style type="text/css">
+			h3 {
+				margin-top: 10px;
+				font-size: 25px;
+				text-align: center;
+			}
+		</style>
 	</head>
 	<body>
+		<ul class="blue">
+			<li class="dropdown left">
+				<a href="index" class="dropbtn title blue">UT<sup>4</sup></a>
+			</li>
+		</ul>
 		<h3>You are already logged in! Would you like to <a href="php/logoutUser.php">sign out</a> or return to the <a href="lobby">lobby</a>?</h3>
 	</body>
 </html>

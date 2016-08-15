@@ -10,6 +10,12 @@
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
 			authenticateUser();
+			function redirect(){
+				if(checkForLoggedIn() == true){
+					window.location.replace("lobby");
+				}
+			}
+			redirect();
 			adjustTheme();
 
             var goodEntry = true;
@@ -51,7 +57,7 @@
 	<body>
 		<ul class="blue">
 			<li class="dropdown left">
-				<a href="index" class="dropbtn title blue">UT4</a>
+				<a href="index" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 			<li class="dropdown left">
 				<a href="login" class="dropbtn title blue">Login</a>

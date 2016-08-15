@@ -1,4 +1,7 @@
 <?php
+	$noEcho = true;
+	require_once 'authenticateUser.php';
+
 	$server="localhost";
 	$username="root";
 	$password="";

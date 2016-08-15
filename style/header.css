@@ -34,6 +34,10 @@ ul.red{
     background-color: #E8517C;
 }
 
+li.dropdown a.dropbtn sup{
+    font-size: medium;
+}
+
 li.right {
     float: right;
 }
@@ -42,7 +46,7 @@ li.left {
     float: left;
 }
 
-a.dropbtn {
+li a.dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
@@ -50,23 +54,23 @@ a.dropbtn {
     text-decoration: none;
 }
 
-.dropdown:hover .dropbtn.blue {
+li.dropdown:hover .dropbtn.blue {
     background-color: #a3a3c2;
 }
 
-.dropdown:hover .dropbtn.green {
+li.dropdown:hover .dropbtn.green {
     background-color: #7FB593;
 }
 
-.dropdown:hover .dropbtn.orange {
+li.dropdown:hover .dropbtn.orange {
     background-color: #DEBD9B;
 }
 
-.dropdown:hover .dropbtn.red {
+li.dropdown:hover .dropbtn.red {
     background-color: #E8A2B6;
 }
 
-.dropdown {
+li.dropdown {
     display: inline-block;
 }
 

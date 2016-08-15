@@ -12,13 +12,15 @@ function authenticateUser(){
 	$.ajax({
 		url: "php/authenticateUser.php",
 		success: function(data){
-			if(data == "User authentication successful"){
-				$('body').show();
+			if(data == "Authentication successful"){
+				$(document).ready(function(){
+					$("body").show();
+				});
 			}
-			else if(data == "User authentication failed"){
+			else if(data == "Authentication failed"){
 				try{
 					redirect();
-				}catch(err){}
+				}catch(error){}
 			}
 		}
 	});

@@ -21,12 +21,14 @@
 		setcookie("userID","",time() - (86400*366),"/");
 		unset($_COOKIE["sessionID"]);
 		setcookie("sessionID","",time() - (86400*366), "/");
-		echo "User authentication failed";
+		unset($_COOKIE["theme"]);
+		setcookie("theme","",time() - (86400*366),"/");
+		echo "Authentication failed";
+		$connection->close();
+		exit();
 	}
-	else{
-		echo "User authentication successful";
+
+	if(!isset($noEcho)){
+		echo "Authentication successful";
 	}
-	
-	$connection->close();
-	exit();
 ?>

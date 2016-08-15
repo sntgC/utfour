@@ -73,6 +73,8 @@
 		$connection->close();
 		exit();
 	}
+	$noEcho = true;
+	require_once 'authenticateUser.php';
 	
 	$sql = "SELECT password FROM users WHERE userID='$_COOKIE[userID]'";
 	$results = $connection->query($sql);

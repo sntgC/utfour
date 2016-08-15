@@ -1,4 +1,10 @@
 authenticateUser();
+function redirect(){
+	if(checkForLoggedIn() == true){
+		window.location.replace("lobby");
+	}
+}
+redirect();
 adjustTheme();
 
 var availableUsername=false;
