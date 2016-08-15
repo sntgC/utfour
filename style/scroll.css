@@ -26,13 +26,24 @@ li a:hover {
 	background-color: #111;
 	text-decoration: none;
 }
-
+div h3{
+	margin-top:0px;
+}
 #page1{
 	background-color:#aaaaaa;
 }
 #page2{
-	background-color:#cccccc;
+	background-color:#bbbbbb;
 }
 #page3{
+	background-color:#cccccc;
+}
+#page4{
+	background-color:#dddddd;
+}
+#page5{
+	background-color:#eeeeee;
+}
+#page6{
 	background-color:#ffffff;
 }
