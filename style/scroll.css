@@ -18,7 +18,7 @@ li a {
 	display: block;
 	color: white;
 	text-align: center;
-	padding: 14px 16px;
+	padding: 10px 12px;
 	text-decoration: none;
 }
 
@@ -26,24 +26,33 @@ li a:hover {
 	background-color: #111;
 	text-decoration: none;
 }
+
 div h3{
-	margin-top:0px;
+	margin-top: 0px;
+	margin-bottom: 10px;
 }
+
 #page1{
+	padding: 18px 20px;
 	background-color:#aaaaaa;
 }
 #page2{
+	padding: 18px 20px;
 	background-color:#bbbbbb;
 }
 #page3{
+	padding: 18px 20px;
 	background-color:#cccccc;
 }
 #page4{
+	padding: 18px 20px;
 	background-color:#dddddd;
 }
 #page5{
+	padding: 18px 20px;
 	background-color:#eeeeee;
 }
 #page6{
+	padding: 18px 20px;
 	background-color:#ffffff;
 }
