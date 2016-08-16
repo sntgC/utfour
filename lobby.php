@@ -37,6 +37,11 @@
 				$("#notification").toggle();
 				$("#notifDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
 			}
+			
+			function hideCheckbox(){
+				$("#readySwitch").toggle();
+				$("#readyDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
+			}
 
 			//Made this into an object with ids as keys in order to support multiple dropdown
 			var isOpen = {};
@@ -56,7 +61,8 @@
 				isOpen[id] = !isOpen[id];
 			}
 
-			// Close the dropdown if the user clicks outside of the button or image
+			//Used to prevent spamming of the checkbox
+			var lastClicked=Date.now();
 			window.onclick = function(e) {
 				//.dropdownLink is the class for anything that does not hide the dropdowns
 				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")) {
@@ -66,6 +72,16 @@
 							$("#"+keys[o]).toggle();
 							isOpen[keys[o]] = !isOpen[keys[o]];
 						}
+					}
+				}
+				if(e.target.matches('#playerReady')){
+					if(Date.now()>lastClicked+3000){
+						lastClicked=Date.now();
+						jQuery.post('php/setLobbyReady.php',
+										{'bool':document.getElementById('playerReady').checked? 1:0,'userID':document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14)},
+										function(data){
+											console.log(data);
+										});
 					}
 				}
 			}
@@ -117,6 +133,11 @@
 			<br>
 			<a href="javascript:hideNotifications();" class="menu blue"><h3 id="notifDisplayLink" class="icon-up-open">Notifications</h3></a>
 			<div id="notification"></div>
+			<br>
+			<!--We willeventually get rid of this look in exchange for the new lobby, so it's only temporary-->
+			<a href='javascript:hideCheckbox()' class="menu blue"><h3 id="readyDisplayLink" class="icon-up-open">Ready</h3></a>
+			<div id="readySwitch">
+				<p>Put me in the next tournament <input type='checkbox' id='playerReady'></p></div>
 		</div>
 	</body>
 </html>

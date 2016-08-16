@@ -40,6 +40,7 @@
 				username varchar(20) CHARACTER SET utf8 NOT NULL,
 				wins int NOT NULL DEFAULT 0,
 				lastActive timestamp NOT NULL,
+				isReady boolean NOT NULL DEFAULT 0,
 				PRIMARY KEY (userID)	
 				) CHARACTER SET utf8; ";
 				
