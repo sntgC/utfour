@@ -84,7 +84,7 @@
 					var width=Math.floor($("#userData").width());
 					document.getElementById("accountSettings").style.minWidth=width+"px";
 				},500);
-				window.setTimeout(enableCheckbox,1000);
+				window.setTimeout(enableCheckbox,3000);
 			};
 
 			//Used to prevent spamming of the checkbox
