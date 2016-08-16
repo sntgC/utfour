@@ -84,12 +84,7 @@
 					var width=Math.floor($("#userData").width());
 					document.getElementById("accountSettings").style.minWidth=width+"px";
 				},500);
-				window.setTimeout(enableCheckbox,3000);
-			};
-
-			//If the user leaves the lobby, this function will set their ready status to 0
-			window.onunload=function(){
-				$.post('php/setLobbyReady.php',{'bool':0,'userID':getCookie("userID")});
+				window.setTimeout(enableCheckbox,1000);
 			};
 
 			//Used to prevent spamming of the checkbox
@@ -102,14 +97,10 @@
 									{'bool':document.getElementById('playerReady').checked? 1:0,'userID':getCookie("userID")},
 									function(data){
 										if(data == "User is ready"){
-											$("#status").html("Status: ready");
-											$("#status").addClass("alertText").removeClass("warningText");
 											$("#playerReady").attr("disabled",true);
 											setTimeout(enableCheckbox,3000);
 										}
 										else if(data == "User is not ready"){
-											$("#status").html("Status: not ready");
-											$("#status").addClass("warningText").removeClass("alertText");
 											$("#playerReady").attr("disabled",true);
 											setTimeout(enableCheckbox,3000);
 										}
@@ -163,8 +154,6 @@
 			<!--We willeventually get rid of this look in exchange for the new lobby, so it's only temporary-->
 			<a href='javascript:hideCheckbox()' class="menu blue"><h3 id="readyDisplayLink" class="icon-up-open">Ready up for Tournament</h3></a>
 			<div id="readySwitch">
-				<span id="status" class="warningText">Status: not ready</span>
-				<br>
 				Put me in the next tournament <input type='checkbox' id='playerReady' disabled='true'>
 			</div>
 		</div>
