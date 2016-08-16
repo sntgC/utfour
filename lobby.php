@@ -43,6 +43,10 @@
 				$("#readyDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
 			}
 
+			function enableCheckbox(){
+				$("#playerReady").attr("disabled",false);
+			}
+
 			//Made this into an object with ids as keys in order to support multiple dropdown
 			var isOpen = {};
 			function dropMenu(id) {
@@ -61,8 +65,6 @@
 				isOpen[id] = !isOpen[id];
 			}
 
-			//Used to prevent spamming of the checkbox
-			var lastClicked=Date.now();
 			window.onclick = function(e) {
 				//.dropdownLink is the class for anything that does not hide the dropdowns
 				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")) {
@@ -74,24 +76,48 @@
 						}
 					}
 				}
-				if(e.target.matches('#playerReady')){
-					if(Date.now()>lastClicked+3000){
-						lastClicked=Date.now();
-						jQuery.post('php/setLobbyReady.php',
-										{'bool':document.getElementById('playerReady').checked? 1:0,'userID':document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14)},
-										function(data){
-											console.log(data);
-										});
-					}
-				}
 			}
+
 			//This is a cheeky way of setting the menu width equal to the parent button
 			window.onload=function(){
 				window.setTimeout(function(){
 					var width=Math.floor($("#userData").width());
 					document.getElementById("accountSettings").style.minWidth=width+"px";
 				},500);
-			};	
+				window.setTimeout(enableCheckbox,3000);
+			};
+
+			//If the user leaves the lobby, this function will set their ready status to 0
+			window.onunload=function(){
+				$.post('php/setLobbyReady.php',{'bool':0,'userID':getCookie("userID")});
+			};
+
+			//Used to prevent spamming of the checkbox
+			var lastClicked=Date.now();
+			$(document).ready(function(){
+				$("#playerReady").on('change',function(){
+					if(Date.now()>lastClicked+3000){
+						lastClicked=Date.now();
+						jQuery.post('php/setLobbyReady.php',
+									{'bool':document.getElementById('playerReady').checked? 1:0,'userID':getCookie("userID")},
+									function(data){
+										if(data == "User is ready"){
+											$("#status").html("Status: ready");
+											$("#status").addClass("alertText").removeClass("warningText");
+											$("#playerReady").attr("disabled",true);
+											setTimeout(enableCheckbox,3000);
+										}
+										else if(data == "User is not ready"){
+											$("#status").html("Status: not ready");
+											$("#status").addClass("warningText").removeClass("alertText");
+											$("#playerReady").attr("disabled",true);
+											setTimeout(enableCheckbox,3000);
+										}
+									}
+						);
+					}
+				});
+			});	
 		</script>
 		<script type="text/javascript" src="bracket.js"></script>
 		<script type="text/javascript" src="tournamentStart.js"></script>
@@ -135,9 +161,12 @@
 			<div id="notification"></div>
 			<br>
 			<!--We willeventually get rid of this look in exchange for the new lobby, so it's only temporary-->
-			<a href='javascript:hideCheckbox()' class="menu blue"><h3 id="readyDisplayLink" class="icon-up-open">Ready</h3></a>
+			<a href='javascript:hideCheckbox()' class="menu blue"><h3 id="readyDisplayLink" class="icon-up-open">Ready up for Tournament</h3></a>
 			<div id="readySwitch">
-				<p>Put me in the next tournament <input type='checkbox' id='playerReady'></p></div>
+				<span id="status" class="warningText">Status: not ready</span>
+				<br>
+				Put me in the next tournament <input type='checkbox' id='playerReady' disabled='true'>
+			</div>
 		</div>
 	</body>
 </html>
