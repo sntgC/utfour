@@ -7,35 +7,35 @@ html, body{
 /*Rather than declaring a .blue for each element, I declare the classes once here for a base color, and then add a general overlay for each id,
 so for a blue ready switch, a base coat of blue is applied, and then darkened in the ready switch declaration*/
 .leftContent.blue{
-	background:#766AAF;
+	background:#5c5c8a;
 }
 
 .leftContent.orange{
-	background:#FDBF8B;
+	background:#DE9A57;
 	
 }
 
 .leftContent.green{
-	background:#C9ED82;
+	background:#41B56C;
 	
 }
 
 .leftContent.red{
-	background:#FD8B8B;
+	background:#E8517C;
 }
 
 #privateRoom{
 	background: rgba(28,28,28,0.15);
-	color:rgba(255,255,255,0.4);
+	color:rgba(255,255,255,0.9);
 }
 
 #readySwitch{
 	background-color: rgba(28,28,28,0.3);
-	color: rgba(255,255,255,0.5);
+	color: rgba(255,255,255,0.9);
 }
 
 #players{
-	color: rgba(255,255,255,0.6);
+	color: rgba(255,255,255,0.9);
 	background-color: rgba(28,28,28,0.45);
 	display:block;
 	min-height:100%;
