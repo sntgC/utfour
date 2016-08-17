@@ -14,7 +14,7 @@
 		$connect = new mysqli("localhost","root","","ut4serverdb") or die("Failed to connect to the server");
 		$sql = "SELECT * FROM lobby";
 		$result = mysqli_query($connect,$sql);
-		$return="";
+		$return="<b>Players:</b><br>";
 		while($row = mysqli_fetch_array($result)){
 			$return .=$row['username']." <b>(".$row['wins'].")</b><br>";
 		}

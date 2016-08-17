@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<link rel="stylesheet" type="text/css" href="style/header.css">
 		<link rel="stylesheet" type="text/css" href="style/fontello.css">
+		<link rel="stylesheet" type="text/css" href="style/lobby.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
@@ -113,7 +114,7 @@
 		<script type="text/javascript" src="bracket.js"></script>
 		<script type="text/javascript" src="tournamentStart.js"></script>
 	</head>
-	<body style="display:none">
+	<body>
 		<ul class="blue">
 			<li class="dropdown right">
 			<a href="javascript:dropMenu('lobbySettings');" class="dropbtn dropdownLink blue"><img src="images/settings.png" height="30" width="30" class="dropdownLink"></a>
@@ -135,6 +136,8 @@
 				<a class="dropbtn title noclick">UT<sup>4</sup></a>
 			</li>
 		</ul>
+		<!--
+		REWRITING THE LOBBY. TEMPORARILY DISABLING ALL PREVIOUS FUNCTIONALITY WHILE THE DIVS ARE SET UP
 		<div id="lobbyMenu">
 			<h1>Lobby</h1>
 			<div id="adminControls" style="display:none"></div>
@@ -151,11 +154,27 @@
 			<a href="javascript:hideNotifications();" class="menu blue"><h3 id="notifDisplayLink" class="icon-up-open">Notifications</h3></a>
 			<div id="notification"></div>
 			<br>
-			<!--We willeventually get rid of this look in exchange for the new lobby, so it's only temporary-->
+			<!--We willeventually get rid of this look in exchange for the new lobby, so it's only temporary->
 			<a href='javascript:hideCheckbox()' class="menu blue"><h3 id="readyDisplayLink" class="icon-up-open">Ready up for Tournament</h3></a>
 			<div id="readySwitch">
 				Put me in the next tournament <input type='checkbox' id='playerReady' disabled='true'>
 			</div>
+		</div>
+		-->
+		<div class="leftContent blue">
+			<div id='privateRoom'>
+				<span id="alert" style="display:none"></span><br id="tmpbr" style="display:none">
+					Username: <input type="text" id="requestedUsername">
+					<button onclick="generatePrivateGame()">Create Private Match</button>
+			</div>
+			<div id='readySwitch'>
+				Put me in the next tournament <input type='checkbox' id='playerReady' disabled='true'>
+			</div>
+			<div id="players">
+				<b>Players:</b>
+			</div>
+		</div>
+		<div class="mainContent">
 		</div>
 	</body>
 </html>

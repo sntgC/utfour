@@ -1,0 +1,55 @@
+/* Color pallete temporary */
+
+html, body{
+	height:100%;
+	overflow:hidden;
+}
+/*Rather than declaring a .blue for each element, I declare the classes once here for a base color, and then add a general overlay for each id,
+so for a blue ready switch, a base coat of blue is applied, and then darkened in the ready switch declaration*/
+.leftContent.blue{
+	background:#766AAF;
+}
+
+.leftContent.orange{
+	background:#FDBF8B;
+	
+}
+
+.leftContent.green{
+	background:#C9ED82;
+	
+}
+
+.leftContent.red{
+	background:#FD8B8B;
+}
+
+#privateRoom{
+	background: rgba(28,28,28,0.15);
+	color:rgba(255,255,255,0.4);
+}
+
+#readySwitch{
+	background-color: rgba(28,28,28,0.3);
+	color: rgba(255,255,255,0.5);
+}
+
+#players{
+	color: rgba(255,255,255,0.6);
+	background-color: rgba(28,28,28,0.45);
+	display:block;
+	min-height:100%;
+}
+
+.leftContent {
+	overflow:hidden;
+	width:200px;
+	float:left;
+	height:100%;
+}
+.mainContent {
+	margin-left:200px;
+	height:100%;
+	width:100%;
+	background:#cccccc;
+ }
