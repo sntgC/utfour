@@ -25,35 +25,52 @@ so for a blue ready switch, a base coat of blue is applied, and then darkened in
 }
 
 #privateRoom{
+	display: block;
 	padding: 10px 12px;
 	background: rgba(28,28,28,0.15);
 	color:rgba(255,255,255,0.9);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 #readySwitch{
+	display: block;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 	padding: 10px 12px;
 	background-color: rgba(28,28,28,0.3);
 	color: rgba(255,255,255,0.9);
 }
 
+#playersLabel {
+	display: block;
+	padding: 2px 2px;
+	text-align: center;
+	background-color: rgba(28,28,28,0.45);
+	color: white;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 #players{
+	display: block;
 	padding: 10px 12px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 	color: rgba(255,255,255,0.9);
 	background-color: rgba(28,28,28,0.45);
-	display:block;
 	/* Assumes readySwitch and privateRoom heights are constant as is the padding (76+139+10+10) */
+	/*Temporary height value. Will need to be corrected later*/
 	height:calc(100% - 235px );
-	overflow-y:auto;
+ 	overflow-y:auto;
 }
 
 .leftContent {
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
 	overflow:hidden;
-	width:200px;
+	width:300px;
 	float:left;
 	height:100%;
 }
 .mainContent {
-	margin-left:200px;
+	margin-left:300px;
 	height:100%;
 	width:100%;
 	background:#cccccc;
@@ -119,4 +136,13 @@ so for a blue ready switch, a base coat of blue is applied, and then darkened in
 	padding: 3px 3px;
 	background-color: white;
 	font-size: 15px;
+}
+
+.dismissable{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer; 
 }

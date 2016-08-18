@@ -29,6 +29,7 @@
 			}
 			
 			function hideLobbyUsrs(){
+				$("#playersLabel").toggle();
 				$("#players").toggle();
 				$("#playersDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
 			}
@@ -108,6 +109,9 @@
 						);
 					}
 				});
+				$("#alert").on("click",function(){
+					$("#alert").toggle();
+				});
 			});	
 		</script>
 		<script type="text/javascript" src="bracket.js"></script>
@@ -162,15 +166,17 @@
 		-->
 		<div class="leftContent blue">
 			<div id='privateRoom'>
-				<span id="alert" style="display:none"></span>
+				<span id="alert" style="display:none" class="dismissable"></span>
 				<span id="privateGameLabel">Username</span><input type="text" id="requestedUsername" class="blue">
 				<button onclick="generatePrivateGame()" id="privateGameButton" class="blue">Create Private Match</button>
 			</div>
 			<div id='readySwitch'>
 				<input type='checkbox' id='playerReady' disabled='true'> Ready up for tournament
 			</div>
+			<div id="playersLabel">
+				Online Players
+			</div>
 			<div id="players">
-				<b>Players:</b><br>
 			</div>
 		</div>
 		<div class="mainContent">
