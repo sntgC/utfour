@@ -189,8 +189,8 @@
 				<input class="blue" id="currEmail" type="text" name="currEmailIn" title="Please enter your current email."><br>
 				<label>New Email Address</label><br>
 				<input class="blue shortInput" id="email" type="text" name="emailIn" oninput="checkEmail(this.value)" title="Please enter a valid email address that is no more than 100 characters in length and is not already in use.">
-				<img src="images/green_checkmark.png" alt="Email available"  title="Email available" width="25" height="25" id="checkmarkEmail">
-				<img src="images/red_x.png" alt="Email unavailable"  title="Email unavailable" width="25" height="25" id="xEmail"><br>
+				<img src="images/green_checkmark.png" alt="Email available"  title="Email available" width="25" height="25" id="checkmarkEmail" class="smallImg">
+				<img src="images/red_x.png" alt="Email unavailable"  title="Email unavailable" width="25" height="25" id="xEmail" class="smallImg"><br>
 				<p id="emailNotif" class="warningText"></p>
 				<label>New Email Address Confirmation</label><br>
 				<input class="blue" id="emailConf" type="text" name="emailInConf" title="Please re-enter your new email address."><br>

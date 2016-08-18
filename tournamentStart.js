@@ -54,7 +54,6 @@ function generatePrivateGame(){
 		   {username : usernameIn},
 		   function(data){
 			   if(data == "false"){
-					$("#tmpbr").show();
 					$("#alert").html("This user does not exist.");
 					$("#alert").removeClass("alertText").addClass("warningText");
 					$("#alert").show();
@@ -74,7 +73,6 @@ function generatePrivateGame(){
 									else{
 										$("#alert").removeClass("alertText").addClass("warningText");
 									}
-									$("#tmpbr").show();
 									$("#alert").html(data);
 									$("#alert").show();
 								}

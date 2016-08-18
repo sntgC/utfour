@@ -23,7 +23,6 @@
 			function showPrvtMatch(){
 				$("#alert").hide();
 				$("#alert").html("");
-				$("#tmpbr").hide();
 				$("#requestedUsername").val("");
 				$("#prvtMatchDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
 				$("#privateRoom").toggle();
@@ -163,12 +162,12 @@
 		-->
 		<div class="leftContent blue">
 			<div id='privateRoom'>
-				<span id="alert" style="display:none"></span><br id="tmpbr" style="display:none">
-					Username: <input type="text" id="requestedUsername">
-					<button onclick="generatePrivateGame()">Create Private Match</button>
+				<span id="alert" style="display:none"></span>
+				<span id="privateGameLabel">Username</span><input type="text" id="requestedUsername" class="blue">
+				<button onclick="generatePrivateGame()" id="privateGameButton" class="blue">Create Private Match</button>
 			</div>
 			<div id='readySwitch'>
-				Put me in the next tournament <input type='checkbox' id='playerReady' disabled='true'>
+				<input type='checkbox' id='playerReady' disabled='true'> Ready up for tournament
 			</div>
 			<div id="players">
 				<b>Players:</b>
