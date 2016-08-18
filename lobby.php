@@ -114,7 +114,7 @@
 		<script type="text/javascript" src="bracket.js"></script>
 		<script type="text/javascript" src="tournamentStart.js"></script>
 	</head>
-	<body>
+	<body style="display:none">
 		<ul class="blue">
 			<li class="dropdown right">
 			<a href="javascript:dropMenu('lobbySettings');" class="dropbtn dropdownLink blue"><img src="images/settings.png" height="30" width="30" class="dropdownLink"></a>
