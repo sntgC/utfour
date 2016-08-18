@@ -83,6 +83,11 @@
 				window.setTimeout(function(){
 					var width=Math.floor($("#userData").width());
 					document.getElementById("accountSettings").style.minWidth=width+"px";
+					/*var heightAbovePlayers=Math.floor($("#leftContent").height());
+					heightAbovePlayers-=Math.floor($("#privateRoom").height());
+					heightAbovePlayers-=Math.floor($("#readySwitch").height());
+					heightAbovePlayers-=40;//Padding
+					document.getElementById("players").style.height=heightAbovePlayers+"px";*/
 				},500);
 				window.setTimeout(enableCheckbox,3000);
 			};
@@ -114,7 +119,7 @@
 		<script type="text/javascript" src="tournamentStart.js"></script>
 	</head>
 	<body style="display:none">
-		<ul class="blue">
+		<ul class="blue" id="headerList">
 			<li class="dropdown right">
 			<a href="javascript:dropMenu('lobbySettings');" class="dropbtn dropdownLink blue"><img src="images/settings.png" height="30" width="30" class="dropdownLink"></a>
 			<div class="dropdown-content" id="lobbySettings">
@@ -170,7 +175,7 @@
 				<input type='checkbox' id='playerReady' disabled='true'> Ready up for tournament
 			</div>
 			<div id="players">
-				<b>Players:</b>
+				<b>Players:</b><br>
 			</div>
 		</div>
 		<div class="mainContent">

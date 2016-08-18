@@ -41,7 +41,9 @@ so for a blue ready switch, a base coat of blue is applied, and then darkened in
 	color: rgba(255,255,255,0.9);
 	background-color: rgba(28,28,28,0.45);
 	display:block;
-	min-height:100%;
+	/* Assumes readySwitch and privateRoom heights are constant as is the padding (76+139+10+10) */
+	height:calc(100% - 235px );
+	overflow-y:auto;
 }
 
 .leftContent {
