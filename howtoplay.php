@@ -74,6 +74,17 @@
 				},500);
 			};	
 		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var page1=document.getElementById("page1Grid");
+				for(i=0;i<9;i++){
+					var ret=page1.innerHTML+"<div class='square' id='sqr"+i+"'></div>";
+					if((i+1)%3===0)
+						ret+="<br>";
+					page1.innerHTML=ret;
+				}
+			});
+		</script>
 	</head>
 	<body>
 		<ul class="blue" id="parentNav1">
@@ -111,7 +122,8 @@
 			<a id="pt1"></a>
 				<h3>A Simple Game</h3>
 				<p>If you've ever played Tic-Tac-Toe, you had soon come to realize how hard it is to win against a competent opponent</p>
-				<i>>Mini Tic-Tac-Toe Board</i>
+				<br>
+				<div id="page1Grid"></div>
 		</div>
 		<div id="page2">
 			<a id="pt2"></a>
