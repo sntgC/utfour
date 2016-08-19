@@ -40,6 +40,14 @@ div h3{
 	margin:0px 5px;
 }
 
+.blueSqr{
+	background:#6E97D2;
+}
+
+.redSqr{
+	background:#D32F0C;
+}
+
 #page1{
 	padding: 18px 20px;
 	background-color:#aaaaaa;

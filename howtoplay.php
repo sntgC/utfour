@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="style/howtoplay.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="UTTTScript.js"></script>
 		<script type="text/javascript">
 			authenticateUser();
 			function adjustNav(){
@@ -75,6 +76,7 @@
 			};	
 		</script>
 		<script type="text/javascript">
+			//Looking back at this, it might have been a waste of time but i like the effect it gives so i'm keeping it
 			$(document).ready(function(){
 				var page1=document.getElementById("page1Grid");
 				for(i=0;i<9;i++){
@@ -84,6 +86,76 @@
 					page1.innerHTML=ret;
 				}
 			});
+			
+			function shuffle(choices){
+					var allMoves=choices;
+					var ret="";
+					while(allMoves.length!=0){
+						var index=Math.floor(Math.random()*allMoves.length);
+						ret+=allMoves[index];
+						allMoves.splice(index,1);
+					}
+					return ret;
+			}
+			
+			function createAnOrderWhichIsPlausibleForATwoPlayerGameOfTicTacToe(gameString){
+				var p1=[];
+				var p2=[];
+				var retString="";
+				for(i=0;i<9;i++){
+					if(gameString.charAt(i)==='1')
+						p1.push(''+i);
+					else
+						p2.push(''+i);
+				}
+				p1=shuffle(p1).split("");
+				p2=shuffle(p2).split("");
+				for(i=0;i<9;i++){
+					if(i%2==0)
+						retString+=p1[Math.floor(i/2)];
+					else
+						retString+=p2[Math.floor(i/2)];
+				}
+				return retString;
+			}
+			
+			function clearGrid(id) {
+				for(i=0;i<9;i++){
+					jQuery("#sqr"+i).removeClass();
+					jQuery("#sqr"+i).addClass("square");
+				}
+			}
+			
+			function animateGrid(location, value){
+				if(value=='1')
+					jQuery("#sqr"+location).addClass("blueSqr");
+				else
+					jQuery("#sqr"+location).addClass("redSqr");
+			}
+			
+			var currentData="221112211";
+			var genBoard=new MiniGrid(0,0,0);
+			genBoard.loadGrid(shuffle(['1','2','1','2','1','2','1','2','1']));
+			var turns=0;
+			var noTie=genBoard.isWon();
+			var order=createAnOrderWhichIsPlausibleForATwoPlayerGameOfTicTacToe(currentData);
+			window.setInterval(function(){ 
+				if(turns<9){
+					if(noTie){
+						genBoard.loadGrid(shuffle(['1','2','1','2','1','2','1','2','1']));
+						noTie=genBoard.isWon();
+					}
+					animateGrid(order.charAt(turns),currentData.charAt(parseInt(order.charAt(turns)+"")));
+				}else if (turns>10){
+					currentData=genBoard.toString();
+					genBoard.loadGrid(shuffle(['1','2','1','2','1','2','1','2','1']));
+					turns=-1;
+					noTie=genBoard.isWon();
+					order=createAnOrderWhichIsPlausibleForATwoPlayerGameOfTicTacToe(currentData);
+					clearGrid();
+				}
+				turns++;
+			}, 1500);
 		</script>
 	</head>
 	<body>

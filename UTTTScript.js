@@ -71,7 +71,7 @@ class MiniGrid{
 				this.cells[r][c]=data.charAt(r*3+c);
 			}
 		}
-		console.log(data);
+		//console.log(data);
 		this.isWon();
 	}
 	
