@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Test Room</title>
+		<title>Game Room</title>
 		<meta charset="utf-8">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="../style/style.css">
@@ -14,29 +14,30 @@
 		<script type="text/javascript" src="../UTTTScript.js"></script>
 		<script type="text/javascript">
 			function authenticateUser(){
+				if(!checkForLoggedIn()){
+					return;
+				}
 				$.ajax({
 					url: "../php/authenticateUser.php",
 					success: function(data){
-						if(data == "Authentication successful"){
-							$(document).ready(function(){
-								$("body").show();
-							});
-						}
-						else if(data == "Authentication failed"){
-							try{
-								redirect();
-							}catch(error){}
+						if(data == "Authentication failed"){
+							location.replace("../login");
 						}
 					}
 				});
 			}
 			authenticateUser();
-			function redirect(){
-				if(checkForLoggedIn() == false){
-					window.location.replace("../login");
+
+			function adjustNav(){
+				if(checkForLoggedIn()){
+					$(document).ready(function(){
+						$("#parentNav1").hide();
+						$("#parentNav2").show();
+					});
 				}
 			}
-			redirect();
+
+			adjustNav();
 			adjustTheme();
 
 			//Made this into an object with ids as keys in order to support multiple dropdown
@@ -79,8 +80,14 @@
 			};	
 		</script>
 	</head>
-	<body style="display:none">
-		<ul class="blue">
+	<body>
+		<ul class="blue" id="parentNav1">
+			<li class="dropdown left">
+				<a href="../index" class="dropbtn title blue">UT<sup>4</sup></a>
+			</li>
+		</ul>
+	
+		<ul class="blue" id="parentNav2" style="display:none">
 			<li class="dropdown right" id="userData">
 				<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php $from = "room"; include '../php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include '../php/getUser.php';?></a>
 				<div class="dropdown-content" id="accountSettings">
@@ -94,6 +101,7 @@
 				<a href="../lobby" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 		</ul>
+
 		<p id="p1" class="">Player 1: </p>
 		<p id="p2" class="">Player 2: </p>
 		<p id="turn"></p>

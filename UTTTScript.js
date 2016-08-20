@@ -224,7 +224,7 @@ class Grid {
 		}
 		this.noWinner=!this.gameWon();
 		this.draw();
-		if(!this.noWinner){
+		if(!this.noWinner && inRoundID != "s"){
 			setWinner(board.winner);
 		}
 	}
@@ -356,24 +356,26 @@ function encodeBaseThree(fullString, direction){
 	return ret;
 }
 
-jQuery(document).ready(function(){
+$(document).ready(function(){
 	c=document.getElementById("display");
 	ctx=c.getContext("2d");
-	
-	c.addEventListener('click', function(evt) {
-		if(isMyTurn){
-			var rect = c.getBoundingClientRect();
-			var x=evt.clientX-rect.left;
-			var y=evt.clientY-rect.top;
-			//console.log(x+","+y);
-			var coords=board.getCoords(x,y);
-			if(coords!=null){
-				if(board.noWinner&&board.setCell(coords,inRoundID)){
-					console.log('2');
-					sendData(board.encode());	
+});
+
+function loadMouseListener (){
+	if(inRoundID == "1" || inRoundID == "2"){
+		c.addEventListener('click', function(evt) {
+			if(isMyTurn){
+				var rect = c.getBoundingClientRect();
+				var x=evt.clientX-rect.left;
+				var y=evt.clientY-rect.top;
+				//console.log(x+","+y);
+				var coords=board.getCoords(x,y);
+				if(coords!=null){
+					if(board.noWinner&&board.setCell(coords,inRoundID)){
+						sendData(board.encode());	
+					}
 				}
 			}
-		}
-      }, false);
-	setColors();
-});
+		}, false);
+	}
+}
