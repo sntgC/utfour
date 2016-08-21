@@ -79,11 +79,15 @@
 			//Looking back at this, it might have been a waste of time but i like the effect it gives so i'm keeping it
 			$(document).ready(function(){
 				var page1=document.getElementById("page1Grid");
+				var page2=document.getElementById("page2Grid");
 				for(i=0;i<9;i++){
-					var ret=page1.innerHTML+"<div class='square' id='sqr"+i+"'></div>";
-					if((i+1)%3===0)
-						ret+="<br>";
-					page1.innerHTML=ret;
+					var ret=[page1.innerHTML+"<div class='square' id='sqr"+i+"'></div>",page2.innerHTML+"<div class='square page2Square' id='sqrTwo"+i+"'></div>"];
+					if((i+1)%3===0){
+						ret[0]+="<br>";
+						ret[1]+="<br>";
+					}
+					page1.innerHTML=ret[0];
+					page2.innerHTML=ret[1];
 				}
 			});
 			
@@ -124,6 +128,27 @@
 					jQuery("#sqr"+i).removeClass();
 					jQuery("#sqr"+i).addClass("square");
 				}
+			}
+			
+			function animatePageTwoGrid(){
+				jQuery(".page2Square").animate({
+					width: '150px',
+					height: '150px',
+					margin: '14px 19px'
+				});
+				window.setTimeout(function(){
+					for(j=0;j<9;j++){
+						var div=document.getElementById("sqrTwo"+j);
+						div.style.background="#bbbbbb";
+						for(i=0;i<9;i++){
+							var ret=div.innerHTML+"<div class='square'></div>";
+							if(i%3===2){
+								ret+="<br>";
+							}
+							div.innerHTML=ret;
+						}
+					}
+				},1000);
 			}
 			
 			function animateGrid(location, value){
@@ -201,7 +226,9 @@
 			<a id="pt2"></a>
 				<h3>A Simple Fix</h3>
 				<p>To fix this, we simply make a larger board composed of nine smaller boards in a three-by-three pattern</p>
-				<i>Animation</i></i>
+				<div id="page2Grid">
+				
+				</div>
 		</div>
 		<div id="page3">
 			<a id="pt3"></a>

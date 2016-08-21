@@ -52,14 +52,20 @@ div h3{
 	padding: 18px 20px;
 	background-color:#aaaaaa;
 }
-
 #page1Grid{
 	text-align:center;
 }
+
 #page2{
 	padding: 18px 20px;
 	background-color:#bbbbbb;
 }
+#page2Grid{
+	text-align:center;
+	position:relative;
+	height:575px;
+}
+
 #page3{
 	padding: 18px 20px;
 	background-color:#cccccc;
