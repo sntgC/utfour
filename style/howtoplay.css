@@ -64,6 +64,13 @@ div h3{
 	text-align:center;
 	position:relative;
 	height:575px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+#page2InnerGrid{
+	display:block;
+	vertical-align:middle;
 }
 
 #page3{

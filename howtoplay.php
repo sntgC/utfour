@@ -79,7 +79,7 @@
 			//Looking back at this, it might have been a waste of time but i like the effect it gives so i'm keeping it
 			$(document).ready(function(){
 				var page1=document.getElementById("page1Grid");
-				var page2=document.getElementById("page2Grid");
+				var page2=document.getElementById("page2InnerGrid");
 				for(i=0;i<9;i++){
 					var ret=[page1.innerHTML+"<div class='square' id='sqr"+i+"'></div>",page2.innerHTML+"<div class='square page2Square' id='sqrTwo"+i+"'></div>"];
 					if((i+1)%3===0){
@@ -89,6 +89,9 @@
 					page1.innerHTML=ret[0];
 					page2.innerHTML=ret[1];
 				}
+				jQuery( "#page2Grid" ).one( "click", function() {
+					animatePageTwoGrid();
+				});
 			});
 			
 			function shuffle(choices){
@@ -131,24 +134,25 @@
 			}
 			
 			function animatePageTwoGrid(){
+				jQuery("#page2Instructions").hide();
 				jQuery(".page2Square").animate({
 					width: '150px',
 					height: '150px',
 					margin: '14px 19px'
-				});
+				},1000);
 				window.setTimeout(function(){
 					for(j=0;j<9;j++){
 						var div=document.getElementById("sqrTwo"+j);
 						div.style.background="#bbbbbb";
 						for(i=0;i<9;i++){
 							var ret=div.innerHTML+"<div class='square'></div>";
-							if(i%3===2){
+							if(i%3===2&&i!=8){
 								ret+="<br>";
 							}
 							div.innerHTML=ret;
 						}
 					}
-				},1000);
+				},990);
 			}
 			
 			function animateGrid(location, value){
@@ -226,8 +230,10 @@
 			<a id="pt2"></a>
 				<h3>A Simple Fix</h3>
 				<p>To fix this, we simply make a larger board composed of nine smaller boards in a three-by-three pattern</p>
+				<p id="page2Instructions"><em>Click on the board</m></p>
 				<div id="page2Grid">
-				
+					<div id="page2InnerGrid">
+					</div>
 				</div>
 		</div>
 		<div id="page3">
