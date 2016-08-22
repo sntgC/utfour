@@ -48,6 +48,14 @@ div h3{
 	background:#D32F0C;
 }
 
+.bigSqr{
+	width: 150px;
+	height: 150px;
+	margin: 14px 19px;
+	display:inline-block;
+	background:#dddddd;
+}
+
 #page1{
 	padding: 18px 20px;
 	background-color:#aaaaaa;

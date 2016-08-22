@@ -80,14 +80,21 @@
 			$(document).ready(function(){
 				var page1=document.getElementById("page1Grid");
 				var page2=document.getElementById("page2InnerGrid");
+				var page3=document.getElementById("page3Grid");
 				for(i=0;i<9;i++){
-					var ret=[page1.innerHTML+"<div class='square' id='sqr"+i+"'></div>",page2.innerHTML+"<div class='square page2Square' id='sqrTwo"+i+"'></div>"];
+					var ret=[
+								page1.innerHTML+"<div class='square' id='sqr"+i+"'></div>",
+								page2.innerHTML+"<div class='square page2Square' id='sqrTwo"+i+"'></div>",
+								page3.innerHTML+"<div class='bigSqr page3Square' id='sqrThree"+i+"'></div>"
+								];
 					if((i+1)%3===0){
 						ret[0]+="<br>";
 						ret[1]+="<br>";
+						ret[2]+="<br>";
 					}
 					page1.innerHTML=ret[0];
 					page2.innerHTML=ret[1];
+					page3.innerHTML=ret[2];
 				}
 				jQuery( "#page2Grid" ).one( "click", function() {
 					animatePageTwoGrid();
@@ -230,7 +237,7 @@
 			<a id="pt2"></a>
 				<h3>A Simple Fix</h3>
 				<p>To fix this, we simply make a larger board composed of nine smaller boards in a three-by-three pattern</p>
-				<p id="page2Instructions"><em>Click on the board</m></p>
+				<p id="page2Instructions"><em>Click on the board</em></p>
 				<div id="page2Grid">
 					<div id="page2InnerGrid">
 					</div>
@@ -240,7 +247,8 @@
 			<a id="pt3"></a>
 				<h3>A Goal</h3>
 				<p>In this version of the game, your goal is to win three boards in a row, each of which is won the same way as you would win a regular game of Tic-Tac-Toe</p>
-				<i>Animation</i>
+				<div id="page3Grid">
+				</div>
 		</div>
 		<div id="page4">
 			<a id="pt4"></a>
