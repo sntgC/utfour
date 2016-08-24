@@ -4,6 +4,7 @@ html *{
 
 body {
 	margin:0;
+	color: rgba(15,15,15,0.65);
 }
 
 ul {
@@ -11,9 +12,14 @@ ul {
 	margin: 0;
 	padding: 0;
 	overflow:hidden;
-	background-color: #333;
+	background-color: #aaaaaa;
 }
-
+ 
+ a{
+	 color:#454545;
+	 text-decoration:none;
+ } 
+ 
 li a {
 	display: block;
 	color: white;
@@ -23,8 +29,14 @@ li a {
 }
 
 li a:hover {
-	background-color: #111;
+	background-color: #cccccc;
 	text-decoration: none;
+	color: rgba(15,15,15,0.65);
+}
+
+a:visited{
+	text-decoration: none;
+	color: #232323;
 }
 
 div h3{
@@ -62,12 +74,13 @@ div h3{
 
 #page1{
 	padding: 18px 20px;
-	background-color:#aaaaaa;
+	background-color:#cccccc;
 }
 
 #page2{
 	padding: 18px 20px;
-	background-color:#bbbbbb;
+	background-color:#dddddd;
+	height: 710px;
 }
 #page2Grid{
 	text-align:center;
@@ -89,13 +102,15 @@ div h3{
 #page4{
 	padding: 18px 20px;
 	background-color:#dddddd;
+	height:700px;
 }
 
 #page5{
 	padding: 18px 20px;
-	background-color:#eeeeee;
+	background-color:#cccccc;
+	height:710px;
 }
 #page6{
 	padding: 18px 20px;
-	background-color:#ffffff;
+	background-color:#dddddd;
 }

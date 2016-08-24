@@ -195,7 +195,7 @@
 				window.setTimeout(function(){
 					for(j=0;j<9;j++){
 						var div=document.getElementById("sqrTwo"+j);
-						div.style.background="#bbbbbb";
+						div.style.background="#dddddd";
 						for(i=0;i<9;i++){
 							var ret=div.innerHTML+"<div class='square'></div>";
 							if(i%3===2&&i!=8){
@@ -269,12 +269,12 @@
 
 		<div id="nav">
 			<ul>
-				<li class="left"><a href="#pt1">Part 1</a></li>
-				<li class="left"><a href="#pt2">Part 2</a></li>
-				<li class="left"><a href="#pt3">Part 3</a></li>
-				<li class="left"><a href="#pt4">Part 4</a></li>
-				<li class="left"><a href="#pt5">Part 5</a></li>
-				<li class="left"><a href="#pt6">Part 6</a></li>
+				<li class="left"><a href="#pt1">A Simple Game</a></li>
+				<li class="left"><a href="#pt2">A Simple Fix</a></li>
+				<li class="left"><a href="#pt3">A Goal</a></li>
+				<li class="left"><a href="#pt4">A Twist</a></li>
+				<li class="left"><a href="#pt5">A Full Board</a></li>
+				<li class="left"><a href="#pt6">Credits</a></li>
 			</ul>
 		</div>
 
@@ -285,23 +285,24 @@
 				<br>
 				<div id="page1Grid"></div>
 		</div>
-		<div id="page2">
+		<div id="page2" class="centeredGrid">
 			<a id="pt2"></a>
 				<h3>A Simple Fix</h3>
 				<p>To fix this, we simply make a larger board composed of nine smaller boards in a three-by-three pattern</p>
 				<p id="page2Instructions"><em>Click on the board</em></p>
+				<br>
 				<div id="page2Grid">
 					<div id="page2InnerGrid">
 					</div>
 				</div>
 		</div>
-		<div id="page3">
+		<div id="page3" class="centeredGrid">
 			<a id="pt3"></a>
 				<h3>A Goal</h3>
 				<p>In this version of the game, your goal is to win three boards in a row, each of which is won the same way as you would win a regular game of Tic-Tac-Toe</p>
 				<div class="centeredGrid" display="inline-block"><img src="images/h2pp3.png"></div>
 		</div>
-		<div id="page4">
+		<div id="page4" class="centeredGrid">
 			<a id="pt4"></a>
 				<h3>A Twist</h3>
 				<p>However, there is an element of strategy to the game. For every piece a player places on a small board, his opponent's next move must be in the respective board on the larger square</p>
@@ -309,7 +310,7 @@
 				<div id="page4Grid" class="centeredGrid">
 				</div>
 		</div>
-		<div id="page5">
+		<div id="page5" class="centeredGrid">
 			<a id="pt5"></a>
 				<h3>A Full Board</h3>
 				<p>However, if the board they are sent to is taken or completely full, they can play anywhere on the board</p>
@@ -317,7 +318,7 @@
 				<div id="page5Grid" class="centeredGrid">
 				</div>
 		</div>
-		<div id="page6">
+		<div id="page6" class="centeredGrid">
 			<a id="pt6"></a>
 				<h3>Credits</h3>
 				<p>Thanks to <a href='https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/'>Math with Bad Drawings</a> for the original idea.</p>
