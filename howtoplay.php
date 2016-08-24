@@ -125,6 +125,7 @@
 						jQuery("#"+lastID).removeClass("redSqr blueSqr");
 						document.getElementById("sqrFour"+lastID.charAt(lastID.length-1)).style.border="0px solid black";
 					}
+					jQuery("#page4Instructions").hide();
 					var id = $(this).attr('id');
 					var nextMove=id.charAt(id.length-1);
 					var target=document.getElementById("sqrFour"+nextMove);
@@ -258,7 +259,7 @@
 				<div class="dropdown-content" id="accountSettings">
 					<a href="account" class="dropdownLink">My Account</a>
 					<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
-					<a href="index" class="dropdownLink">Spectate</a>
+					<a href="spectate" class="dropdownLink">Spectate</a>
 				</div>
 			</li>
 			<li class="dropdown left">
@@ -298,13 +299,13 @@
 			<a id="pt3"></a>
 				<h3>A Goal</h3>
 				<p>In this version of the game, your goal is to win three boards in a row, each of which is won the same way as you would win a regular game of Tic-Tac-Toe</p>
-				<i>Picture here</i>
+				<div class="centeredGrid" display="inline-block"><img src="images/h2pp3.png"></div>
 		</div>
 		<div id="page4">
 			<a id="pt4"></a>
 				<h3>A Twist</h3>
 				<p>However, there is an element of strategy to the game. For every piece a player places on a small board, his opponent's next move must be in the respective board on the larger square</p>
-				<em>Click on any square</em>
+				<em id="page4Instructions">Click on any square</em>
 				<div id="page4Grid" class="centeredGrid">
 				</div>
 		</div>
