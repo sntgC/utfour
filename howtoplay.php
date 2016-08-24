@@ -80,24 +80,56 @@
 			$(document).ready(function(){
 				var page1=document.getElementById("page1Grid");
 				var page2=document.getElementById("page2InnerGrid");
-				var page3=document.getElementById("page3Grid");
+				var page4=document.getElementById("page4Grid");
+				var page5=document.getElementById("page5Grid");
 				for(i=0;i<9;i++){
 					var ret=[
 								page1.innerHTML+"<div class='square' id='sqr"+i+"'></div>",
 								page2.innerHTML+"<div class='square page2Square' id='sqrTwo"+i+"'></div>",
-								page3.innerHTML+"<div class='bigSqr page3Square' id='sqrThree"+i+"'></div>"
+								page4.innerHTML+"<div class='bigSqr page4Square' id='sqrFour"+i+"'></div>",
+								page5.innerHTML+"<div class='bigSqr page5Square' id='sqrFive"+i+"'></div>"
 								];
 					if((i+1)%3===0){
 						ret[0]+="<br>";
 						ret[1]+="<br>";
 						ret[2]+="<br>";
+						ret[3]+="<br>";
 					}
 					page1.innerHTML=ret[0];
 					page2.innerHTML=ret[1];
-					page3.innerHTML=ret[2];
+					page4.innerHTML=ret[2];
+					page5.innerHTML=ret[3];
+				}
+				for(i=0;i<9;i++){
+					var page4=document.getElementById("sqrFour"+i);
+					var page5=document.getElementById("sqrFive"+i);
+					for(j=0;j<9;j++){
+						var ret=[
+									page4.innerHTML+"<div class='square page4SmallSquare' id='smallSqrFour"+i+j+"'></div>",
+									page5.innerHTML+"<div class='square' id='smallSqrFive"+i+j+"'></div>"];
+						if((j+1)%3===0){
+							ret[0]+="<br>";
+							ret[1]+="<br>";
+						}
+						page4.innerHTML=ret[0];
+						page5.innerHTML=ret[1];
+					}
 				}
 				jQuery( "#page2Grid" ).one( "click", function() {
 					animatePageTwoGrid();
+				});
+				var lastID=null;
+				$('.page4SmallSquare').click(function() { 
+					if(lastID!=null){
+						jQuery("#"+lastID).removeClass("redSqr blueSqr");
+						document.getElementById("sqrFour"+lastID.charAt(lastID.length-1)).style.border="0px solid black";
+					}
+					var id = $(this).attr('id');
+					var nextMove=id.charAt(id.length-1);
+					var target=document.getElementById("sqrFour"+nextMove);
+					target.style.border="5px solid #D32F0C";
+					jQuery("#"+id).addClass("blueSqr");
+					lastID=id;
 				});
 			});
 			
@@ -226,7 +258,7 @@
 			</ul>
 		</div>
 
-		<div id="page1">
+		<div id="page1" class="centeredGrid">
 			<a id="pt1"></a>
 				<h3>A Simple Game</h3>
 				<p>If you've ever played Tic-Tac-Toe, you had soon come to realize how hard it is to win against a competent opponent</p>
@@ -247,20 +279,22 @@
 			<a id="pt3"></a>
 				<h3>A Goal</h3>
 				<p>In this version of the game, your goal is to win three boards in a row, each of which is won the same way as you would win a regular game of Tic-Tac-Toe</p>
-				<div id="page3Grid">
-				</div>
+				<i>Picture here</i>
 		</div>
 		<div id="page4">
 			<a id="pt4"></a>
 				<h3>A Twist</h3>
 				<p>However, there is an element of strategy to the game. For every piece a player places on a small board, his opponent's next move must be in the respective board on the larger square</p>
-				<i>Animation</i>
+				<em>Click on any square</em>
+				<div id="page4Grid" class="centeredGrid">
+				</div>
 		</div>
 		<div id="page5">
 			<a id="pt5"></a>
 				<h3>A Full Board</h3>
 				<p>However, if the board they are sent to is taken or completely full, they can play anywhere on the board</p>
-				<i>Animation</i>
+				<div id="page5Grid" class="centeredGrid">
+				</div>
 		</div>
 		<div id="page6">
 			<a id="pt6"></a>

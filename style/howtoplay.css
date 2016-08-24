@@ -34,7 +34,7 @@ div h3{
 
 .square{
 	display:inline-block;
-	background:#dfdfdf;
+	background: rgba(15,15,15,0.25);
 	min-height:40px;
 	min-width:40px;
 	margin:0px 5px;
@@ -50,18 +50,19 @@ div h3{
 
 .bigSqr{
 	width: 150px;
-	height: 150px;
+	height: 132px;
 	margin: 14px 19px;
 	display:inline-block;
-	background:#dddddd;
+	padding: 5px 0px;
+}
+
+.centeredGrid{
+	text-align:center;
 }
 
 #page1{
 	padding: 18px 20px;
 	background-color:#aaaaaa;
-}
-#page1Grid{
-	text-align:center;
 }
 
 #page2{
@@ -89,6 +90,7 @@ div h3{
 	padding: 18px 20px;
 	background-color:#dddddd;
 }
+
 #page5{
 	padding: 18px 20px;
 	background-color:#eeeeee;
