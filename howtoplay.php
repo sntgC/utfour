@@ -106,7 +106,7 @@
 					for(j=0;j<9;j++){
 						var ret=[
 									page4.innerHTML+"<div class='square page4SmallSquare' id='smallSqrFour"+i+j+"'></div>",
-									page5.innerHTML+"<div class='square' id='smallSqrFive"+i+j+"'></div>"];
+									page5.innerHTML+"<div class='square page5SmallSquare' id='smallSqrFive"+i+j+"'></div>"];
 						if((j+1)%3===0){
 							ret[0]+="<br>";
 							ret[1]+="<br>";
@@ -118,6 +118,7 @@
 				jQuery( "#page2Grid" ).one( "click", function() {
 					animatePageTwoGrid();
 				});
+				loadAFilledSquareInPage5BigSquare3();
 				var lastID=null;
 				$('.page4SmallSquare').click(function() { 
 					if(lastID!=null){
@@ -130,6 +131,17 @@
 					target.style.border="5px solid #D32F0C";
 					jQuery("#"+id).addClass("blueSqr");
 					lastID=id;
+				});
+				$('.page5SmallSquare').click(function() { 
+					var id = $(this).attr('id');
+					var nextMove=id.charAt(id.length-1);
+					if(nextMove==='3'){
+						var targets=document.getElementsByClassName("page5Square");
+						for(i=0;i<9;i++)
+							if(i!=3)
+								targets[i].style.border="5px solid #D32F0C";
+						jQuery("#"+id).addClass("blueSqr");
+					}
 				});
 			});
 			
@@ -196,9 +208,16 @@
 			
 			function animateGrid(location, value){
 				if(value=='1')
-					jQuery("#sqr"+location).addClass("blueSqr");
+					jQuery(location).addClass("blueSqr");
 				else
-					jQuery("#sqr"+location).addClass("redSqr");
+					jQuery(location).addClass("redSqr");
+			}
+			
+			function loadAFilledSquareInPage5BigSquare3(){
+				var data="111221122";
+				for(i=0;i<9;i++){
+					animateGrid("#smallSqrFive3"+i,data.charAt(i));
+				}
 			}
 			
 			var currentData="221112211";
@@ -213,7 +232,7 @@
 						genBoard.loadGrid(shuffle(['1','2','1','2','1','2','1','2','1']));
 						noTie=genBoard.isWon();
 					}
-					animateGrid(order.charAt(turns),currentData.charAt(parseInt(order.charAt(turns)+"")));
+					animateGrid("#sqr"+order.charAt(turns),currentData.charAt(parseInt(order.charAt(turns)+"")));
 				}else if (turns>10){
 					currentData=genBoard.toString();
 					genBoard.loadGrid(shuffle(['1','2','1','2','1','2','1','2','1']));
@@ -293,6 +312,7 @@
 			<a id="pt5"></a>
 				<h3>A Full Board</h3>
 				<p>However, if the board they are sent to is taken or completely full, they can play anywhere on the board</p>
+				<em>Try to send your opponent to the large square in the middle left</em>
 				<div id="page5Grid" class="centeredGrid">
 				</div>
 		</div>
