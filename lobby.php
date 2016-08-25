@@ -111,7 +111,7 @@
 			<li class="dropdown right" id="notificationButton">
 				<a href="javascript:dropMenu('notification')" class="dropbtn dropdownLink blue"><img src="images/notifications.png" height="30" width="30" class="dropdownLink"></a>
 				<div class="dropdown-content" id="notification">
-				<a><em>No games available</em></a>
+				<a class="dropdownLink"><em class="dropdownLink">No games available</em></a>
 				</div>
 			</li>
 			<li class="dropdown right" id="userData">
