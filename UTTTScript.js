@@ -79,12 +79,12 @@ class MiniGrid{
 		var xIndex=this.drawData[0];
         var yIndex=this.drawData[1];
 		if(this.winner!='0'){
-			if(this.winner='1'){
+			if(this.winner==='1'){
 				ctx.fillStyle=colorA;
 			}else{
 				ctx.fillStyle=colorB;
 			}
-			ctxt.fillRect(xIndex,yIndex, this.drawData[2]*11, this.drawData[2]*11);
+			ctx.fillRect(xIndex,yIndex, this.drawData[2]*11, this.drawData[2]*11);
 		}else{
 			for(var drawR=0;drawR<3;drawR++){
 				for(var drawC=0;drawC<3;drawC++){

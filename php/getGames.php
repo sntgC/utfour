@@ -27,7 +27,7 @@
     $row = $results->fetch_assoc();
     $userID = $row["userID"];
 
-    $sql = "SELECT id, player1ID, player2ID FROM games WHERE player1ID='$userID' OR player2ID='$userID' AND winnerID IS NULL";
+    $sql = "SELECT id, player1ID, player2ID FROM games WHERE (player1ID='$userID' OR player2ID='$userID') AND winnerID IS NULL";
     $results = $connection->query($sql);
 
     if(mysqli_num_rows($results) == 0){
