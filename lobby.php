@@ -19,29 +19,11 @@
 			} 
 			redirect();
 			adjustTheme();
-
-			function showPrvtMatch(){
-				$("#alert").hide();
-				$("#alert").html("");
-				$("#requestedUsername").val("");
-				$("#prvtMatchDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
-				$("#privateRoom").toggle();
-			}
 			
 			function hideLobbyUsrs(){
 				$("#playersLabel").toggle();
 				$("#players").toggle();
 				$("#playersDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
-			}
-			
-			function hideNotifications(){
-				$("#notification").toggle();
-				$("#notifDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
-			}
-			
-			function hideCheckbox(){
-				$("#readySwitch").toggle();
-				$("#readyDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
 			}
 
 			function enableCheckbox(){
@@ -123,7 +105,6 @@
 			<a href="javascript:dropMenu('lobbySettings');" class="dropbtn dropdownLink blue"><img src="images/settings.png" height="30" width="30" class="dropdownLink"></a>
 			<div class="dropdown-content" id="lobbySettings">
 				<a href="javascript:hideLobbyUsrs()" class="dropdownLink">Toggle Players</a>
-				<a href="javascript:hideNotifications()" class="dropdownLink">Toggle Notifications</a>
 				<a href="javascript:beginTournament()" id="adminControls" style="display:none">Begin Tournament</a>
 			</div>
 			</li>
