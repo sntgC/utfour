@@ -15,12 +15,12 @@
 		$sql = "SELECT username, wins FROM users WHERE userID='$p1'";
 		$results = $connection->query($sql);
 		$row = $results->fetch_assoc();
-		$username1 = $row["username"] . "(" . $row["wins"] . ")";
+		$username1 = $row["username"] . " (" . $row["wins"] . ")";
 
 		$sql = "SELECT username, wins FROM users WHERE userID='$p2'";
 		$results = $connection->query($sql);
 		$row = $results->fetch_assoc();
-		$username2 = $row["username"] . "(" . $row["wins"] . ")";
+		$username2 = $row["username"] . " (" . $row["wins"] . ")";
 
 		$retArray = array($username1, $username2);
 		echo json_encode($retArray);
@@ -53,7 +53,7 @@
 	}
 	
 	if($includeWins == "true"){
-		echo $row["username"] . '(' . $row["wins"] . ')';
+		echo $row["username"] . ' (' . $row["wins"] . ')';
 	}
 	else if($includeWins == "false"){
 		echo $row["username"];

@@ -1,0 +1,148 @@
+/* Color pallete temporary */
+
+html, body{
+	height:100%;
+	overflow:hidden;
+}
+/*Rather than declaring a .blue for each element, I declare the classes once here for a base color, and then add a general overlay for each id,
+so for a blue ready switch, a base coat of blue is applied, and then darkened in the ready switch declaration*/
+.leftContent.blue{
+	background:#5c5c8a;
+}
+
+.leftContent.orange{
+	background:#DE9A57;
+	
+}
+
+.leftContent.green{
+	background:#41B56C;
+	
+}
+
+.leftContent.red{
+	background:#E8517C;
+}
+
+#privateRoom{
+	display: block;
+	padding: 10px 12px;
+	background: rgba(28,28,28,0.15);
+	color:rgba(255,255,255,0.9);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#readySwitch{
+	display: block;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	padding: 10px 12px;
+	background-color: rgba(28,28,28,0.3);
+	color: rgba(255,255,255,0.9);
+}
+
+#playersLabel {
+	display: block;
+	padding: 2px 2px;
+	text-align: center;
+	background-color: rgba(28,28,28,0.45);
+	color: white;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#players{
+	display: block;
+	padding: 10px 12px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	color: rgba(255,255,255,0.9);
+	background-color: rgba(28,28,28,0.45);
+	/* Assumes readySwitch and privateRoom heights are constant as is the padding (76+139+10+10) */
+	/*Temporary height value. Will need to be corrected later*/
+	height:calc(100% - 235px );
+ 	overflow-y:auto;
+}
+
+.leftContent {
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	overflow:hidden;
+	width:300px;
+	float:left;
+	height:100%;
+}
+.mainContent {
+	margin-left:300px;
+	height:100%;
+	width:100%;
+	background:#cccccc;
+ }
+
+#privateGameLabel {
+	display: block;
+	text-align: center;
+	color: white;
+}
+
+#privateGameButton {
+	display: block;
+	padding: 5px 5px;
+	width: 100%;
+	outline: none;
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 16px;
+	border: 2px solid white;
+}
+
+#privateGameButton:hover {
+	color: white;
+}
+
+#privateGameButton.blue {
+	background-color: #a3a3c2;
+}
+#privateGameButton.green {
+	background-color: #7FB593;
+}
+#privateGameButton.orange {
+	background-color: #DEBD9B;
+}
+#privateGameButton.red {
+	background-color: #E8A2B6;
+}
+
+#privateGameButton:hover.blue {
+	background-color: #5c5c8a;
+}
+#privateGameButton:hover.green {
+	background-color: #41B56C;
+}
+#privateGameButton:hover.orange {
+	background-color: #DE9A57;
+}
+#privateGameButton:hover.red {
+	background-color: #E8517C;
+}
+
+#requestedUsername:focus {
+	border: 2px solid black;
+}
+
+#alert{
+	text-align: center;
+	display: block;
+	margin-bottom: 15px;
+	padding: 3px 3px;
+	background-color: white;
+	font-size: 15px;
+}
+
+.dismissable{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer; 
+}

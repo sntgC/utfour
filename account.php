@@ -125,7 +125,7 @@
 				<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 				<div class="dropdown-content" id="accountSettings">
 					<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
-					<a href="index" class="dropdownLink">Spectate</a>
+					<a href="spectate" class="dropdownLink">Spectate</a>
 					<a href="howtoplay" class="dropdownLink">How to Play</a>
 				</div>
 			</li>

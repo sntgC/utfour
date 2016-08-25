@@ -64,7 +64,7 @@ input[type=text].blue, input[type=password].blue {
 	width: 100%;
 	box-sizing: border-box;
 	border: 2px solid #a3a3c2;
-	border-radius: 20px;
+	border-radius: 5px;
 	background-color: #F5F5F5;
 	outline: none;
 }
@@ -75,7 +75,7 @@ input[type=text].green, input[type=password].green {
 	width: 100%;
 	box-sizing: border-box;
 	border: 2px solid #7FB593;
-	border-radius: 20px;
+	border-radius: 5px;
 	background-color: #F5F5F5;
 	outline: none;
 }
@@ -86,7 +86,7 @@ input[type=text].orange, input[type=password].orange {
 	width: 100%;
 	box-sizing: border-box;
 	border: 2px solid #DEBD9B;
-	border-radius: 20px;
+	border-radius: 5px;
 	background-color: #F5F5F5;
 	outline: none;
 }
@@ -97,7 +97,7 @@ input[type=text].red, input[type=password].red {
 	width: 100%;
 	box-sizing: border-box;
 	border: 2px solid #E8A2B6;
-	border-radius: 20px;
+	border-radius: 5px;
 	background-color: #F5F5F5;
 	outline: none;
 }
@@ -212,21 +212,24 @@ input[type=submit]:hover.red{
 	color: green;
 }
 
-#lobbyMenu{
-	margin: auto;
-	padding: 25px 25px;
+/*To be used on small images in forms*/
+.smallImg {
+	position: relative;
+	padding-left: 5px;
+	top: 5px;
 }
 
+/*Index styling*/
 #indexTitle {
 	margin: auto;
-	margin-top: 175px;
+	margin-top: 50px;
 	font-size: 35px;
 	text-align: center;
 }
 
 #indexMenu {
 	margin: auto;
-	margin-top: 45px;
+	margin-top: 30px;
 	text-align: center;
 	width: 35%;
 }
@@ -249,6 +252,16 @@ input[type=submit]:hover.red{
 	background-color: #5c5c8a;
 }
 
+#indexAlert{
+	margin: auto;
+	margin-top: 35px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: red;
+}
+
+/*Account page styling*/
 #accountTitle {
 	margin: auto;
 	margin-top: 10px;
@@ -354,13 +367,4 @@ input[type=submit]:hover.red{
 #accountMenu.red a:hover{
 	color: white;
 	background-color: #E8517C;
-}
-
-#indexAlert{
-	margin: auto;
-	margin-top: 35px;
-	text-align: center;
-	font-size: 20px;
-	font-weight: bold;
-	color: red;
 }

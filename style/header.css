@@ -50,7 +50,7 @@ li a.dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 16px 8px 16px;
     text-decoration: none;
 }
 
@@ -99,6 +99,11 @@ li.dropdown {
 	right:0px;
 }
 
+#notificationButton .dropdown-content{
+	float:left;
+	right:0px;
+}
+
 a.menu.blue{
 	text-decoration: none;
 	color:#5c5c8a;
@@ -124,7 +129,6 @@ a.title{
 }
 
 a.noclick{
-    -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;

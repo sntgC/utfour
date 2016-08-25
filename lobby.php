@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<link rel="stylesheet" type="text/css" href="style/header.css">
 		<link rel="stylesheet" type="text/css" href="style/fontello.css">
+		<link rel="stylesheet" type="text/css" href="style/lobby.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
@@ -22,13 +23,13 @@
 			function showPrvtMatch(){
 				$("#alert").hide();
 				$("#alert").html("");
-				$("#tmpbr").hide();
 				$("#requestedUsername").val("");
 				$("#prvtMatchDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
 				$("#privateRoom").toggle();
 			}
 			
 			function hideLobbyUsrs(){
+				$("#playersLabel").toggle();
 				$("#players").toggle();
 				$("#playersDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
 			}
@@ -108,6 +109,9 @@
 						);
 					}
 				});
+				$("#alert").on("click",function(){
+					$("#alert").toggle();
+				});
 			});	
 		</script>
 		<script type="text/javascript" src="bracket.js"></script>
@@ -120,14 +124,21 @@
 			<div class="dropdown-content" id="lobbySettings">
 				<a href="javascript:hideLobbyUsrs()" class="dropdownLink">Toggle Players</a>
 				<a href="javascript:hideNotifications()" class="dropdownLink">Toggle Notifications</a>
+				<a href="javascript:beginTournament()" id="adminControls" style="display:none">Begin Tournament</a>
 			</div>
+			</li>
+			<li class="dropdown right" id="notificationButton">
+				<a href="javascript:dropMenu('notification')" class="dropbtn dropdownLink blue"><img src="images/notifications.png" height="30" width="30" class="dropdownLink"></a>
+				<div class="dropdown-content" id="notification">
+				<p>Hey its me</p>
+				</div>
 			</li>
 			<li class="dropdown right" id="userData">
 			<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 			<div class="dropdown-content" id="accountSettings">
 				<a href="account" class="dropdownLink">My Account</a>
 				<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
-				<a href="index" class="dropdownLink">Spectate</a>
+				<a href="spectate" class="dropdownLink">Spectate</a>
 				<a href="howtoplay" class="dropdownLink">How to Play</a>
 			</div>
 			</li>
@@ -135,27 +146,22 @@
 				<a class="dropbtn title noclick">UT<sup>4</sup></a>
 			</li>
 		</ul>
-		<div id="lobbyMenu">
-			<h1>Lobby</h1>
-			<div id="adminControls" style="display:none"></div>
-			<a href="javascript:showPrvtMatch();" class="menu blue"><h3 id="prvtMatchDisplayLink" class="icon-down-open">Create 1v1 Private Match</h3></a>
-			<div id="privateRoom" style="display:none">
-				<span id="alert" style="display:none"></span><br id="tmpbr" style="display:none">
-				Username: <input type="text" id="requestedUsername">
-				<button onclick="generatePrivateGame()">Create Private Match</button>
+		<div class="leftContent blue">
+			<div id='privateRoom'>
+				<span id="alert" style="display:none" class="dismissable"></span>
+				<span id="privateGameLabel">Username</span><input type="text" id="requestedUsername" class="blue">
+				<button onclick="generatePrivateGame()" id="privateGameButton" class="blue">Create Private Match</button>
 			</div>
-			<br>
-			<a href="javascript:hideLobbyUsrs();" class="menu blue"><h3 id="playersDisplayLink" class="icon-up-open">Players in Lobby</h3></a>
-			<div id="players"></div>
-			<br>
-			<a href="javascript:hideNotifications();" class="menu blue"><h3 id="notifDisplayLink" class="icon-up-open">Notifications</h3></a>
-			<div id="notification"></div>
-			<br>
-			<!--We willeventually get rid of this look in exchange for the new lobby, so it's only temporary-->
-			<a href='javascript:hideCheckbox()' class="menu blue"><h3 id="readyDisplayLink" class="icon-up-open">Ready up for Tournament</h3></a>
-			<div id="readySwitch">
-				Put me in the next tournament <input type='checkbox' id='playerReady' disabled='true'>
+			<div id='readySwitch'>
+				<input type='checkbox' id='playerReady' disabled='true'> Ready up for tournament
 			</div>
+			<div id="playersLabel">
+				Online Players
+			</div>
+			<div id="players">
+			</div>
+		</div>
+		<div class="mainContent">
 		</div>
 	</body>
 </html>

@@ -32,6 +32,7 @@
 		<meta charset="utf-8">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
+		<link rel="stylesheet" type="text/css" href="style/header.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
@@ -85,10 +86,12 @@
 									$("#info").hide();
 									$("#resetPassForm").hide();
 									$("#alert").html("Password reset successfully. You will be redirected to the login page in 10 seconds.");
+									$("#alert").addClass("alertText").removeClass("warningText");
 									window.setTimeout(function(){window.location.replace("login");},10000);
 								}
 								else if(data == "Password change failed"){
 									$("#alert").html("Password reset failed. Please retry.");
+									$("#alert").addClass("warningText").removeClass("alertText");
 								}
 						   }
 					);
@@ -98,18 +101,28 @@
 		</script>
 	</head>
 	<body style="<?php echo $display; ?>" id="<?php echo $code; ?>">
-		<a href="index">Homepage</a> - <a href="login">Login</a>
-		<h3>Password Reset</h3>
-		<p id="alert"></p>
-		<p id="info">Please hover your mouse over the input boxes for the requirements regarding that field.</p>
-		<form action="php/updatePassword.php" method="post" name="resetPassForm" id="resetPassForm">
-			<label>New Password:</label><br>
-			<input type="password" name="newPasswordIn" id="newPassword" title="Your new password must be 6 to 20 characters in length."><br>
-			<p id="passwordNotif" style="display:none"></p>
-			<label>New Password Confirmation:</label><br>
-			<input type="password" name="newPasswordInConf" id="newPasswordConf" title="Please re-enter your new password."><br>
-			<p id="passwordConfNotif" style="display:none"></p>
-			<input id="submit" type="submit" value="Reset Password">
-		</form>
+		<ul class="blue" id="parentNav1">
+			<li class="dropdown left">
+				<a href="index" class="dropbtn title blue">UT<sup>4</sup></a>
+			</li>
+			<li class="dropdown left">
+				<a href="login" class="dropbtn title blue">Login</a>
+			</li>
+		</ul>
+
+		<h1 class="formSectionTitle">Password Reset</h1>
+		<div class="formSection blue">
+			<p id="alert" class="warningText"></p>
+			<p id="info">Please hover your mouse over the input boxes for the requirements regarding that field.</p>
+			<form action="php/updatePassword.php" method="post" name="resetPassForm" id="resetPassForm">
+				<label>New Password</label><br>
+				<input class="blue" type="password" name="newPasswordIn" id="newPassword" title="Your new password must be 6 to 20 characters in length."><br>
+				<p id="passwordNotif" style="display:none" class="warningText"></p>
+				<label>New Password Confirmation</label><br>
+				<input class="blue" type="password" name="newPasswordInConf" id="newPasswordConf" title="Please re-enter your new password."><br>
+				<p id="passwordConfNotif" style="display:none" class="warningText"></p>
+				<input class="blue" id="submit" type="submit" value="Reset Password">
+			</form>
+		</div>
 	</body>
 </html>
