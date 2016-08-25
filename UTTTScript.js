@@ -78,24 +78,33 @@ class MiniGrid{
 	draw(){
 		var xIndex=this.drawData[0];
         var yIndex=this.drawData[1];
-        for(var drawR=0;drawR<3;drawR++){
-            for(var drawC=0;drawC<3;drawC++){
-                switch(this.cells[drawR][drawC]){
-					case '0':
-						ctx.fillStyle="#dfdfdf";
-						break;
-					case '1':
-						ctx.fillStyle=colorA;
-						break;
-					case '2':
-						ctx.fillStyle=colorB;
+		if(this.winner!='0'){
+			if(this.winner='1'){
+				ctx.fillStyle=colorA;
+			}else{
+				ctx.fillStyle=colorB;
+			}
+			ctxt.fillRect(xIndex,yIndex, this.drawData[2]*11, this.drawData[2]*11);
+		}else{
+			for(var drawR=0;drawR<3;drawR++){
+				for(var drawC=0;drawC<3;drawC++){
+					switch(this.cells[drawR][drawC]){
+						case '0':
+							ctx.fillStyle="#dfdfdf";
+								break;
+						case '1':
+							ctx.fillStyle=colorA;
+							break;
+						case '2':
+							ctx.fillStyle=colorB;
+					}
+					ctx.fillRect(xIndex,yIndex,this.drawData[2]*3,this.drawData[2]*3);
+					xIndex+=this.drawData[2]*4;
 				}
-				ctx.fillRect(xIndex,yIndex,this.drawData[2]*3,this.drawData[2]*3);
-				 xIndex+=this.drawData[2]*4;
-            }
-            xIndex=this.drawData[0];
-            yIndex+=this.drawData[2]*4;
-        }
+				xIndex=this.drawData[0];
+				yIndex+=this.drawData[2]*4;
+			}
+		}
 	}
 	
 	toString(){
