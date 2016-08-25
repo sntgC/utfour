@@ -5,6 +5,10 @@ source.onmessage = function(e) {
  
 var notificationSource = new EventSource('php/notificationSSE.php?userID='+document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14));
 notificationSource.onmessage = function(e) {
+	if(e.data===""){
+		return;
+	}
+	console.log(e.data);
 	document.getElementById("notification").innerHTML=e.data;
  };
 
