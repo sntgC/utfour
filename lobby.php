@@ -124,6 +124,7 @@
 			<div class="dropdown-content" id="lobbySettings">
 				<a href="javascript:hideLobbyUsrs()" class="dropdownLink">Toggle Players</a>
 				<a href="javascript:hideNotifications()" class="dropdownLink">Toggle Notifications</a>
+				<a href="javascript:beginTournament()" id="adminControls" style="display:none">Begin Tournament</a>
 			</div>
 			</li>
 			<li class="dropdown right" id="notificationButton">
@@ -145,31 +146,6 @@
 				<a class="dropbtn title noclick">UT<sup>4</sup></a>
 			</li>
 		</ul>
-		<!--
-		REWRITING THE LOBBY. TEMPORARILY DISABLING ALL PREVIOUS FUNCTIONALITY WHILE THE DIVS ARE SET UP
-		<div id="lobbyMenu">
-			<h1>Lobby</h1>
-			<div id="adminControls" style="display:none"></div>
-			<a href="javascript:showPrvtMatch();" class="menu blue"><h3 id="prvtMatchDisplayLink" class="icon-down-open">Create 1v1 Private Match</h3></a>
-			<div id="privateRoom" style="display:none">
-				<span id="alert" style="display:none"></span><br id="tmpbr" style="display:none">
-				Username: <input type="text" id="requestedUsername">
-				<button onclick="generatePrivateGame()">Create Private Match</button>
-			</div>
-			<br>
-			<a href="javascript:hideLobbyUsrs();" class="menu blue"><h3 id="playersDisplayLink" class="icon-up-open">Players in Lobby</h3></a>
-			<div id="players"></div>
-			<br>
-			<a href="javascript:hideNotifications();" class="menu blue"><h3 id="notifDisplayLink" class="icon-up-open">Notifications</h3></a>
-			<div id="notification"></div>
-			<br>
-			<!--We willeventually get rid of this look in exchange for the new lobby, so it's only temporary->
-			<a href='javascript:hideCheckbox()' class="menu blue"><h3 id="readyDisplayLink" class="icon-up-open">Ready up for Tournament</h3></a>
-			<div id="readySwitch">
-				Put me in the next tournament <input type='checkbox' id='playerReady' disabled='true'>
-			</div>
-		</div>
-		-->
 		<div class="leftContent blue">
 			<div id='privateRoom'>
 				<span id="alert" style="display:none" class="dismissable"></span>

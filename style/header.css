@@ -101,7 +101,7 @@ li.dropdown {
 
 #notificationButton .dropdown-content{
 	float:left;
-	background-color:green;
+	right:0px;
 }
 
 a.menu.blue{
