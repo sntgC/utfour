@@ -18,7 +18,9 @@
 	$sql .="CREATE TABLE IF NOT EXISTS games(
 				id varchar(8) CHARACTER SET utf8 DEFAULT NULL,
 				player1ID varchar(8) CHARACTER SET utf8 DEFAULT NULL,
+				player1Name varchar(20) CHARACTER SET utf8 DEFAULT NULL,
 				player2ID varchar(8) CHARACTER SET utf8 DEFAULT NULL,
+				player2Name varchar(20) CHARACTER SET utf8 DEFAULT NULL,
 				winnerID varchar(8) CHARACTER SET utf8 DEFAULT NULL,
 				gameData varchar(1024) CHARACTER SET utf8 DEFAULT '19@@@@@@@@@@@@@@@@@@@@@@@@@@@',
 				PRIMARY KEY (id)

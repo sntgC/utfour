@@ -126,6 +126,12 @@
 				<a href="javascript:hideNotifications()" class="dropdownLink">Toggle Notifications</a>
 			</div>
 			</li>
+			<li class="dropdown right" id="notificationButton">
+				<a href="javascript:dropMenu('notification')" class="dropbtn dropdownLink blue"><img src="images/notifications.png" height="30" width="30" class="dropdownLink"></a>
+				<div class="dropdown-content" id="notification">
+				<p>Hey its me</p>
+				</div>
+			</li>
 			<li class="dropdown right" id="userData">
 			<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 			<div class="dropdown-content" id="accountSettings">

@@ -50,7 +50,7 @@ li a.dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 16px 8px 16px;
     text-decoration: none;
 }
 
@@ -97,6 +97,11 @@ li.dropdown {
 
 #lobbySettings{
 	right:0px;
+}
+
+#notificationButton .dropdown-content{
+	float:left;
+	background-color:green;
 }
 
 a.menu.blue{

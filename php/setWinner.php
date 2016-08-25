@@ -7,9 +7,9 @@
 	$sql = "UPDATE games SET winnerID = '$_POST[winID]' WHERE id='$_POST[gameID]'; ";
 	if($_POST['pointerRoom']!="NONE"){
 		if($_POST['player']==="P1"){
-			$sql.="UPDATE games SET player1ID = '$_POST[winID]' WHERE id='$_POST[pointerRoom]'; ";
+			$sql.="UPDATE games SET player1ID = '$_POST[winID]', player1Name = (SELECT username FROM users WHERE userID='$_POST[winID]') WHERE id='$_POST[pointerRoom]'; ";
 		}else{
-			$sql.="UPDATE games SET player2ID = '$_POST[winID]' WHERE id='$_POST[pointerRoom]'; ";
+			$sql.="UPDATE games SET player2ID = '$_POST[winID]', player2Name = (SELECT username FROM users WHERE userID='$_POST[winID]') id='$_POST[pointerRoom]'; ";
 		}
 	}else{
 		$sql.="UPDATE users SET wins = wins+1 WHERE userID='$_POST[winID]'; ";
