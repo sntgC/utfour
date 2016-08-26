@@ -28,7 +28,7 @@ ul {
 	text-decoration: none;
 }
 
-li a:hover {
+#nav li a:hover {
 	background-color: #cccccc;
 	text-decoration: none;
 	color: rgba(15,15,15,0.65);

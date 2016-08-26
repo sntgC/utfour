@@ -33,6 +33,7 @@ so for a blue ready switch, a base coat of blue is applied, and then darkened in
 }
 
 #readySwitch{
+	text-align: center;
 	display: block;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 	padding: 10px 12px;
