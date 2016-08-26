@@ -368,3 +368,58 @@ input[type=submit]:hover.red{
 	color: white;
 	background-color: #E8517C;
 }
+
+#colorSelector {
+	margin: auto;
+	margin-top: 30px;
+	font-size: 14px;
+	outline: none;
+	padding: 10px 10px;
+	width: 20%;
+}
+
+#submitTheme {
+	margin: auto;
+	margin-top: 10px;
+	text-decoration: none;
+	font-size: 14px;
+	cursor: pointer;
+	border-radius: 5px;
+	color: black;
+	padding: 10px 10px;
+	width: 20%;
+}
+
+#submitTheme.blue {
+	border-color: #5c5c8a;
+	background-color: #a3a3c2;
+}
+#submitTheme.green {
+	border-color: #41B56C;
+	background-color: #7FB593;
+}
+#submitTheme.orange {
+	border-color: #DE9A57;
+	background-color: #DEBD9B;
+}
+#submitTheme.red {
+	border-color: #E8517C;
+	background-color: #E8A2B6;
+}
+
+#submitTheme:hover.blue {
+	background-color: #5c5c8a;
+	color: white;
+}
+#submitTheme:hover.green{
+	background-color: #41B56C;
+	color: white;
+}
+#submitTheme:hover.orange {
+	background-color: #DE9A57;
+	color: white;
+}
+#submitTheme:hover.red {
+	background-color: #E8517C;
+	color: white;
+}

@@ -124,9 +124,9 @@
 			<li class="dropdown right" id="userData">
 				<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 				<div class="dropdown-content" id="accountSettings">
-					<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
 					<a href="spectate" class="dropdownLink">Spectate</a>
 					<a href="howtoplay" class="dropdownLink">How to Play</a>
+					<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
 				</div>
 			</li>
 			<li class="dropdown left">
@@ -158,13 +158,13 @@
 			<a href="changePassword">Change my password</a><br>
 			<a href="javascript: showThemeChanger();" id="changeThemeLink">Change theme color</a><br>
 			<form id="changeThemeForm" name="changeThemeForm" action="php/updateTheme.php" method="post" style="display:none">
-				<select name="colorSelector">
+				<select name="colorSelector" id="colorSelector" class="blue">
 					<option value="blue">Blue</option>
 					<option value="green">Green</option>
 					<option value="orange">Orange</option>
 					<option value="red">Red</option>
 				</select>
-				<input id="submitTheme" type="submit" name="submit" value="Change Theme">
+				<input id="submitTheme" type="submit" name="submit" value="Change Theme" class="blue">
 			</form>
 			<br id="changeThemeBr" style="display:none">
 			<a href="" id="upload_link" title="The selected image must be no larger than 500 kB">Change my profile picture</a><br>
