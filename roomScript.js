@@ -71,8 +71,8 @@ function loadPlayers(){
 		var array = JSON.parse(data);
 		var p1 = array[0];
 		var p2 = array[1];
-		$("#p1").html("Player 1: " + p1);
-		$("#p2").html("Player 2: " + p2);
+		$("#p1").html(p1);
+		$("#p2").html(p2);
 	});
 }
 

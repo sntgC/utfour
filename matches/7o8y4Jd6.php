@@ -114,6 +114,8 @@
 			<br>
  			<canvas id="display" width="468" height="468"></canvas>
  		</div>
-<!--PLACEHOLDER-->
+<div id='pointer'>
+<div id='WINNER'></div>
+</div>
 	</body>
 </html>
