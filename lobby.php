@@ -32,6 +32,7 @@
 
 			//Made this into an object with ids as keys in order to support multiple dropdown
 			var isOpen = {};
+			var notificationsChecked=false;
 			function dropMenu(id) {
 				if(isOpen[id]===undefined){
 					isOpen[id]=false;
@@ -46,6 +47,8 @@
 				}
 				$("#"+id).toggle();
 				isOpen[id] = !isOpen[id];
+				if(id==='notification')
+					notificationsChecked=true;
 			}
 
 			window.onclick = function(e) {
@@ -109,7 +112,7 @@
 			</div>
 			</li>
 			<li class="dropdown right" id="notificationButton">
-				<a href="javascript:dropMenu('notification')" class="dropbtn dropdownLink blue"><img src="images/notifications.png" height="30" width="30" class="dropdownLink"></a>
+				<a href="javascript:dropMenu('notification')" class="dropbtn dropdownLink blue" id="notifLink"><img src="images/notifications.png" height="30" width="30" class="dropdownLink"></a>
 				<div class="dropdown-content" id="notification">
 				<a class="dropdownLink"><em class="dropdownLink">No games available</em></a>
 				</div>

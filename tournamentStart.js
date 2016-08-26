@@ -4,12 +4,23 @@ source.onmessage = function(e) {
  };
  
 var notificationSource = new EventSource('php/notificationSSE.php?userID='+document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14));
+var lastNotification="";
 notificationSource.onmessage = function(e) {
 	if(e.data===""){
+		document.getElementById("notification").innerHTML="<a class='dropdownLink'><em class='dropdownLink'>No games available</em></a>";
+		document.getElementById("notifLink").innerHTML="<img src='images/notifications.png' height='30' width='30' class='dropdownLink'>";
+		notificationsChecked=false;
 		return;
 	}
-	console.log(e.data);
+	if(e.data!=lastNotification){
+		lastNotification=e.data;
+		document.getElementById("notifLink").innerHTML="<img src='images/notificationsOn.png' height='30' width='30' class='dropdownLink'>";
+		notificationsChecked=false;
+	}
 	document.getElementById("notification").innerHTML=e.data;
+	if(notificationsChecked){
+		document.getElementById("notifLink").innerHTML="<img src='images/notifications.png' height='30' width='30' class='dropdownLink'>";
+	}
  };
 
 function generateRooms(players, playerNames){
