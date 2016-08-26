@@ -45,7 +45,6 @@ function updateBracket(gameArray){
 		if(retArray[i].hasWinner()){
 			if(p1&&!retArray[childPos].hasP1()){
 				retArray[childPos].setP1(retArray[i].getWinner());
-				//console.log("For Value i of "+i+" and child pos of "+childPos+", the P1 was set to be "+retArray[i].getWinner());
 			}else if(!(p1||retArray[childPos].hasP2())){
 				retArray[childPos].setP2(retArray[i].getWinner());
 			}
@@ -66,82 +65,4 @@ function convertJSONToGameArray(jsonArray){
 		arr[i]=new Game(names[0],names[1],names[2],names[3],names[4]);
 	}
 	return arr;
-}
-
-function getGameObjectArray(){
-	var games=new Array();
-    try{
-		ajax=AjaxCaller();
-		//Requests with the specified url
-		ajax.open("GET", 'php/getTournamentGames.php', false);
-		ajax.onreadystatechange=function(){
-        //Request is finished and the response is ready
-			if(ajax.readyState==4){
-				if(ajax.status==200){
-                //Gets the response from the server and then updates the table based on it
-                    json=ajax.responseText;
-					json=json.substring(json.indexOf("data")+7,json.length-2);
-					idArray=json.split(" ");
-					var len=idArray.length;
-					
-					for(i=0;i<len;i++){
-						games.push(requestGameData(idArray[i]));
-						//alert(idArray[i]);
-					}
-				}
-			}
-		}
-		ajax.send(null);
-    }catch(err){
-      document.getElementById("testDisplay").innerHTML=err;
-	}
-	var updatedArray=updateBracket(convertJSONToGameArray(games));
-	alert(updatedArray);
-}
-
-function requestGameData(game){
-	var ret="";
-    try{
-      ret =callPage('php/testPHP.php?gameID='+game,document.getElementById("testDisplay"));
-    }catch(err){
-      document.getElementById("testDisplay").innerHTML=err;
-	}
-	return ret;
-}
-
-function AjaxCaller(){
-    //Sets up the xml file
-    var xmlhttp=false;
-    try{
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    }catch(e){
-        try{
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }catch(E){
-            xmlhttp = false;
-        }
-    }
-
-    if(!xmlhttp && typeof XMLHttpRequest!='undefined'){
-        xmlhttp = new XMLHttpRequest();
-    }
-    return xmlhttp;
-}
-
-function callPage(url, div){
-    var ajax=AjaxCaller();
-	var ret="";
-    //Requests with the specified url
-    ajax.open("GET", url, false);
-    ajax.onreadystatechange=function(){
-        //Request is finished and the response is ready
-        if(ajax.readyState==4){
-            if(ajax.status==200){
-                //Gets the response from the server and then updates the table based on it
-                    ret=ajax.responseText;
-            }
-        }
-    }
-    ajax.send(null);
-	return ret;
 }
