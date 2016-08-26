@@ -5,6 +5,8 @@ var ctx;
 var colorA="#cc6699";
 //colorB corresponds to player 2
 var colorB="#ffff99";
+var p1ColorBox;
+var p2ColorBox;
 
 class MiniGrid{
 	
@@ -91,7 +93,7 @@ class MiniGrid{
 					switch(this.cells[drawR][drawC]){
 						case '0':
 							ctx.fillStyle="#dfdfdf";
-								break;
+							break;
 						case '1':
 							ctx.fillStyle=colorA;
 							break;
@@ -334,9 +336,18 @@ function setColors(){
 			}
 			//Will call board.draw() once the AJAX call has completed rather than have the AJAX call be synchronous
 			board.draw();
-			//Temporary way to display which player is which token color
+			//Sets the colors of the player boxes and names
 			$("#p1").attr("style","color:"+colorA+";");
 			$("#p2").attr("style","color:"+colorB+";");
+			p1C = document.getElementById("p1Color");
+			p2C = document.getElementById("p2Color");
+			p1ColorBox = p1C.getContext("2d");
+			p2ColorBox = p2C.getContext("2d");
+			p1ColorBox.fillStyle = colorA;
+			p2ColorBox.fillStyle = colorB;
+
+			p1ColorBox.fillRect(0,0,15,15);
+			p2ColorBox.fillRect(0,0,15,15);
 		}
 	});
 }
@@ -367,6 +378,8 @@ function encodeBaseThree(fullString, direction){
 
 $(document).ready(function(){
 	c=document.getElementById("display");
+	var width = c.offsetWidth;
+	$("#gameArea").css("width",width);
 	ctx=c.getContext("2d");
 });
 
