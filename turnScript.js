@@ -72,13 +72,6 @@ function updateTurn(){
 			$("#p1").removeClass("icon-right-dir");
 			$("#p2").addClass("icon-right-dir");
 		}
-		var nextMove = "?";
-		if (board.onPlay == 9){
-			nextMove = "any";
-		}
-		else {
-			nextMove = board.onPlay + 1;
-		}
 		turnDraw(board.onPlay);
 	});
 }

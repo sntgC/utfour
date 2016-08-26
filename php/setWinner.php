@@ -20,6 +20,6 @@
 	} else{
 		echo $_POST['winID']." won room ".$_POST['gameID'];
 	}
-	unlink('../matches/'."$_POST[gameID]".'.html');
+	unlink('../matches/'."$_POST[gameID]".'.php');
 	mysqli_close($connect);
 ?>
