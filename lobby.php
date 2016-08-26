@@ -23,7 +23,10 @@
 			function hideLobbyUsrs(){
 				$("#playersLabel").toggle();
 				$("#players").toggle();
-				$("#playersDisplayLink").toggleClass("icon-down-open").toggleClass("icon-up-open");
+			}
+
+			function togglePrivateMatch(){
+				$("#privateRoom").toggle();
 			}
 
 			function enableCheckbox(){
@@ -108,13 +111,14 @@
 			<a href="javascript:dropMenu('lobbySettings');" class="dropbtn dropdownLink blue"><img src="images/settings.png" height="30" width="30" class="dropdownLink"></a>
 			<div class="dropdown-content" id="lobbySettings">
 				<a href="javascript:hideLobbyUsrs()" class="dropdownLink">Toggle Players</a>
+				<a href="javascript:togglePrivateMatch()" class="dropdownLink">Toggle Private Match Creator</a>
 				<a href="javascript:beginTournament()" id="adminControls" style="display:none">Begin Tournament</a>
 			</div>
 			</li>
 			<li class="dropdown right" id="notificationButton">
 				<a href="javascript:dropMenu('notification')" class="dropbtn dropdownLink blue" id="notifLink"><img src="images/notifications.png" height="30" width="30" class="dropdownLink"></a>
 				<div class="dropdown-content" id="notification">
-				<a class="dropdownLink"><em class="dropdownLink">No games available</em></a>
+				<a class="dropdownLink"><em class="dropdownLink" style="cursor:default">No games available</em></a>
 				</div>
 			</li>
 			<li class="dropdown right" id="userData">

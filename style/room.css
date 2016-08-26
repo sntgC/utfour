@@ -1,0 +1,19 @@
+#gameArea {
+    margin: auto;
+    margin-top: 10vh;
+}
+
+#p1, #p2 {
+    font-size: 22px;
+    display: inline;
+}
+
+#turn {
+    font-size: 22px;
+}
+
+#p1Color, #p2Color {
+    margin-right: 5px;
+    display: inline;
+    border: 1px solid black;
+}

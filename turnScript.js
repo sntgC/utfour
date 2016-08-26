@@ -55,6 +55,13 @@ function updateTurn(){
 			$("#p1").removeClass("icon-right-dir");
 			$("#p2").addClass("icon-right-dir");
 		}
-		document.getElementById("turn").innerHTML="Square: "+board.onPlay;
+		var nextMove = "?";
+		if (board.onPlay == 9){
+			nextMove = "any";
+		}
+		else {
+			nextMove = board.onPlay + 1;
+		}
+		document.getElementById("turn").innerHTML="Square: "+nextMove;
 	});
 }

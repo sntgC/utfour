@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="../style/style.css">
 		<link rel="stylesheet" type="text/css" href="../style/header.css">
 		<link rel="stylesheet" type="text/css" href="../style/fontello.css">
+		<link rel="stylesheet" type="text/css" href="../style/room.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="../script.js"></script>
 		<script type="text/javascript" src="../roomScript.js"></script>
@@ -101,11 +102,13 @@
 				<a href="../lobby" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 		</ul>
-
-		<p id="p1" class="">Player 1: </p>
-		<p id="p2" class="">Player 2: </p>
-		<p id="turn"></p>
-		<canvas id="display" width="468" height="468" style="border:1px solid #c3c3c3;">
+		<div id="gameArea">
+			<canvas id="p1Color" width="15" height="15"></canvas><p id="p1" class="">Player 1: </p>
+			<br>
+			<canvas id="p2Color" width="15" height="15"></canvas><p id="p2" class="">Player 2: </p>
+			<p id="turn"></p>
+			<canvas id="display" width="468" height="468"></canvas>
+		</div>
 <!--PLACEHOLDER-->
 	</body>
 </html>

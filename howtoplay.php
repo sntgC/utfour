@@ -321,7 +321,7 @@
 		<div id="page6" class="centeredGrid">
 			<a id="pt6"></a>
 				<h3>Credits</h3>
-				<p>Thanks to <a href='https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/'>Math with Bad Drawings</a> for the original idea.</p>
+				<p>Thanks to <a href='https://mathwithbaddrawings.com/2013/06/16/ultimate-tic-tac-toe/' id="creditLink">Math with Bad Drawings</a> for the original idea.</p>
 				<p><small>UT<sup>4</sup> is only supported on modern browsers such as Chrome and Firefox, not Internet Explorer or Microsoft Edge</small></p>
 		</div>
 	</body>
