@@ -17,3 +17,20 @@
     display: inline;
     border: 1px solid black;
 }
+
+#turnDisplay{
+	display:inline-block;
+}
+
+#playerContainer{
+	display:inline-block;
+	margin:20px;
+}
+
+#divThatUsedToCenterTurnDisplay{
+	text-align:center;
+	margin:20px;
+	display:inline-block;
+	float:right;
+	height:55px;
+}

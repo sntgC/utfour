@@ -14,7 +14,6 @@ dataSource.onmessage = function(e) {
 	else {
 		if(gameData===""){
 			gameData=e.data;
-			console.log(e.data.length);
 			board.decode(gameData);
 			var firstChar=e.data.charAt(0);
 			if(firstChar===inRoundID){
@@ -45,6 +44,24 @@ dataSource.onmessage = function(e) {
 	 }
  }
 
+ function turnDraw(playLocation){
+	 miniCtx.fillStyle="#ababab";
+	var xIndex=0;
+	var yIndex=0;
+	for(var drawR=0;drawR<3;drawR++){
+		for(var drawC=0;drawC<3;drawC++){
+			if(playLocation===drawR*3+drawC||playLocation===9)
+				miniCtx.fillStyle="#454545";
+			else
+				miniCtx.fillStyle="#ababab";
+			miniCtx.fillRect(xIndex,yIndex,15,15);
+			xIndex+=20;
+		}
+		xIndex=0;
+		yIndex+=20;
+	}
+ }
+ 
 function updateTurn(){
 	$(document).ready(function(){
 		if (whichPlayersTurn == "1"){
@@ -62,6 +79,6 @@ function updateTurn(){
 		else {
 			nextMove = board.onPlay + 1;
 		}
-		document.getElementById("turn").innerHTML="Square: "+nextMove;
+		turnDraw(board.onPlay);
 	});
 }

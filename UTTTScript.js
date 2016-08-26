@@ -1,6 +1,8 @@
 //var onPlay=9;
 var c;
 var ctx;
+var miniC;
+var miniCtx;
 //colorA corresponds to player 1
 var colorA="#cc6699";
 //colorB corresponds to player 2
@@ -143,7 +145,6 @@ class Grid {
 	
 	gameWon(){
         for(var r=0;r<3;r++){
-			console.log(this.grid[2][0].toString());
             if(this.grid[r][0].getWinner()!='0'&&this.grid[r][0].getWinner()===this.grid[r][1].getWinner()&&this.grid[r][1].getWinner()===this.grid[r][2].getWinner()){
 				this.winner=this.grid[r][0].getWinner();
                 return true;
@@ -224,7 +225,6 @@ class Grid {
 	}
 	
 	decode(encodedString){
-		console.log(encodedString);
 		this.onPlay=parseInt(encodedString.charAt(1));
 		encodedString=encodeBaseThree(encodedString.substring(2),'expand');
 		for(var decR=0;decR<3;decR++){
@@ -245,7 +245,6 @@ class Grid {
 			for(var dc=0;dc<3;dc++)
 				this.grid[dr][dc].draw();
 		}
-		console.log("DRAWN");
 	}
 	
 	toString(){
@@ -258,21 +257,6 @@ class Grid {
 		return ret;	
 	}
 }
-
-/*var miniBoard=new MiniGrid(1,2,3);
-var board=new Grid(0,0,156);
-console.log(board.toString());
-console.log(board.setCell([0,0,0,0],"1"));
-console.log(board.setCell([0,0,0,0],"1"));
-console.log(board.toString());
-/*console.log(miniBoard.setCell(0,0,1));
-console.log(miniBoard.setCell(0,0,1));
-console.log(miniBoard.setCell(1,1,1));
-console.log(miniBoard.setCell(2,2,1));
-console.log(miniBoard.setCell(0,2,2));
-miniBoard.loadGrid("011021001");
-console.log(miniBoard.toString());
-console.log(miniBoard.isWon());*/
 
 var board=new Grid(0,0,468);
 
@@ -378,9 +362,11 @@ function encodeBaseThree(fullString, direction){
 
 $(document).ready(function(){
 	c=document.getElementById("display");
+	miniC=document.getElementById("turnDisplay");
 	var width = c.offsetWidth;
 	$("#gameArea").css("width",width);
 	ctx=c.getContext("2d");
+	miniCtx=miniC.getContext("2d");
 });
 
 function loadMouseListener (){

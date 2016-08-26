@@ -103,12 +103,17 @@
 			</li>
 		</ul>
 		<div id="gameArea">
-			<canvas id="p1Color" width="15" height="15"></canvas><p id="p1" class="">Player 1: </p>
-			<br>
-			<canvas id="p2Color" width="15" height="15"></canvas><p id="p2" class="">Player 2: </p>
-			<p id="turn"></p>
-			<canvas id="display" width="468" height="468"></canvas>
+		<div style="background-color:#dfdfdf">
+			<div id="playerContainer">
+				<canvas id="p1Color" width="15" height="15"></canvas><p id="p1" class="">Player 1: </p>
+				<br>
+				<canvas id="p2Color" width="15" height="15"></canvas><p id="p2" class="">Player 2: </p>
+			</div>
+			<div id="divThatUsedToCenterTurnDisplay"><canvas id="turnDisplay" width="55" height="55"></canvas></div>
 		</div>
+			<br>
+ 			<canvas id="display" width="468" height="468"></canvas>
+ 		</div>
 <!--PLACEHOLDER-->
 	</body>
 </html>
