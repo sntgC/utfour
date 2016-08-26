@@ -54,7 +54,7 @@ function generateRooms(players, playerNames){
 			pointerString="WINNER";
 		}
 		jQuery.post('php/getARoom.php',
-						 {'fileName':gamesInTournament[k].id,'player1ID':gamesInTournament[k].p1,'player2ID':gamesInTournament[k].p2,'pointer':pointerString},
+						 {'fileName':gamesInTournament[k].id,'player1ID':gamesInTournament[k].p1,'player2ID':gamesInTournament[k].p2,'pointer':pointerString,'consent':1},
 							function(data){
 									console.log(data);
 								});
@@ -80,7 +80,8 @@ function generatePrivateGame(){
 								{'fileName':generateID(),
 								'player1ID':document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14),
 								'player2ID':"(SELECT userID FROM users WHERE username='"+usernameIn+"')",
-								'pointer':"WINNER"},
+								'pointer':"WINNER",
+								'consent':0},
 								function(data){
 									if(data == "Game created."){
 										$("#alert").removeClass("warningText").addClass("alertText");
@@ -95,6 +96,14 @@ function generatePrivateGame(){
 			   }
 		   }
 	);
+}
+
+function acceptMatchRequest(response ,element){
+	var id=element.id;
+	element.parentNode.removeChild(element);
+	jQuery.post('php/matchResponse.php', {'response':response, 'matchID':id},function(data){
+		console.log(data);
+	});
 }
 
 function cleanString(dat){
