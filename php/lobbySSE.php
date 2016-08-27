@@ -29,8 +29,6 @@
 		$result = mysqli_multi_query($connect,$sql);
 		if (!$result){
 			die ("The SQL command was not processed correctly");
-		} else{
-			//
 		}
 		mysqli_close($connect);
 	}

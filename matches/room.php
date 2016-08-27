@@ -15,6 +15,9 @@
 		<script type="text/javascript" src="../UTTTScript.js"></script>
 		<script type="text/javascript">
 			function authenticateUser(){
+				if(window.frameElement){
+					return;
+				}
 				if(!checkForLoggedIn()){
 					return;
 				}
@@ -22,7 +25,7 @@
 					url: "../php/authenticateUser.php",
 					success: function(data){
 						if(data == "Authentication failed"){
-							location.replace("../login");
+							location.reload();
 						}
 					}
 				});
@@ -30,7 +33,13 @@
 			authenticateUser();
 
 			function adjustNav(){
-				if(checkForLoggedIn()){
+				if(window.frameElement){
+					$(document).ready(function(){
+						$("#parentNav1").hide();
+						$("#parentNav2").hide();
+					});
+				}
+				else if(checkForLoggedIn()){
 					$(document).ready(function(){
 						$("#parentNav1").hide();
 						$("#parentNav2").show();

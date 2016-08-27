@@ -16,7 +16,8 @@ a:hover, a:active{
 
 .formSection.blue{
 	margin: auto;
-	width: 25%;
+	min-width: 25%;
+	max-width: 35%;
 	border: 3px solid #5c5c8a;
 	border-radius: 25px;
 	padding: 10px 10px;
@@ -24,7 +25,8 @@ a:hover, a:active{
 
 .formSection.green{
 	margin: auto;
-	width: 25%;
+	min-width: 25%;
+	max-width: 35%;
 	border: 3px solid #41B56C;
 	border-radius: 25px;
 	padding: 10px 10px;
@@ -32,7 +34,8 @@ a:hover, a:active{
 
 .formSection.orange{
 	margin: auto;
-	width: 25%;
+	min-width: 25%;
+	max-width: 35%;
 	border: 3px solid #DE9A57;
 	border-radius: 25px;
 	padding: 10px 10px;
@@ -40,7 +43,8 @@ a:hover, a:active{
 
 .formSection.red{
 	margin: auto;
-	width: 25%;
+	min-width: 25%;
+	max-width: 35%;
 	border: 3px solid #E8517C;
 	border-radius: 25px;
 	padding: 10px 10px;
@@ -50,7 +54,8 @@ a:hover, a:active{
 	font-size: 35px;
 	margin: auto;
 	margin-top: 15px;
-	width: 25%;
+	min-width: 25%;
+	max-width: 35%;
 	padding: 25px 25px;
 }
 

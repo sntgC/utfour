@@ -1,3 +1,7 @@
+if(typeof(EventSource) === "undefined"){
+	alert("Server-Sent Events are not supported on this browser. Please upgrade to a new browser.");
+}
+
 var source = new EventSource('php/lobbySSE.php?user='+document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14));
 source.onmessage = function(e) {
 	document.getElementById("players").innerHTML=e.data;
@@ -22,6 +26,31 @@ notificationSource.onmessage = function(e) {
 		document.getElementById("notifLink").innerHTML="<img src='images/notifications.png' height='30' width='30' class='dropdownLink'>";
 	}
  };
+
+var featuredGameSource = new EventSource("php/featuredGameSSE.php");
+var previousGame = "";
+featuredGameSource.onmessage = function(e) {
+	if (e.data == previousGame){
+		return;
+	}
+	else {
+		if(e.data == ""){
+			previousGame = "";
+			if($("#featuredGame").css("display") == "none"){
+				return;
+			}
+			else{
+				toggleFeaturedGame();
+				return;
+			}
+		}
+		if(previousGame == ""){
+			toggleFeaturedGame();
+		}
+		$("#featuredGame").attr("src","matches/"+e.data);
+		previousGame = e.data;
+	}
+};
 
 function generateRooms(players, playerNames){
 	/*

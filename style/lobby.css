@@ -154,7 +154,7 @@ so for a blue ready switch, a base coat of blue is applied, and then darkened in
 
 .mainContent #featuredGame {
 	margin: auto;
+	width: 99%;
+	min-height: 725px;
 	border: none;
-	width: 750px;
-	height: 750px;
 }
