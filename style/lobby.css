@@ -1,6 +1,7 @@
 html, body{
 	height:100%;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 /*Rather than declaring a .blue for each element, I declare the classes once here for a base color, and then add a general overlay for each id,
 so for a blue ready switch, a base coat of blue is applied, and then darkened in the ready switch declaration*/
@@ -153,8 +154,9 @@ so for a blue ready switch, a base coat of blue is applied, and then darkened in
 }
 
 .mainContent #featuredGame {
-	margin: auto;
-	width: 99%;
-	min-height: 725px;
+	margin: 0;
+	padding: 0;
+	width: 98.5%;
+	height: 80%;
 	border: none;
 }
