@@ -98,8 +98,8 @@ function generatePrivateGame(){
 	);
 }
 
-function acceptMatchRequest(response ,element){
-	var id=element.id;
+function acceptMatchRequest(response ,id){
+	var element=document.getElementById(id);
 	element.parentNode.removeChild(element);
 	jQuery.post('php/matchResponse.php', {'response':response, 'matchID':id},function(data){
 		console.log(data);

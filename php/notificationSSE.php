@@ -22,7 +22,7 @@
 			}else if($_GET['userID']==$row['player1ID']){
 				$return .="<a>Waiting for ".$row['player2Name']."'s response</a>";
 			}else{
-				$return .="<div id='$row[id]' class='dataDiv dropdownLink'>Game request from <b>".$row['player1Name']."</b>, accept? <a href='javascript:acceptMatchRequest(1, $row[id])' class='dropdownLink'>Y</a><a href='javascript:acceptMatchRequest(0, $row[id])' class='dropdownLink'>N</a></div>";
+				$return .="<div id='$row[id]' class='dataDiv dropdownLink'>Game request from <b>".$row['player1Name']."</b>, accept? <a href=".'"'."javascript:acceptMatchRequest(1, '$row[id]')".'"'." class='dropdownLink'>Y</a><a href=".'"'."javascript:acceptMatchRequest(0, '$row[id]')".'"'." class='dropdownLink'>N</a></div>";
 			}
 		}
 		mysqli_close($connect);
