@@ -82,12 +82,14 @@
 		</script>
 	</head>
 	<body>
+		<!--Navigation bar used when the user is not logged in-->
 		<ul class="blue" id="parentNav1">
 			<li class="dropdown left">
 				<a href="../index" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 		</ul>
-	
+		
+		<!--Navigation bar used when the user is logged in-->
 		<ul class="blue" id="parentNav2" style="display:none">
 			<li class="dropdown right" id="userData">
 				<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php $from = "room"; include '../php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include '../php/getUser.php';?></a>
@@ -102,15 +104,16 @@
 				<a href="../lobby" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 		</ul>
+
 		<div id="gameArea">
-		<div style="background-color:#dfdfdf">
-			<div id="playerContainer">
-				<canvas id="p1Color" width="15" height="15"></canvas><p id="p1" class=""></p>
-				<br>
-				<canvas id="p2Color" width="15" height="15"></canvas><p id="p2" class=""></p>
+			<div style="background-color:#dfdfdf">
+				<div id="playerContainer">
+					<canvas id="p1Color" width="15" height="15"></canvas><p id="p1" class=""></p>
+					<br>
+					<canvas id="p2Color" width="15" height="15"></canvas><p id="p2" class=""></p>
+				</div>
+				<div id="divThatUsedToCenterTurnDisplay"><canvas id="turnDisplay" width="55" height="55"></canvas></div>
 			</div>
-			<div id="divThatUsedToCenterTurnDisplay"><canvas id="turnDisplay" width="55" height="55"></canvas></div>
-		</div>
 			<br>
  			<canvas id="display" width="468" height="468"></canvas>
  		</div>

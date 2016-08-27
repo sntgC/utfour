@@ -19,7 +19,7 @@
 			} 
 			redirect();
 			adjustTheme();
-			
+
 			function hideLobbyUsrs(){
 				$("#playersLabel").toggle();
 				$("#players").toggle();
@@ -79,6 +79,10 @@
 			//Used to prevent spamming of the checkbox
 			var lastClicked=Date.now();
 			$(document).ready(function(){
+				$("#featuredGame").on("load",function(){
+					$("#featuredGame").contents().find("ul").hide();
+				});
+				$(".mainContent").css("width",$(window).width()-$(".leftContent").width());
 				$("#playerReady").on('change',function(){
 					if(Date.now()>lastClicked+3000){
 						lastClicked=Date.now();
@@ -150,6 +154,9 @@
 			</div>
 		</div>
 		<div class="mainContent">
+			<h1>Featured Game</h1>
+			<iframe id="featuredGame" src=""></iframe>
+			<h2 style="display:none">No currently active games :(</h2>
 		</div>
 	</body>
 </html>

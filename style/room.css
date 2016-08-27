@@ -1,6 +1,7 @@
 #gameArea {
     margin: auto;
     margin-top: 10vh;
+    margin-bottom: 55px;
 }
 
 #p1, #p2 {

@@ -1,8 +1,6 @@
-/* Color pallete temporary */
-
 html, body{
 	height:100%;
-	overflow:hidden;
+	overflow: hidden;
 }
 /*Rather than declaring a .blue for each element, I declare the classes once here for a base color, and then add a general overlay for each id,
 so for a blue ready switch, a base coat of blue is applied, and then darkened in the ready switch declaration*/
@@ -57,7 +55,7 @@ so for a blue ready switch, a base coat of blue is applied, and then darkened in
 	color: rgba(255,255,255,0.9);
 	background-color: rgba(28,28,28,0.45);
 	/*Temporary, but still better than previous fix*/
-	height: 50%;
+	height: 35%;
  	overflow-y:auto;
 }
 
@@ -72,7 +70,6 @@ so for a blue ready switch, a base coat of blue is applied, and then darkened in
 .mainContent {
 	margin-left:300px;
 	height:100%;
-	width:100%;
 	background:#cccccc;
  }
 
@@ -145,4 +142,19 @@ so for a blue ready switch, a base coat of blue is applied, and then darkened in
     -ms-user-select: none;
     user-select: none;
     cursor: pointer; 
+}
+
+.mainContent h1, h2 {
+	margin: auto;
+	text-align: center;
+}
+.mainContent h2 {
+	margin-top: 15px;
+}
+
+.mainContent #featuredGame {
+	margin: auto;
+	border: none;
+	width: 750px;
+	height: 750px;
 }
