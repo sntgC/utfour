@@ -43,7 +43,7 @@
 		$sql = "INSERT INTO games (id, consent) VALUES ('$_POST[fileName]', $_POST[consent])";
 	}
 	if ($connection->query($sql)===TRUE){
-		echo "Game created.";
+		echo "Game request sent to user.";
 	}else{
 		echo "Something seems to have gone wrong.";
 	}

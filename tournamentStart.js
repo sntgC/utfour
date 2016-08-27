@@ -83,7 +83,7 @@ function generatePrivateGame(){
 								'pointer':"WINNER",
 								'consent':0},
 								function(data){
-									if(data == "Game created."){
+									if(data == "Game request sent to user."){
 										$("#alert").removeClass("warningText").addClass("alertText");
 									}
 									else{
