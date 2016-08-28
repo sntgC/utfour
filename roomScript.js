@@ -43,13 +43,15 @@ function getPlayerID(){
 }
 
 function setWinner(oneOrTwo){
-	var p1="";
-	if(oneOrTwo==='1'){
-		p1=playerIDs[0];
-	}else{
-		p1=playerIDs[1];
+	if (board.gameWon()){
+		var p1="";
+		if(oneOrTwo==='1'){
+			p1=playerIDs[0];
+		}else{
+			p1=playerIDs[1];
+		}
+		jQuery.post('../php/setWinner.php',{'gameID':getRoomID(),'winID':p1,'pointerRoom':getPointerData()[1],'player':getPointerData()[0]},function(data){console.log(data)});
 	}
-	jQuery.post('../php/setWinner.php',{'gameID':getRoomID(),'winID':p1,'pointerRoom':getPointerData()[1],'player':getPointerData()[0]},function(data){console.log(data)});
 }
 
 function getPointerData(){
