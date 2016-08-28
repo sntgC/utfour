@@ -42,16 +42,6 @@ function getPlayerID(){
 	return getCookie("userID");
 }
 
-function setWinner(oneOrTwo){
-	var p1="";
-	if(oneOrTwo==='1'){
-		p1=playerIDs[0];
-	}else{
-		p1=playerIDs[1];
-	}
-	jQuery.post('../php/setWinner.php',{'gameID':getRoomID(),'winID':p1,'pointerRoom':getPointerData()[1],'player':getPointerData()[0]},function(data){console.log(data)});
-}
-
 function getPointerData(){
 	var loc=document.getElementById("pointer").innerHTML;
 	var pointer=loc.substring(loc.indexOf("id=")+"id=".length+1);
