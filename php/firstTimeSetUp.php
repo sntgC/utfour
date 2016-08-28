@@ -24,7 +24,7 @@
 				winnerID varchar(8) CHARACTER SET utf8 DEFAULT NULL,
 				consent boolean NOT NULL DEFAULT 0,
 				gameData varchar(1024) CHARACTER SET utf8 DEFAULT '19@@@@@@@@@@@@@@@@@@@@@@@@@@@',
-				lastPlayed timestamp NOT NULL,
+				lastPlayed timestamp NOT NULL DEFAULT '2016-04-20 14:57:30',
 				PRIMARY KEY (id)
 				) CHARACTER SET utf8; ";
 	$sql .="CREATE TABLE IF NOT EXISTS users(
