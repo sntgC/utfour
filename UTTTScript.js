@@ -10,30 +10,6 @@ var colorB="#ffff99";
 var p1ColorBox;
 var p2ColorBox;
 
-var boardEncode=function(){
-	
-	function setWinner(oneOrTwo){
-	var p1="";
-	if(oneOrTwo==='1'){
-		p1=playerIDs[0];
-	}else{
-		p1=playerIDs[1];
-	}
-	jQuery.post('../php/setWinner.php',{'gameID':getRoomID(),'winID':p1,'pointerRoom':getPointerData()[1],'player':getPointerData()[0]},function(data){console.log(data)});
-	}
-	
-	return function(){
-		var bulk=encodeBaseThree(this.toString(),'compress');
-		var turn=inRoundID==='1'? '2':'1';
-		this.noWinner=!this.gameWon();
-		this.draw();
-		if(!this.noWinner && inRoundID != "s"){
-			setWinner(board.winner);
-		}
-		return turn+this.onPlay+bulk;
-	}
-}
-
 class MiniGrid{
 	
 	constructor(x,y, scale){
@@ -155,7 +131,6 @@ class Grid {
 		this.posData=[x,y,scale];
 		this.noWinner=true;
 		this.winner='';
-		this.encode=boardEncode();
 		for(var gr=0;gr<3;gr++){
 			var tempGrid=[];
 			for(var gc=0;gc<3;gc++){
@@ -240,6 +215,14 @@ class Grid {
         return null;
 	}
 	
+	encode(){
+		console.log("ENCODING>>>");
+		var bulk=encodeBaseThree(this.toString(),'compress');
+		var turn=inRoundID==='1'? '2':'1';
+		this.noWinner=!this.gameWon();
+		this.draw();
+		return turn+this.onPlay+bulk;
+	}
 	
 	decode(encodedString){
 		this.onPlay=parseInt(encodedString.charAt(1));
@@ -252,6 +235,9 @@ class Grid {
 		}
 		this.noWinner=!this.gameWon();
 		this.draw();
+		if(!this.noWinner && inRoundID != "s"){
+			setWinner(board.winner);
+		}
 	}
 	
 	draw(){
