@@ -60,6 +60,9 @@ function getPointerData(){
 	if(pointer==="WINNER"){
 		retArray=["NONE","NONE"];
 		return retArray;
+	}else if(pointer=="SOLOWINNER"){
+		retArray=["NONE","SOLOWINNER"];
+		return retArray;
 	}
 	retArray.push(pointer.substring(0,2));
 	retArray.push(pointer.substring(6));

@@ -5,7 +5,8 @@
 	$database = "ut4serverdb";
 	$connect = new mysqli($server,$username,$password,$database) or die("Failed to connect to the server");
 	$sql = "UPDATE games SET winnerID = '$_POST[winID]' WHERE id='$_POST[gameID]'; ";
-	if($_POST['pointerRoom']!="NONE"){
+	echo $_POST['pointerRoom'];
+	if($_POST['pointerRoom']!="NONE" && $_POST['pointerRoom']!="SOLOWINNER"){
 		if($_POST['player']==="P1"){
 			$sql.="UPDATE games SET player1ID = '$_POST[winID]', player1Name = (SELECT username FROM users WHERE userID='$_POST[winID]') WHERE id='$_POST[pointerRoom]'; ";
 		}else{
@@ -13,7 +14,9 @@
 		}
 	}else{
 	}
-	$sql.="UPDATE users SET wins = wins+1 WHERE userID='$_POST[winID]'; ";
+	if($_POST['pointerRoom']!="SOLOWINNER"){
+		$sql.="UPDATE users SET wins = wins+1 WHERE userID='$_POST[winID]'; ";
+	}
 	$result = mysqli_multi_query($connect,$sql);
 	if (!$result){
 		die ("The SQL command was not processed correctly");

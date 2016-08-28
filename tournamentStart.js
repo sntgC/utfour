@@ -109,7 +109,7 @@ function generatePrivateGame(){
 								{'fileName':generateID(),
 								'player1ID':document.cookie.substring(document.cookie.indexOf("userID=") + 7,document.cookie.indexOf("userID=") + 14),
 								'player2ID':"(SELECT userID FROM users WHERE username='"+usernameIn+"')",
-								'pointer':"WINNER",
+								'pointer':"SOLOWINNER",
 								'consent':0},
 								function(data){
 									if(data == "Game request sent to user."){
