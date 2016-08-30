@@ -125,7 +125,6 @@
 				<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 				<div class="dropdown-content" id="accountSettings">
 					<a href="spectate" class="dropdownLink">Spectate</a>
-					<a href="howtoplay" class="dropdownLink">How to Play</a>
 					<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
 				</div>
 			</li>
@@ -154,8 +153,7 @@
 					<td class="input"><b><?php $emailOnly=""; $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b></td>
 				</tr>
 			</table>
-			<a href="changeEmail">Change my email address</a><br>
-			<a href="changePassword">Change my password</a><br>
+			<a href="matchHistory">View match history</a><br>
 			<a href="javascript: showThemeChanger();" id="changeThemeLink">Change theme color</a><br>
 			<form id="changeThemeForm" name="changeThemeForm" action="php/updateTheme.php" method="post" style="display:none">
 				<select name="colorSelector" id="colorSelector" class="blue">
@@ -169,6 +167,8 @@
 			<br id="changeThemeBr" style="display:none">
 			<a href="" id="upload_link" title="The selected image must be no larger than 500 kB">Change my profile picture</a><br>
 			<a href="php/resetUserImg.php" id="reset_link" title="This will reset your profile picture to the default user image">Reset my profile picture</a><br>
+			<a href="changeEmail">Change my email address</a><br>
+			<a href="changePassword">Change my password</a><br>
 			<a href="deleteAccount">Delete my account</a>
 			<form id="picForm" action="php/uploadUserImg.php" method="post" enctype="multipart/form-data">
 				<input id="fileToUpload" name="fileToUpload" type="file" accept="image/*" style="display:none;">

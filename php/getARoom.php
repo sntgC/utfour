@@ -38,7 +38,7 @@
 	
 	//$¢ Try something similar to an SQL injection
 	if($_POST['player1ID']!=""){
-		$sql = "INSERT INTO games (id, player1ID, player2ID, player1Name, player2Name, consent) VALUES ('$_POST[fileName]','$_POST[player1ID]',".$quotes."$_POST[player2ID]".$quotes.",(SELECT username FROM users WHERE userID='$_POST[player1ID]'),(SELECT username FROM users WHERE userID=".$quotes."$_POST[player2ID]".$quotes."), $_POST[consent])";
+		$sql = "INSERT INTO games (id, player1ID, player2ID, player1Name, player2Name, consent, creationDate) VALUES ('$_POST[fileName]','$_POST[player1ID]',".$quotes."$_POST[player2ID]".$quotes.",(SELECT username FROM users WHERE userID='$_POST[player1ID]'),(SELECT username FROM users WHERE userID=".$quotes."$_POST[player2ID]".$quotes."), $_POST[consent], now())";
 	}else{
 		$sql = "INSERT INTO games (id, consent) VALUES ('$_POST[fileName]', $_POST[consent])";
 	}

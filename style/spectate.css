@@ -87,3 +87,8 @@ table.red tr:nth-child(even):hover {
 tr:nth-child(even) {
     background-color: #EBEBEB;
 }
+
+/*Match history styling*/
+#gameHistoryTable td{
+    width: 25%;
+}

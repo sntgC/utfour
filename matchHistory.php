@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Delete My Account</title>
+		<title>Match History</title>
 		<meta charset="utf-8">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<link rel="stylesheet" type="text/css" href="style/header.css">
+        <!--Used for table formatting-->
+        <link rel="stylesheet" type="text/css" href="style/spectate.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
@@ -17,32 +19,43 @@
 			}
 			redirect();
 			adjustTheme();
-			
-			$(document).ready(function(){
-				$(window).keydown(function(event){
-					if(event.keyCode == 13){
-						event.preventDefault();
-						return false;
-					}
-				});
-				$("#submit").on('click',function(){
-					$.post($("#deleteForm").attr("action"),
-						   $("#deleteForm :input").serializeArray(),
-						   function(data){
-								if(data == "Account deletion successful"){
-									window.location.replace("index");
-								}
-								else if(data == "Authentication failed"){
-									window.location.replace("login");
-								}
-								else{
-									$("#alert").html(data);
-								}
-						   }
-					);
-					return false;
-				});
-			});
+
+            function getMatchHistory(){
+                $.ajax({
+                    url: "php/getCompletedGames.php",
+                    type: "GET",
+                    data: {userID : getCookie("userID")},
+                    success: function(data){
+                        if(data == "No matches found"){
+                            return;
+                        }
+                        var array = data.split(" ");
+                        console.log(array);
+                        var currentTableRow = 1;
+                        $("#noneFound").hide();
+                        $("#tableDiv").show();
+                        for (var i = 0; i < array.length-1; i+=4){
+                            var table = document.getElementById("gameHistoryTable");
+
+                            var opponent = array[i];
+                            var winner = array[i+1];
+                            var creationDate = array[i+2];
+                            var endDate = array[i+3];
+
+                            var row = table.insertRow(currentTableRow);
+                            var opponentCell = row.insertCell(0);
+                            var winnerCell = row.insertCell(1);
+                            var creationDateCell = row.insertCell(2);
+                            var endDateCell = row.insertCell(3);
+
+                            opponentCell.innerHTML = opponent;
+                            winnerCell.innerHTML = winner;
+                            creationDateCell.innerHTML = creationDate;
+                            endDateCell.innerHTML = endDate;
+                        }
+                    }
+                });
+            }
 
 			//Made this into an object with ids as keys in order to support multiple dropdown
 			var isOpen = {};
@@ -81,8 +94,17 @@
 					var width=Math.floor($("#userData").width());
 					document.getElementById("accountSettings").style.minWidth=width+"px";
 				},500);
-			};	
+			};
+
+            $(document).ready(function(){
+                getMatchHistory();
+            });
 		</script>
+        <style>
+            #noneFound {
+                text-align: center;
+            }
+        </style>
 	</head>
 	<body style="display:none">
 		<ul class="blue">
@@ -100,15 +122,17 @@
 				<a href="account" class="dropbtn title blue">My Account</a>
 			</li>
 		</ul>
-		<h1 class="formSectionTitle">Delete My Account</h1>
-		<div class="formSection blue">
-			<p id="alert" class="warningText"></p>
-			<p class="warningText">WARNING! By entering your password and clicking the delete button, you understand that all of your current progress will be destroyed and will be unrecoverable.</p>
-			<form id="deleteForm" action="php/deleteUser.php" method="post">
-				<label>Password</label><br>
-				<input class="blue" id="password" name="password" type="password"><br>
-				<input class="blue" id="submit" name="submit" type="submit" value="Delete Account"><br>
-			</form>
+
+        <h1 id="noneFound" class="formSectionTitle">No Completed Matches Found</h1>
+        <div id="tableDiv" style="display:none">
+			<table id="gameHistoryTable" class="blue">
+				<tr>
+					<th class="blue">Opponent</th>
+                    <th class="blue">Winner</th>
+					<th class="blue">Started</th>
+                    <th class="blue">Ended</th>
+				</tr>
+			</table>	
 		</div>
 	</body>
 </html>

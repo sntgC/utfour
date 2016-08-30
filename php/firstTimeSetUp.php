@@ -25,6 +25,7 @@
 				consent boolean NOT NULL DEFAULT 0,
 				gameData varchar(1024) CHARACTER SET utf8 DEFAULT '19@@@@@@@@@@@@@@@@@@@@@@@@@@@',
 				lastPlayed timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+				creationDate datetime DEFAULT NULL,
 				PRIMARY KEY (id)
 				) CHARACTER SET utf8; ";
 	$sql .="CREATE TABLE IF NOT EXISTS users(
