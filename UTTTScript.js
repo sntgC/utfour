@@ -10,6 +10,55 @@ var colorB="#ffff99";
 var p1ColorBox;
 var p2ColorBox;
 
+var safeDataSender = function () {
+
+	function sendData(dat, pos) {
+		if (isMyTurn && inRoundID != "s") {
+			/*The bigSquare the player clicked on:
+				0-A
+				1-B
+				2-C
+				3-D
+				4-E
+				5-F
+				6-G
+				7-H
+				8-I
+			*/
+			var conv=parseInt(pos[0]+""+pos[1],3);
+    		var encodedMove=String.fromCharCode(65+conv);
+			//Same concept as above 
+			conv=parseInt(pos[2]+""+pos[3],3)
+			encodedMove+=String.fromCharCode(65+conv);
+			//Each move is sent to the server as 2 characters
+			jQuery.post("../php/setData.php", {
+				'gData' : dat,
+				'gameID' : getRoomID(),
+				'moveChar' : encodedMove
+			}, function () {
+				gameData = dat;
+				//Redraw & Logic
+				gameDataSent = true;
+				isMyTurn = false;
+			});
+		}
+	}
+	return function(evt) {
+			if(isMyTurn){
+				var rect = c.getBoundingClientRect();
+				var x=evt.clientX-rect.left;
+				var y=evt.clientY-rect.top;
+				//console.log(x+","+y);
+				var coords=board.getCoords(x,y);
+				if(coords!=null){
+					if(board.noWinner&&board.setCell(coords,inRoundID)){
+						sendData(board.encode(), coords);	
+					}
+				}
+			}
+		}
+}
+
 class MiniGrid{
 	
 	constructor(x,y, scale){
@@ -216,7 +265,6 @@ class Grid {
 	}
 	
 	encode(){
-		console.log("ENCODING>>>");
 		var bulk=encodeBaseThree(this.toString(),'compress');
 		var turn=inRoundID==='1'? '2':'1';
 		this.noWinner=!this.gameWon();
@@ -371,19 +419,6 @@ $(document).ready(function(){
 
 function loadMouseListener (){
 	if(inRoundID == "1" || inRoundID == "2"){
-		c.addEventListener('click', function(evt) {
-			if(isMyTurn){
-				var rect = c.getBoundingClientRect();
-				var x=evt.clientX-rect.left;
-				var y=evt.clientY-rect.top;
-				//console.log(x+","+y);
-				var coords=board.getCoords(x,y);
-				if(coords!=null){
-					if(board.noWinner&&board.setCell(coords,inRoundID)){
-						sendData(board.encode());	
-					}
-				}
-			}
-		}, false);
+		c.addEventListener('click',safeDataSender() , false);
 	}
 }

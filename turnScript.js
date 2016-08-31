@@ -33,16 +33,6 @@ dataSource.onmessage = function(e) {
 	}
  };
 
- function sendData(dat){
-	 if(isMyTurn && inRoundID != "s"){
-		jQuery.post("../php/setData.php",{'gData':dat,'gameID':getRoomID()},function(){
-			gameData=dat;
-			//Redraw & Logic
-			gameDataSent=true;
-			isMyTurn=false;
-		});
-	 }
- }
 
  function turnDraw(playLocation){
 	 miniCtx.fillStyle="#ababab";

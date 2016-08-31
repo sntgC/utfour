@@ -23,7 +23,8 @@
 				player2Name varchar(20) CHARACTER SET utf8 DEFAULT NULL,
 				winnerID varchar(8) CHARACTER SET utf8 DEFAULT NULL,
 				consent boolean NOT NULL DEFAULT 0,
-				gameData varchar(1024) CHARACTER SET utf8 DEFAULT '19@@@@@@@@@@@@@@@@@@@@@@@@@@@',
+				gameData varchar(29) CHARACTER SET utf8 DEFAULT '19@@@@@@@@@@@@@@@@@@@@@@@@@@@',
+				gameHistory varchar(162) CHARACTER SET utf8 DEFAULT NULL,
 				lastPlayed timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 				creationDate datetime DEFAULT NULL,
 				PRIMARY KEY (id)
