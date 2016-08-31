@@ -131,6 +131,7 @@
                     <th class="blue">Winner</th>
 					<th class="blue">Started</th>
                     <th class="blue">Ended</th>
+					<th class="blue">Replay</th>
 				</tr>
 			</table>	
 		</div>
