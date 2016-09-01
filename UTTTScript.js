@@ -59,6 +59,42 @@ var safeDataSender = function () {
 		}
 }
 
+var replayFunctionality=function(){
+	function resetBoard(board){
+		board.grid=[];
+		board.onPlay=9;
+		var xIndex=0;
+		var yIndex=0;
+		board.noWinner = true;
+		board.winner = '';
+		for (var gr = 0; gr < 3; gr++) {
+			var tempGrid = [];
+			for (var gc = 0; gc < 3; gc++) {
+				tempGrid.push(new MiniGrid(xIndex, yIndex, board.posData[2] / 39));
+				xIndex += board.posData[2] / 39 * 14;
+			}
+			board.grid.push(tempGrid);
+			xIndex = 0;
+			yIndex += board.posData[2] / 39 * 14;
+		}
+	}
+	return function(gameHistoryString, turn){
+		//gameHistoryString - An unmodified gameHistory String from the database
+		//turn - The turn at which you wish to render the board, begins counting at 1
+		resetBoard(this);
+		var p1Turn=true;
+		for(i=0;i<turn;i++){
+			var bigBoard=gameHistoryString.charCodeAt(i*2)-65;
+			var lilBoard=gameHistoryString.charCodeAt(i*2+1)-65;
+			console.log(bigBoard+" "+lilBoard);
+            this.setCell([Math.floor(bigBoard/3),bigBoard%3,Math.floor(lilBoard/3),lilBoard%3], p1Turn? '1':'2');
+			p1Turn=!p1Turn;
+		}
+		console.log(this.encode());
+		this.draw();
+	}
+}
+
 class MiniGrid{
 	
 	constructor(x,y, scale){
@@ -179,6 +215,7 @@ class Grid {
 		var yIndex=y;
 		this.posData=[x,y,scale];
 		this.noWinner=true;
+		this.convertGameHistoryStringIntoThePositionOfTheBoardAtTheSpecifiedTurn=replayFunctionality();
 		this.winner='';
 		for(var gr=0;gr<3;gr++){
 			var tempGrid=[];
