@@ -53,3 +53,10 @@
     color: darkblue;
     text-decoration: none;
 }
+
+#replayInfo {
+    font-size: 16px;
+    margin: auto;
+    margin-bottom: 12px;
+    text-align: center;
+}

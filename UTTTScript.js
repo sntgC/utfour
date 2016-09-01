@@ -61,12 +61,15 @@ var safeDataSender = function () {
 
 var replayFunctionality=function(){
 	function resetBoard(board){
+		var height = board.posData[2];
 		board.grid=[];
 		board.onPlay=9;
 		var xIndex=0;
 		var yIndex=0;
 		board.noWinner = true;
 		board.winner = '';
+		ctx.fillStyle = "#FFFFFF";
+		ctx.fillRect(0,0,height,height);
 		for (var gr = 0; gr < 3; gr++) {
 			var tempGrid = [];
 			for (var gc = 0; gc < 3; gc++) {
@@ -86,7 +89,6 @@ var replayFunctionality=function(){
 		for(i=0;i<turn;i++){
 			var bigBoard=gameHistoryString.charCodeAt(i*2)-65;
 			var lilBoard=gameHistoryString.charCodeAt(i*2+1)-65;
-			console.log(bigBoard+" "+lilBoard);
             this.setCell([Math.floor(bigBoard/3),bigBoard%3,Math.floor(lilBoard/3),lilBoard%3], p1Turn? '1':'2');
 			p1Turn=!p1Turn;
 		}
