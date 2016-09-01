@@ -90,7 +90,6 @@ var replayFunctionality=function(){
             this.setCell([Math.floor(bigBoard/3),bigBoard%3,Math.floor(lilBoard/3),lilBoard%3], p1Turn? '1':'2');
 			p1Turn=!p1Turn;
 		}
-		console.log(this.encode());
 		this.draw();
 	}
 }

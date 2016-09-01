@@ -91,6 +91,13 @@
 					document.getElementById("accountSettings").style.minWidth=width+"px";
 				},500);
 			};
+
+			$(document).ready(function(){
+				if($("#noGamme").attr("style") != "display:none"){
+					var data = $("body").attr("id");
+					board.convertGameHistoryStringIntoThePositionOfTheBoardAtTheSpecifiedTurn(data,1);
+				}
+			});
 		</script>
 		<style>
 			#noGame {
@@ -123,6 +130,17 @@
 		</ul>
 
 		<h1 id="noGame" style="<?php echo $messageDisplay; ?>" class="formSectionTitle">No Such Game Exists</h1>
-        <canvas id="display" width="468" height="468" style="<?php echo $gameDisplay; ?>"></canvas>
+		<div id="gameArea">
+			<div style="background-color:#dfdfdf">
+				<div id="playerContainer">
+					<canvas id="p1Color" width="15" height="15"></canvas><p id="p1" class=""></p>
+					<br>
+					<canvas id="p2Color" width="15" height="15"></canvas><p id="p2" class=""></p>
+				</div>
+				<div id="divThatUsedToCenterTurnDisplay"><canvas id="turnDisplay" width="55" height="55"></canvas></div>
+			</div>
+			<br>
+ 			<canvas id="display" width="468" height="468"></canvas>
+ 		</div>
     </body>
 </html>
