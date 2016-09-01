@@ -88,10 +88,6 @@
 					document.getElementById("accountSettings").style.minWidth=width+"px";
 				},500);
 			};
-
-			$(document).ready(function(){
-				$("#test").html($("body").attr("id"));
-			});
 		</script>
 		<style>
 			#noGame {
