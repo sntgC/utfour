@@ -35,3 +35,21 @@
 	float:right;
 	height:55px;
 }
+
+/*Used for styling the replay controls*/
+#previousMove {
+    float: left;
+}
+#nextMove {
+    float: right;
+}
+#nextMove, #previousMove {
+    color: blue;
+    margin: auto;
+    margin-top: 10px;
+    cursor: pointer;
+}
+#nextMove:hover, #previousMove:hover {
+    color: darkblue;
+    text-decoration: none;
+}

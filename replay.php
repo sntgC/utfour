@@ -12,18 +12,20 @@
 	$connection=mysqli_connect($server,$username,$password) or die("Failed to connect to the server");
 	mysqli_select_db($connection,$database) or die("Failed to connect to the database");
 
-    $sql = "SELECT gameHistory FROM games WHERE id='$gameID'";
+    $sql = "SELECT id, gameHistory FROM games WHERE id='$gameID' AND winnerID IS NOT NULL AND gameHistory IS NOT NULL";
     $results = $connection->query($sql);
 
 	$messageDisplay = "display:none";
 	$gameDisplay = "display:none";
 	$replayText = "";
+	$id = "";
 	if (mysqli_num_rows($results) == 0){
 		$messageDisplay = "display:block";
 	}
 	else if (mysqli_num_rows($results) == 1){
 		$row = $results->fetch_assoc();
 		$replayText = $row["gameHistory"];
+		$id = $row["id"];
 		$gameDisplay = "display:block";
 	}
 
@@ -37,8 +39,10 @@
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 		<link rel="stylesheet" type="text/css" href="style/header.css">
+		<link rel="stylesheet" type="text/css" href="style/room.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="replayScript.js"></script>
 		<script type="text/javascript" src="UTTTScript.js"></script>
 		<script type="text/javascript">
 			authenticateUser();
@@ -52,6 +56,23 @@
 			}
 			adjustNav();
 			adjustTheme();
+
+			var currentMove = 0;
+			function previousMove (){
+				var replayData = document.getElementById("replayData").innerHTML;
+				if(currentMove != 0){
+					board.convertGameHistoryStringIntoThePositionOfTheBoardAtTheSpecifiedTurn(replayData, currentMove - 1);
+					currentMove--;
+				}
+			}
+			function nextMove (){
+				var replayData = document.getElementById("replayData").innerHTML;
+				var totalMoves = replayData.length / 2;
+				if(currentMove != totalMoves){
+					board.convertGameHistoryStringIntoThePositionOfTheBoardAtTheSpecifiedTurn(replayData, currentMove + 1);
+					currentMove++;
+				}
+			}
 
 			//Made this into an object with ids as keys in order to support multiple dropdown
 			var isOpen = {};
@@ -91,13 +112,6 @@
 					document.getElementById("accountSettings").style.minWidth=width+"px";
 				},500);
 			};
-
-			$(document).ready(function(){
-				if($("#noGamme").attr("style") != "display:none"){
-					var data = $("body").attr("id");
-					board.convertGameHistoryStringIntoThePositionOfTheBoardAtTheSpecifiedTurn(data,1);
-				}
-			});
 		</script>
 		<style>
 			#noGame {
@@ -105,7 +119,11 @@
 			}
 		</style>
     </head>
-    <body id="<?php echo $replayText; ?>">
+    <body>
+		<!--HTML elements used to store data-->
+		<div id="replayData" style="display:none"><?php echo $replayText; ?></div>
+		<div id="gameID" style="display:none"><?php echo $id; ?></div>
+
 		<ul class="blue" id="parentNav1">
 			<li class="dropdown left">
 				<a href="index" class="dropbtn title blue">UT<sup>4</sup></a>
@@ -130,7 +148,7 @@
 		</ul>
 
 		<h1 id="noGame" style="<?php echo $messageDisplay; ?>" class="formSectionTitle">No Such Game Exists</h1>
-		<div id="gameArea">
+		<div id="gameArea" style="<?php echo $gameDisplay; ?>">
 			<div style="background-color:#dfdfdf">
 				<div id="playerContainer">
 					<canvas id="p1Color" width="15" height="15"></canvas><p id="p1" class=""></p>
@@ -141,6 +159,8 @@
 			</div>
 			<br>
  			<canvas id="display" width="468" height="468"></canvas>
+			<a id="previousMove" href="javascript:previousMove();">Previous Move</a>
+			<a id="nextMove" href="javascript:nextMove();">Next Move</a>
  		</div>
     </body>
 </html>

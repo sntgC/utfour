@@ -420,6 +420,82 @@ function setColors(){
 	});
 }
 
+function setReplayColors(){
+	var player1 = playerIDs[0];
+	var player2 = playerIDs[1];
+	$.ajax({
+		type: 'POST',
+		url: "php/getGameColors.php",
+		data: {"player1":player1,"player2":player2},
+		success: function(data){
+			var array = JSON.parse(data);
+			var value1 = array[0];
+			var value2 = array[1];
+			if (value1 == value2){
+				switch(value1){
+					case "blue":
+						colorA = "#5c5c8a";
+						colorB = "#7676E3";
+						break;
+					case "green":
+						colorA = "#41B56C";
+						colorB = "#146E35";
+						break;
+					case "orange":
+						colorA = "#DE9A57";
+						colorB = "#FA9837";
+						break;
+					case "red":
+						colorA = "#E8517C";
+						colorB = "#AD1F48";
+				}
+			}
+			else{
+				switch(value1){
+					case "blue":
+						colorA = "#5c5c8a";
+						break;
+					case "green":
+						colorA = "#41B56C";
+						break;
+					case "orange":
+						colorA = "#DE9A57";
+						break;
+					case "red":
+						colorA = "#E8517C";
+				}
+				switch(value2){
+					case "blue":
+						colorB = "#5c5c8a";
+						break;
+					case "green":
+						colorB = "#41B56C";
+						break;
+					case "orange":
+						colorB = "#DE9A57";
+						break;
+					case "red":
+						colorB = "#E8517C";
+				}
+			}
+			//Will call board.draw() once the AJAX call has completed rather than have the AJAX call be synchronous
+			board.draw();
+			//Sets the colors of the player boxes and names
+			$("#p1").attr("style","color:"+colorA+";");
+			$("#p2").attr("style","color:"+colorB+";");
+			p1C = document.getElementById("p1Color");
+			p2C = document.getElementById("p2Color");
+			p1ColorBox = p1C.getContext("2d");
+			p2ColorBox = p2C.getContext("2d");
+			p1ColorBox.fillStyle = colorA;
+			p2ColorBox.fillStyle = colorB;
+
+			p1ColorBox.fillRect(0,0,15,15);
+			p2ColorBox.fillRect(0,0,15,15);
+		}
+	});
+}
+
 function encodeBaseThree(fullString, direction){
     //Takes in a string and shortens it by dividing it into groups of three, and assigning a value to each of those groups
 	var ret="";
