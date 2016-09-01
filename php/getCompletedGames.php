@@ -9,7 +9,7 @@
 
     $userID = $_GET["userID"];
 
-    $sql = "SELECT player1ID, player1Name, player2ID, player2Name, winnerID, lastPlayed, creationDate FROM games WHERE (player1ID='$userID' OR player2ID='$userID') AND winnerID IS NOT NULL";
+    $sql = "SELECT id, player1ID, player1Name, player2ID, player2Name, winnerID, lastPlayed, creationDate FROM games WHERE (player1ID='$userID' OR player2ID='$userID') AND winnerID IS NOT NULL";
     $results = $connection->query($sql);
     
     if(mysqli_num_rows($results) == 0){
@@ -47,10 +47,11 @@
             $winner = $opponent;
         }
 
+        $id = $row["id"];
         $creationDate = $row["creationDate"];
         $endDate = $row["lastPlayed"];
 
-        echo $opponent . " " . $winner . " " . substr($creationDate,0,10) . " " . substr($endDate,0,10) . " ";
+        echo $opponent . " " . $winner . " " . substr($creationDate,0,10) . " " . substr($endDate,0,10) . " " . $id . " ";
     }
 
     $connection->close();

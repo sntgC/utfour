@@ -34,24 +34,27 @@
                         var currentTableRow = 1;
                         $("#noneFound").hide();
                         $("#tableDiv").show();
-                        for (var i = 0; i < array.length-1; i+=4){
+                        for (var i = 0; i < array.length-1; i+=5){
                             var table = document.getElementById("gameHistoryTable");
 
                             var opponent = array[i];
                             var winner = array[i+1];
                             var creationDate = array[i+2];
                             var endDate = array[i+3];
+							var id = array[i+4];
 
                             var row = table.insertRow(currentTableRow);
                             var opponentCell = row.insertCell(0);
                             var winnerCell = row.insertCell(1);
                             var creationDateCell = row.insertCell(2);
                             var endDateCell = row.insertCell(3);
+							var replayLinkCell = row.insertCell(4);
 
                             opponentCell.innerHTML = opponent;
                             winnerCell.innerHTML = winner;
                             creationDateCell.innerHTML = creationDate;
                             endDateCell.innerHTML = endDate;
+							replayLinkCell.innerHTML = "<a href='replay?gameID=" + id + "'>" + id + "</a>"; 
                         }
                     }
                 });
