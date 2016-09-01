@@ -1,4 +1,7 @@
 <?php
+	if(!isset($_GET["gameID"])){
+		header("Location: index");
+	}
     $gameID = $_GET["gameID"];
 
     $server="localhost";
