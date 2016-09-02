@@ -113,6 +113,17 @@
 					document.getElementById("accountSettings").style.minWidth=width+"px";
 				},500);
 			};
+
+			$(document).ready(function(){
+				$(window).keydown(function(e){
+					if(e.keyCode == 37) {
+						previousMove();
+					}
+					else if(e.keyCode == 39) {
+						nextMove();
+					}
+				});
+			});
 		</script>
 		<style>
 			#noGame {
@@ -150,6 +161,7 @@
 
 		<h1 id="noGame" style="<?php echo $messageDisplay; ?>" class="formSectionTitle">No Such Game Exists</h1>
 		<div id="gameArea" style="<?php echo $gameDisplay; ?>">
+			<p id="replayInfo"><i>Use the left and right arrow keys to cycle through the game moves, or manually click on the links below.</i></p>
 			<div style="background-color:#dfdfdf">
 				<div id="playerContainer">
 					<canvas id="p1Color" width="15" height="15"></canvas><p id="p1" class=""></p>
@@ -160,8 +172,8 @@
 			</div>
 			<br>
  			<canvas id="display" width="468" height="468"></canvas>
-			<a id="previousMove" href="javascript:previousMove();">Previous Move</a>
-			<a id="nextMove" href="javascript:nextMove();">Next Move</a>
+			<span id="previousMove" onclick="javascript:previousMove();" class="noclick">Previous Move</span>
+			<span id="nextMove" onclick="javascript:nextMove();" class="noclick">Next Move</span>
  		</div>
     </body>
 </html>
