@@ -107,24 +107,25 @@ input[type=text].red, input[type=password].red {
 	outline: none;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-	border-top:none;
-}
-/*input[type=text]:focus.blue, input[type=password]:focus.blue {
-	border: 2px solid #5c5c8a;
+input[type=text]:focus.blue, input[type=password]:focus.blue {
+	border-left: 2px solid #5c5c8a;
+	border-bottom-color: #5c5c8a;
 }
 
 input[type=text]:focus.green, input[type=password]:focus.green {
-	border: 2px solid #41B56C;
+	border-left: 2px solid #41B56C;
+	border-bottom-color: #41B56C;
 }
 
 input[type=text]:focus.orange, input[type=password]:focus.orange {
-	border: 2px solid #DE9A57;
+	border-left: 2px solid #DE9A57;
+	border-bottom-color: #DE9A57;
 }
 
 input[type=text]:focus.red, input[type=password]:focus.red {
-	border: 2px solid #E8517C;
-}*/
+	border-left: 2px solid #E8517C;
+	border-bottom-color: #E8517C;
+}
 
 input[type=submit].blue{
 	margin-top: 10px;
