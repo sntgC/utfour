@@ -124,7 +124,13 @@ so for a blue ready switch, a base coat of blue is applied, and then darkened in
 }
 
 #requestedUsername:focus {
-	border: 2px solid black;
+	border:none;
+	border-bottom:5px solid white;
+	font-size:14px;
+}
+
+#requestedUsername{
+	color:white;
 }
 
 #alert{
