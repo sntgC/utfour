@@ -8,21 +8,9 @@ body{
     background: #ccdfcb;
 }
 
-.center-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top:0;
-    bottom: 0;
-    flex-grow: 1;
-}
-
 a:link, a:visited{
 	display: inline-block;
 	text-decoration: none;
-	color:#0000FF;
 }
 
 a:hover, a:active{

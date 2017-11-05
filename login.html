@@ -3,9 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Login</title>
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link rel="stylesheet" type="text/css" href="style/header.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="style/utfour.css">
+		<link rel="stylesheet" type="text/css" href="style/form.css">
 		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
@@ -37,26 +39,30 @@
 		</script>
 	</head>
 	<body>
-		<ul class="blue">
+		<ul class="header">
 			<li class="dropdown left">
 				<a href="index" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 		</ul>
-		<h1 class="formSectionTitle">Login</h1>
-		<div class="formSection blue">
-			<p id="alert" class="warningText"></p>
-			<form id="loginForm" action="php/loginUser.php" method="post">
-				<label>Username</label><br>
-				<input class="blue" type="text" name="usernameIn" id="username"><br>
-				<label>Password</label><br>
-				<input class="blue" type="password" name="passwordIn" id="password"><br>
-				<input type="checkbox" name="staySignedIn" id="staySigned">Remember Me<br>
-				<input class="blue" id="submit" type="submit" value="Login">
-			</form>
-			<br>
-			<a href="forgotUsername">Forgot username</a><br>
-			<a href="forgotPassword">Forgot password</a><br>
-			Don't have an account? <a href="register">Register</a>
-		</div>
+        <div class="center-container">
+            <div class="form-container">
+                <h1 class="form-title">Login</h1>
+                <p id="alert"></p>
+                <form id="loginForm" action="php/loginUser.php" method="post">
+                    <label class="form-label">Username</label><br>
+                    <input class="blue form-text-field" type="text" name="usernameIn" id="username"><br>
+                    <label class="form-label">Password</label><br>
+                    <input class="blue form-text-field" type="password" name="passwordIn" id="password"><br>
+                    <div class="checkbox-group"><input type="checkbox" name="staySignedIn" id="staySigned"><span> Remember Me</span></div>
+                    <input class="submit" id="submit" type="submit" value="Login">
+                </form>
+                <br>
+                <p class="form-info">
+                    <a href="forgotUsername">Forgot username</a><br>
+                    <a href="forgotPassword">Forgot password</a><br>
+                    Don't have an account? <a href="register">Register</a>
+                </p>
+            </div>
+        </div>
 	</body>
 </html>

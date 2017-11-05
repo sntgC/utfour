@@ -1,4 +1,4 @@
-h3{
+h3, h1{
     font-family: "Pacifico" , cursive;
     color: #e24e42;
 }
@@ -6,12 +6,28 @@ h3{
     font-size:50px;
 }
 
+a{
+    text-decoration: none;
+}
+
 body{
     background: #f1f0eb;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     background-image:url(../images/xoPattern.png);
     margin: 0;
+}
+
+.center-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top:0;
+    bottom: 0;
+    flex-grow: 1;
 }
 
 #indexMenu a{
@@ -41,6 +57,7 @@ body{
 
 .dropbtn{
     font-family: "Pacifico";
+    color:white;
 }
 
 .dropbtn:hover{
