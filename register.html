@@ -3,48 +3,57 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Registration</title>
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link rel="stylesheet" type="text/css" href="style/header.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="style/utfour.css">
+		<link rel="stylesheet" type="text/css" href="style/form.css">
 		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript" src="register.js"></script>
 	</head>
 	<body onload="init()">
-		<ul class="blue">
+		<ul class="header">
 			<li class="dropdown left">
 				<a href="index" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 		</ul>
-		<h1 class="formSectionTitle">Registration</h1>
-		<div class="formSection blue">
-			<p id="alert" class="warningText"></p>
-			<p>Please hover your mouse over the input boxes for the requirements regarding that field.</p>
-			<form id="registrationForm" onsubmit="return verifyForm()" action="php/registerUser.php" method="post" name="registrationForm">
-				<label>Username</label><br>
-				<input class="shortInput blue" type="text" id="username" name="usernameIn" oninput="checkUsername(this.value)" title="Your username must be 6 to 20 characters in length and must not already be in use.">
-				<img src="images/green_checkmark.png" alt="Username available"  title="Username available" width="25" height="25" id="checkmarkUsr" class="smallImg">
-				<img src="images/red_x.png" alt="Username unavailable"  title="Username unavailable" width="25" height="25" id="xUsr" class="smallImg"><br>
-				<p id="usernameNotif" class="warningText"></p>
-				<label>Email Address</label><br>
-				<input class="shortInput blue" id="email" type="text" name="emailIn" oninput="checkEmail(this.value)" title="Please enter a valid email address that is no more than 100 characters in length and is not already in use.">
-				<img src="images/green_checkmark.png" alt="Email available"  title="Email available" width="25" height="25" id="checkmarkEmail" class="smallImg">
-				<img src="images/red_x.png" alt="Email unavailable"  title="Email unavailable" width="25" height="25" id="xEmail" class="smallImg"><br>
-				<p id="emailNotif" class="warningText"></p>
-				<label>Email Address Confirmation</label><br>
-				<input class="blue" id="emailConf" type="text" name="emailInConf" title="Please re-enter your email address."><br>
-				<p id="emailConfNotif" class="warningText"></p>
-				<label>Password</label><br>
-				<input class="blue" type="password" name="passwordIn" id="password" title="Your password must be 6 to 20 characters in length."><br>
-				<p id="passwordNotif" class="warningText"></p>
-				<label>Password Confirmation</label><br>
-				<input class="blue" type="password" name="passwordInConf" id="passwordConf" title="Please re-enter your password."><br>
-				<p id="passwordConfNotif" class="warningText"></p>
-				<input class="blue" id="submit" type="submit" value="Register">
-			</form>
-			<br>
-			Already have an account? <a href="login">Login</a>
-		</div>
+        <div class="center-container">
+            <div class="form-container">
+                <h1 class="form-title red-bgd">Registration</h1>
+                <div>
+                    <p id="alert" class="warningText"></p>
+                    <p class="form-info">Please hover your mouse over the input boxes for the requirements regarding that field.</p>
+                    <form id="registrationForm" onsubmit="return verifyForm()" action="php/registerUser.php" method="post" name="registrationForm">
+                        <label class="form-label red-txt">Username</label><br>
+                        <input class="shortInput form-text-field" type="text" id="username" name="usernameIn" oninput="checkUsername(this.value)" title="Your username must be 6 to 20 characters in length and must not already be in use.">
+                        <span id="checkmarkUsr"><i class="material-icons green-txt">check</i></span>
+                        <span id="xUsr"><i class="material-icons red-txt">close</i></span>
+                        <br>
+                        <p id="usernameNotif" class="warningText"></p>
+                        <label class="form-label red-txt">Email Address</label><br>
+                        <input class="shortInput form-text-field" id="email" type="text" name="emailIn" oninput="checkEmail(this.value)" title="Please enter a valid email address that is no more than 100 characters in length and is not already in use.">
+                        <span id="checkmarkEmail"><i class="material-icons green-txt">check</i></span>
+                        <span id="xEmail"><i class="material-icons red-txt">close</i></span>
+                        <br>
+                        <p id="emailNotif" class="warningText"></p>
+                        <label class="form-label red-txt">Email Address Confirmation</label><br>
+                        <input class="form-text-field" id="emailConf" type="text" name="emailInConf" title="Please re-enter your email address."><br>
+                        <p id="emailConfNotif" class="warningText"></p>
+                        <label class="form-label red-txt">Password</label><br>
+                        <input class="form-text-field" type="password" name="passwordIn" id="password" title="Your password must be 6 to 20 characters in length."><br>
+                        <p id="passwordNotif" class="warningText"></p>
+                        <label class="form-label red-txt">Password Confirmation</label><br>
+                        <input class="form-text-field" type="password" name="passwordInConf" id="passwordConf" title="Please re-enter your password."><br>
+                        <p id="passwordConfNotif" class="warningText"></p>
+                        <input class="submit red-bgd" id="submit" type="submit" value="Register">
+                    </form>
+                    <br>
+                    <p class="form-info">Already have an account? <a href="login">Login</a></p>
+                </div>
+            </div>
+        </div>    
 	</body>
 </html>

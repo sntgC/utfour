@@ -1,3 +1,15 @@
+.red-txt{
+    color:#e24e42 !important;
+}
+
+.red-bgd{
+    background: #e24e42 !important;
+}
+
+.green-txt{
+    color:#4caf50;
+}
+
 h3, h1{
     font-family: "Pacifico" , cursive;
     color: #e24e42;
