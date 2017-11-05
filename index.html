@@ -5,8 +5,10 @@
 		<meta charset="utf-8">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link rel="stylesheet" type="text/css" href="style/header.css">
+		<link rel="stylesheet" type="text/css" href="style/utfour.css">
+        <link rel="stylesheet" type="text/css" href="style/index.css">
 		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
@@ -24,18 +26,21 @@
 		</script>
 	</head>
 	<body>
-		<ul class="blue">
+		<ul class="header">
 			<li class="dropdown left">
 				<a class="dropbtn noclick title">UT<sup>4</sup></a>
 			</li>
 		</ul>
-		<h3 id="indexTitle">Welcome to Ultimate Tic-Tac-Toe Tournament (UT<sup>4</sup>)!</h3>
-		<p id="indexAlert">JavaScript is disabled on your web browser. Please refer to this <a href="http://enable-javascript.com/">website</a> for assistance.</p>
-		<div id="indexMenu">
-			<a href="login">Login</a><br>
-			<a href="register">Register</a><br>
-			<a href="spectate">Spectate</a><br>
-			<a href="howtoplay">How to Play</a>
-		</div>
+        <div class="center-container">
+            <h3 id="indexTitle">Ultimate Tic-Tac-Toe Tournament (UT<sup>4</sup>)</h3>
+            <p id="indexAlert">JavaScript is disabled on your web browser. Please refer to this <a href="http://enable-javascript.com/">website</a> for assistance.</p>
+            <div id="indexMenu">
+                <a href="login" class="index-button">Login</a>
+                <a href="register" class="index-button">Register</a>
+                <a href="spectate" class="index-button">Spectate</a>
+                <a href="howtoplay" class="index-button">How to Play</a>
+            </div>
+        </div>
+        <div class="corner-div"></div>
 	</body>
 </html>

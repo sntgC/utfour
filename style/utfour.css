@@ -1,0 +1,50 @@
+h3{
+    font-family: "Pacifico" , cursive;
+    color: #e24e42;
+}
+#indexTitle{
+    font-size:50px;
+}
+
+body{
+    background: #f1f0eb;
+    display: flex;
+    flex-direction: column;
+    background-image:url(../images/xoPattern.png);
+    margin: 0;
+}
+
+#indexMenu a{
+    color: white;
+    font-family: "Pacifico";
+}
+
+#indexMenu a:hover{
+    color: white;
+    box-shadow: inset 0 0 18px #000000;
+}
+
+.index-button{
+    border: 4px solid #f13c20;
+    color:white;
+    background:#f13c20;
+}
+
+.header{
+    margin:0;
+    background-color: #4056a1;
+    padding: 15px 10px;
+    color:white;
+    font-size: 115%;
+    box-shadow: 0 -1px 24px rgba(0,0,0,0.4);
+}
+
+.dropbtn{
+    font-family: "Pacifico";
+}
+
+.dropbtn:hover{
+    color:white;
+    text-decoration: none;
+    cursor: pointer;
+}
