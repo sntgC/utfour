@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Pacifico";
+    src: url("../font/Pacifico-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("../font/Raleway-Regular.ttf");
+}
+
 .red-txt{
     color:#e24e42 !important;
 }
