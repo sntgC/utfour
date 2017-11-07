@@ -3,10 +3,9 @@
 	<head>
 		<title>Spectate</title>
 		<meta charset="utf-8">
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link rel="stylesheet" type="text/css" href="style/header.css">
-		<link rel="stylesheet" type="text/css" href="style/spectate.css">
+		<link rel="stylesheet" type="text/css" href="style/utfour.css">
+		<link rel="stylesheet" type="text/css" href="style/form.css">
+		<link rel="stylesheet" type="text/css" href="style/table.css">
 		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
@@ -111,13 +110,13 @@
 		</script>
 	</head>
 	<body>
-        <ul class="blue" id="parentNav1">
+        <ul class="header" id="parentNav1">
 			<li class="dropdown left">
 				<a href="index" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 		</ul>
 
-        <ul class="blue" id="parentNav2" style="display:none">
+        <ul class="header" id="parentNav2" style="display:none">
 			<li class="dropdown right" id="userData">
 				<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 				<div class="dropdown-content" id="accountSettings">
@@ -129,25 +128,29 @@
 				<a href="lobby" class="dropbtn title blue">UT<sup>4</sup></a>
 			</li>
 		</ul>
-
-		<h1 class="formSectionTitle">Spectate Game</h1>
-		<div class="formSection blue" id="formDiv">
-			<p id="alert" class="warningText"></p>
-			<form id="spectateForm">
-				<label for="usernameIn">Player Name</label>
-				<input type="text" name="username" id="usernameIn" class="blue">
-				<input type="submit" id="submit" value="Search" class="blue">
-			</form>
-		</div>
-
-		<a href="javascript: showSearch();" id="return" style="display:none">Return to Search</a>
-		<div id="tableDiv" style="display:none;">
-			<table id="gameListTable" class="blue">
-				<tr>
-					<th class="blue">Opponent</th>
-					<th class="blue">Link</th>
-				</tr>
-			</table>	
-		</div>
+        <div class="center-container">
+            <div class="form-container">
+                <h1 class="form-title">Spectate Game</h1>
+                <div class="formSection blue" id="formDiv">
+                    <p id="alert" class="warningText"></p>
+                    <form id="spectateForm">
+                        <label for="usernameIn" class="form-label">Player Name</label>
+                        <br>
+                        <input type="text" name="username" id="usernameIn" class="form-text-field">
+                        <br>
+                        <input type="submit" id="submit" value="Search" class="submit">
+                    </form>
+                </div>
+                <div id="tableDiv" class="table-container" style="display:none;">
+                    <table id="gameListTable" class="blue">
+                        <tr>
+                            <th class="blue">Opponent</th>
+                            <th class="blue">Link</th>
+                        </tr>
+                    </table>	
+                    <a href="javascript: showSearch();" id="return" style="display:none">Return to Search</a>
+                </div>
+            </div>
+        </div>
 	</body>
 </html>

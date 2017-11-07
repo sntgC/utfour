@@ -1,0 +1,32 @@
+#return{
+    font-size: 80%;
+}
+
+table{
+    border-collapse: collapse;
+    margin:15px 0;
+}
+
+.table-container{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+
+th{
+    font-family: "Pacifico", cursive;
+    padding: 4px 6px;
+    margin: 0;
+    color:white;
+    background: #2892D7;
+}
+
+tr:nth-child(even){
+    background: rgba(0,0,0,.05);
+}
+
+td{
+    font-family: "Raleway", sans-serif;
+    padding: 4px 6px;
+}
