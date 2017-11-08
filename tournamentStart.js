@@ -18,12 +18,12 @@ notificationSource.onmessage = function(e) {
 	}
 	if(e.data!=lastNotification){
 		lastNotification=e.data;
-		document.getElementById("notifLink").innerHTML="<img src='images/notificationsOn.png' height='30' width='30' class='dropdownLink'>";
+		document.getElementById("notifLink").innerHTML="<img src='images/notificationsOn.png' height='30' width='30' class=''>";
 		notificationsChecked=false;
 	}
 	document.getElementById("notification").innerHTML=e.data;
 	if(notificationsChecked){
-		document.getElementById("notifLink").innerHTML="<img src='images/notifications.png' height='30' width='30' class='dropdownLink'>";
+		document.getElementById("notifLink").innerHTML="<img src='images/notifications.png' height='30' width='30' class=''>";
 	}
  };
 

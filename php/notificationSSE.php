@@ -18,7 +18,7 @@
 		while($row = mysqli_fetch_array($result)){
 			if($row['consent']==1){
 				$name=$_GET['userID']==$row['player1ID']? $row['player2Name']:$row['player1Name'];
-				$return .="<a href='matches/".$row['id']."'>You vs ".$name."</a>";
+				$return .="<a href='matches/".$row['id']."' class='dropdownLink'>You vs ".$name."</a>";
 			}else if($_GET['userID']==$row['player1ID']){
 				$return .="<a class='dropdownLink'>Waiting for ".$row['player2Name']."'s response</a>";
 			}else{

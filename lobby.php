@@ -4,10 +4,10 @@
 		<title>Lobby</title>
 		<meta charset="utf-8">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link rel="stylesheet" type="text/css" href="style/header.css">
+		<link rel="stylesheet" type="text/css" href="style/utfour.css">
 		<link rel="stylesheet" type="text/css" href="style/fontello.css">
-		<link rel="stylesheet" type="text/css" href="style/lobby.css">
+		<link rel="stylesheet" type="text/css" href="style/form.css">
+		<link rel="stylesheet" type="text/css" href="style/home.css">
 		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
@@ -62,7 +62,7 @@
 
 			window.onclick = function(e) {
 				//.dropdownLink is the class for anything that does not hide the dropdowns
-				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")) {
+				if (false) {
 					var keys=Object.keys(isOpen);
 					for(o=0;o<keys.length;o++){
 						if(isOpen[keys[o]]){
@@ -75,6 +75,7 @@
 
 			//This is a cheeky way of setting the menu width equal to the parent button
 			window.onload=function(){
+                $(".dropdown-content").toggle();
 				window.setTimeout(function(){
 					var width=Math.floor($("#userData").width());
 					document.getElementById("accountSettings").style.minWidth=width+"px";
@@ -113,53 +114,59 @@
 		<script type="text/javascript" src="tournamentStart.js"></script>
 	</head>
 	<body style="display:none">
-		<ul class="blue">
-			<li class="dropdown right">
-			<a href="javascript:dropMenu('lobbySettings');" class="dropbtn dropdownLink blue"><img src="images/settings.png" height="30" width="30" class="dropdownLink"></a>
-			<div class="dropdown-content" id="lobbySettings">
-				<a href="javascript:hideLobbyUsrs()" class="dropdownLink">Toggle Players</a>
-				<a href="javascript:togglePrivateMatch()" class="dropdownLink">Toggle Private Match Creator</a>
-				<a href="javascript:beginTournament()" id="adminControls" style="display:none">Begin Tournament</a>
+		<div class="header">
+			<div class="dropdown right">
+                <a href="javascript:dropMenu('lobbySettings');" class="dropbtn blue"><img src="images/settings.png" height="30" width="30" class=""></a>
+                <div class="dropdown-content right" id="lobbySettings">
+                    <a href="javascript:hideLobbyUsrs()" class="dropdownLink">Toggle Players</a>
+                    <a href="javascript:togglePrivateMatch()" class="dropdownLink">Toggle Private Match Creator</a>
+                    <a href="javascript:beginTournament()" id="adminControls" class="dropdownLink" style="display:none">Begin Tournament</a>
+                </div>
 			</div>
-			</li>
-			<li class="dropdown right" id="notificationButton">
-				<a href="javascript:dropMenu('notification')" class="dropbtn dropdownLink blue" id="notifLink"><img src="images/notifications.png" height="30" width="30" class="dropdownLink"></a>
-				<div class="dropdown-content" id="notification">
+			<div class="dropdown right" id="notificationButton">
+				<a href="javascript:dropMenu('notification')" class="dropbtn blue" id="notifLink"><img src="images/notifications.png" height="30" width="30" class=""></a>
+				<div class="dropdown-content right" id="notification">
 				<a class="dropdownLink"><em class="dropdownLink" style="cursor:default">No games available</em></a>
 				</div>
-			</li>
-			<li class="dropdown right" id="userData">
-			<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
-			<div class="dropdown-content" id="accountSettings">
-				<a href="account" class="dropdownLink">My Account</a>
-				<a href="spectate" class="dropdownLink">Spectate</a>
-				<a href="howtoplay" class="dropdownLink">How to Play</a>
-				<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
 			</div>
-			</li>
-			<li class="dropdown left">
+			<div class="dropdown right" id="userData">
+                <a href="javascript:dropMenu('accountSettings');" class="dropbtn  blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
+                <div class="dropdown-content right" id="accountSettings">
+                    <a href="account" class="dropdownLink">My Account</a>
+                    <a href="spectate" class="dropdownLink">Spectate</a>
+                    <a href="howtoplay" class="dropdownLink">How to Play</a>
+                    <a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
+                </div>
+			</div>
+            <div class="filler"></div>
+			<div class="dropdown left">
 				<a class="dropbtn title noclick">UT<sup>4</sup></a>
-			</li>
-		</ul>
-		<div class="leftContent blue">
-			<div id='privateRoom'>
-				<span id="alert" style="display:none" class="dismissable"></span>
-				<span id="privateGameLabel">Username</span><input type="text" id="requestedUsername" class="blue">
-				<button onclick="generatePrivateGame()" id="privateGameButton" class="blue">Create Private Match</button>
-			</div>
-			<div id='readySwitch'>
-				<input type='checkbox' id='playerReady' disabled='true'> Ready up for tournament
-			</div>
-			<div id="playersLabel">
-				Online Players
-			</div>
-			<div id="players">
 			</div>
 		</div>
-		<div class="mainContent">
-			<h1>Featured Game</h1>
-			<iframe id="featuredGame" src="" style="display:none"></iframe>
-			<h2 id="noGames">No currently active games :(</h2>
-		</div>
+        <div class="body-container">
+            <div class="leftContent left-content">
+                <div id='privateRoom'>
+                    <span id="alert" style="display:none" class="dismissable"></span>
+                    <span id="privateGameLabel" class="form-label">Username</span><br>
+                    <input type="text" id="requestedUsername" class="form-text-field">
+                    <button onclick="generatePrivateGame()" id="privateGameButton" class="submit">Create Private Match</button>
+                </div>
+                <div id='readySwitch'>
+                    <input type='checkbox' id='playerReady' disabled='true'> Ready up for tournament
+                </div>
+                <div class="player-container">
+                    <div id="playersLabel">
+                        Online Players
+                    </div>
+                    <div id="players">
+                    </div>
+                </div>
+            </div>
+            <div class="mainContent main-content">
+                <h1>Featured Game</h1>
+                <iframe id="featuredGame" src="" style="display:none"></iframe>
+                <h2 id="noGames">No currently active games :(</h2>
+            </div>
+        </div>
 	</body>
 </html>
