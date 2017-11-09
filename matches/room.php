@@ -3,9 +3,7 @@
 	<head>
 		<title>Game Room</title>
 		<meta charset="utf-8">
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="../style/style.css">
-		<link rel="stylesheet" type="text/css" href="../style/header.css">
+		<link rel="stylesheet" type="text/css" href="../style/utfour.css">
 		<link rel="stylesheet" type="text/css" href="../style/fontello.css">
 		<link rel="stylesheet" type="text/css" href="../style/room.css">
 		<link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
@@ -72,7 +70,7 @@
 			// Close the dropdown if the user clicks outside of the button or image
 			window.onclick = function(e) {
 				//.dropdownLink is the class for anything that does not hide the dropdowns
-				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")) {
+				if (!e.target.matches('#usrImg')) {
 					var keys=Object.keys(isOpen);
 					for(o=0;o<keys.length;o++){
 						if(isOpen[keys[o]]){
@@ -93,30 +91,31 @@
 	</head>
 	<body>
 		<!--Navigation bar used when the user is not logged in-->
-		<ul class="blue" id="parentNav1">
-			<li class="dropdown left">
+		<div class="header" id="parentNav1">
+            <div class="filler"></div>
+			<div class="dropdown left">
 				<a href="../index" class="dropbtn title blue">UT<sup>4</sup></a>
-			</li>
-		</ul>
+			</div>
+		</div>
 		
 		<!--Navigation bar used when the user is logged in-->
-		<ul class="blue" id="parentNav2" style="display:none">
-			<li class="dropdown right" id="userData">
-				<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php $from = "room"; include '../php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include '../php/getUser.php';?></a>
-				<div class="dropdown-content" id="accountSettings">
+		<div class="header" id="parentNav2" style="display:none">
+			<div class="dropdown right" id="userData">
+				<a href="javascript:dropMenu('accountSettings');" class="dropbtn blue"><?php $from = "room"; include '../php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include '../php/getUser.php';?></a>
+				<div class="dropdown-content right" id="accountSettings">
 					<a href="../account" class="dropdownLink">My Account</a>
 					<a href="../spectate" class="dropdownLink">Spectate</a>
 					<a href="../howtoplay" class="dropdownLink">How to Play</a>
 					<a href="../php/logoutUser.php" class="dropdownLink">Sign Out</a>
 				</div>
-			</li>
-			<li class="dropdown left">
+			</div>
+            <div class="filler"></div>
+			<div class="dropdown left">
 				<a href="../lobby" class="dropbtn title blue">UT<sup>4</sup></a>
-			</li>
-		</ul>
-
+			</div>
+		</div>
 		<div id="gameArea">
-			<div style="background-color:#dfdfdf">
+			<div class="player-info" style="background-color:#dfdfdf">
 				<div id="playerContainer">
 					<canvas id="p1Color" width="15" height="15"></canvas><p id="p1" class=""></p>
 					<br>

@@ -526,7 +526,7 @@ $(document).ready(function(){
 	c=document.getElementById("display");
 	miniC=document.getElementById("turnDisplay");
 	var width = c.offsetWidth;
-	$("#gameArea").css("width",width);
+	//$("#gameArea").css("width",width);
 	ctx=c.getContext("2d");
 	miniCtx=miniC.getContext("2d");
 });
