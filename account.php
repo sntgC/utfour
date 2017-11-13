@@ -3,9 +3,8 @@
 	<head>
 		<title>My Account</title>
 		<meta charset="utf-8">
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link rel="stylesheet" type="text/css" href="style/header.css">
+		<link rel="stylesheet" type="text/css" href="style/utfour.css">
+		<link rel="stylesheet" type="text/css" href="style/form.css">
 		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
@@ -113,6 +112,7 @@
 			}
 			//This is a cheeky way of setting the menu width equal to the parent button
 			window.onload=function(){
+                $(".dropdown-content").toggle();
 				window.setTimeout(function(){
 					var width=Math.floor($("#userData").width());
 					document.getElementById("accountSettings").style.minWidth=width+"px";
@@ -121,60 +121,64 @@
 		</script>
 	</head>
 	<body style="display:none">
-		<ul class="blue">
-			<li class="dropdown right" id="userData">
-				<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
+		<div class="header">
+			<div class="dropdown right" id="userData">
+				<a href="javascript:dropMenu('accountSettings');" class="dropbtn  blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 				<div class="dropdown-content" id="accountSettings">
 					<a href="spectate" class="dropdownLink">Spectate</a>
 					<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
 				</div>
-			</li>
-			<li class="dropdown left">
+			</div>
+            <span class="filler"></span>
+			<div class="dropdown left">
 				<a href="lobby" class="dropbtn title blue">UT<sup>4</sup></a>
-			</li>
-		</ul>
-		<h3 id="accountTitle">My Account</h3>
-		<p id="alert" class="accountMenuAlert"></p>
-		<div id="accountMenu" class="blue">
-			<table>
-				<tr>
-					<td class="label">Username:</td>
-					<td class="input"><b><?php $emailOnly=""; $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b></td>
-				</tr>
-				<tr>
-					<td class="label">Email Address:</td>
-					<td class="input"><b><?php $emailOnly="true"; $includeWins=""; $winsOnly=""; include 'php/getUser.php';?></b></td>
-				</tr>
-				<tr>
-					<td class="label">Profile Picture:</td>
-					<td class="input"><?php include 'php/loadUserImg.php'; ?></td>
-				</tr>
-				<tr>
-					<td class="label">Number of Wins:</td>
-					<td class="input"><b><?php $emailOnly=""; $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b></td>
-				</tr>
-			</table>
-			<a href="matchHistory">View match history</a><br>
-			<a href="javascript: showThemeChanger();" id="changeThemeLink">Change theme color</a><br>
-			<form id="changeThemeForm" name="changeThemeForm" action="php/updateTheme.php" method="post" style="display:none">
-				<select name="colorSelector" id="colorSelector" class="blue">
-					<option value="blue">Blue</option>
-					<option value="green">Green</option>
-					<option value="orange">Orange</option>
-					<option value="red">Red</option>
-				</select>
-				<input id="submitTheme" type="submit" name="submit" value="Change Theme" class="blue">
-			</form>
-			<br id="changeThemeBr" style="display:none">
-			<a href="" id="upload_link" title="The selected image must be no larger than 500 kB">Change my profile picture</a><br>
-			<a href="php/resetUserImg.php" id="reset_link" title="This will reset your profile picture to the default user image">Reset my profile picture</a><br>
-			<a href="changeEmail">Change my email address</a><br>
-			<a href="changePassword">Change my password</a><br>
-			<a href="deleteAccount">Delete my account</a>
-			<form id="picForm" action="php/uploadUserImg.php" method="post" enctype="multipart/form-data">
-				<input id="fileToUpload" name="fileToUpload" type="file" accept="image/*" style="display:none;">
-				<input type="submit" id="submit" name="submit" style="display:none;">
-			</form>
+			</div>
 		</div>
+        <div class="center-container">
+            <div class="form-container">
+                <h1 class="form-title">My Account</h1>
+                <p id="alert" class="accountMenuAlert"></p>
+                <div id="accountMenu" class="blue">
+                    <table>
+                        <tr>
+                            <td class="form-label">Username:</td>
+                            <td class="form-info form-info-big"><b><?php $emailOnly=""; $includeWins="false"; $winsOnly=""; include 'php/getUser.php';?></b></td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">Email Address:</td>
+                            <td class="input"><b><?php $emailOnly="true"; $includeWins=""; $winsOnly=""; include 'php/getUser.php';?></b></td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">Profile Picture:</td>
+                            <td class="input"><?php include 'php/loadUserImg.php'; ?></td>
+                        </tr>
+                        <tr>
+                            <td class="form-label">Number of Wins:</td>
+                            <td class="input"><b><?php $emailOnly=""; $winsOnly="true"; $includeWins=""; include 'php/getUser.php';?></b></td>
+                        </tr>
+                    </table>
+                    <a href="matchHistory" class="submit">View match history</a><br>
+                    <a href="javascript: showThemeChanger();" id="changeThemeLink" class="submit">Change theme color</a><br>
+                    <form id="changeThemeForm" name="changeThemeForm" action="php/updateTheme.php" method="post" style="display:none">
+                        <select name="colorSelector" id="colorSelector" class="blue">
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="orange">Orange</option>
+                            <option value="red">Red</option>
+                        </select>
+                        <input id="submitTheme" type="submit" name="submit" class="submit submit-small" value="Change Theme" class="blue">
+                    </form>
+                    <a href="" class="submit" id="upload_link" title="The selected image must be no larger than 500 kB">Change my profile picture</a><br>
+                    <a href="php/resetUserImg.php" class="submit" id="reset_link" title="This will reset your profile picture to the default user image">Reset my profile picture</a><br>
+                    <a href="changeEmail" class="submit">Change my email address</a><br>
+                    <a href="changePassword" class="submit">Change my password</a><br>
+                    <a href="deleteAccount" class="submit">Delete my account</a>
+                    <form id="picForm" action="php/uploadUserImg.php" method="post" enctype="multipart/form-data">
+                        <input id="fileToUpload" name="fileToUpload" type="file" accept="image/*" style="display:none;">
+                        <input type="submit" id="submit" name="submit" style="display:none;">
+                    </form>
+                </div>
+            </div>
+        </div>
 	</body>
 </html>
