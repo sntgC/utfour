@@ -100,7 +100,7 @@
 			// Close the dropdown if the user clicks outside of the button or image
 			window.onclick = function(e) {
 				//.dropdownLink is the class for anything that does not hide the dropdowns
-				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")) {
+				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")&&(!e.target.matches(".dropbtn"))) {
 					var keys=Object.keys(isOpen);
 					for(o=0;o<keys.length;o++){
 						if(isOpen[keys[o]]){
