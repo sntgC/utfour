@@ -1,10 +1,14 @@
-html *{
-	font-family: 'Open Sans', sans-serif !important;
-}
-
 body {
 	margin:0;
 	color: rgba(15,15,15,0.65);
+    font-family: "Raleway";
+}
+
+#nav{
+    font-family: "Raleway";
+    background: #4056a1;
+    box-shadow: 0 -1px 24px rgba(0,0,0,0.4);
+    z-index: 5;
 }
 
 ul {
@@ -14,24 +18,28 @@ ul {
 	overflow:hidden;
 	background-color: gray;
 }
+
+.header{
+    box-shadow: none;
+}
  
  a{
 	 color:black;
 	 text-decoration:none;
  } 
  
-#nav li a {
-	display: block;
+#nav a {
 	color: white;
+    display: inline-block;
 	text-align: center;
 	padding: 10px 12px;
 	text-decoration: none;
 }
 
-#nav li a:hover {
-	background-color: #cccccc;
+#nav a:hover {
+    background: #6E97D2;
 	text-decoration: none;
-	color: rgba(15,15,15,0.65);
+	color: white;
 }
 
 a:visited{
@@ -81,12 +89,12 @@ div h3{
 
 #page1{
 	padding: 18px 20px;
-	background-color:#cccccc;
+    background: rgba(192,192,192,.75);
 }
 
 #page2{
 	padding: 18px 20px;
-	background-color:#dddddd;
+    background: rgba(208,208,208,.75);
 	height: 710px;
 }
 #page2Grid{
@@ -104,20 +112,20 @@ div h3{
 
 #page3{
 	padding: 18px 20px;
-	background-color:#cccccc;
+    background: rgba(192,192,192,.75);
 }
 #page4{
 	padding: 18px 20px;
-	background-color:#dddddd;
+    background: rgba(208,208,208,.75);
 	height:700px;
 }
 
 #page5{
 	padding: 18px 20px;
-	background-color:#cccccc;
+    background: rgba(192,192,192,.75);
 	height:710px;
 }
 #page6{
 	padding: 18px 20px;
-	background-color:#dddddd;
+    background: rgba(208,208,208,.75);
 }

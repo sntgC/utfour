@@ -111,11 +111,12 @@
 		</script>
 	</head>
 	<body>
-        <ul class="header" id="parentNav1">
-			<li class="dropdown left">
+        <div class="header" id="parentNav1">
+            <span class="filler"></span>
+			<div class="dropdown left">
 				<a href="index" class="dropbtn title blue">UT<sup>4</sup></a>
-			</li>
-		</ul>
+			</div>
+		</div>
 
         <div class="header" id="parentNav2" style="display:none">
 			<div class="dropdown right" id="userData">

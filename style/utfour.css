@@ -44,7 +44,7 @@ a:visited{
 
 body{
     background: #f1f0eb;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     background-image:url(../images/xoPattern.png);

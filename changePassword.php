@@ -3,9 +3,8 @@
 	<head>
 		<title>Change Password</title>
 		<meta charset="utf-8">
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link rel="stylesheet" type="text/css" href="style/header.css">
+		<link rel="stylesheet" type="text/css" href="style/utfour.css">
+		<link rel="stylesheet" type="text/css" href="style/form.css">
 		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
@@ -20,6 +19,7 @@
 			adjustTheme();
 
 			function init(){
+                $(".dropdown-content").toggle();
 				document.getElementById("passwordNotif").style.display = "none";
 				document.getElementById("passwordConfNotif").style.display = "none";
 			}
@@ -107,7 +107,7 @@
 			// Close the dropdown if the user clicks outside of the button or image
 			window.onclick = function(e) {
 				//.dropdownLink is the class for anything that does not hide the dropdowns
-				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")) {
+				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")&&!e.target.matches(".dropbtn")) {
 					var keys=Object.keys(isOpen);
 					for(o=0;o<keys.length;o++){
 						if(isOpen[keys[o]]){
@@ -127,36 +127,41 @@
 		</script>
 	</head>
 	<body onload="init()" style="display:none">
-		<ul class="blue">
-			<li class="dropdown right" id="userData">
-				<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
+		<div class="header">
+			<div class="dropdown right" id="userData">
+				<a href="javascript:dropMenu('accountSettings');" class="dropbtn  blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 				<div class="dropdown-content" id="accountSettings">
 					<a href="spectate" class="dropdownLink">Spectate</a>
 					<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
 				</div>
-			</li>
-			<li class="dropdown left">
-				<a href="lobby" class="dropbtn title blue">UT<sup>4</sup></a>
-			</li>
-			<li class="dropdown left">
+			</div>
+            <span class="filler"></span>
+			<div class="dropdown left">
 				<a href="account" class="dropbtn title blue">My Account</a>
-			</li>
-		</ul>
-		<h1 class="formSectionTitle">Change Password</h1>
-		<div class="formSection blue">
-			<p id="alert"></p>
-			<p>Please hover your mouse over the input boxes for the requirements regarding that field.</p>
-			<form action="php/updatePassword.php" method="post" name="changePassForm" id="changePassForm">
-				<label>Current Password</label><br>
-				<input class="blue" type="password" name="currPasswordIn" id="currPassword" title="Please enter your current password."><br>
-				<label>New Password</label><br>
-				<input class="blue" type="password" name="newPasswordIn" id="newPassword" title="Your new password must be 6 to 20 characters in length."><br>
-				<p id="passwordNotif" class="warningText"></p>
-				<label>New Password Confirmation</label><br>
-				<input class="blue" type="password" name="newPasswordInConf" id="newPasswordConf" title="Please re-enter your new password."><br>
-				<p id="passwordConfNotif" class="warningText"></p>
-				<input class="blue" id="submit" type="submit" value="Change Password">
-			</form>
+			</div>
+			<div class="dropdown left">
+				<a href="lobby" class="dropbtn title blue">UT<sup>4</sup></a>
+			</div>
 		</div>
+        <div class="center-container">
+            <div class="form-container">
+                <h1 class="form-title">Change Password</h1>
+                <div class="formSection blue">
+                    <p id="alert"></p>
+                    <p class="form-info">Please hover your mouse over the input boxes for the requirements regarding that field.</p>
+                    <form action="php/updatePassword.php" method="post" name="changePassForm" id="changePassForm">
+                        <label class="form-label">Current Password</label><br>
+                        <input class="form-text-field" type="password" name="currPasswordIn" id="currPassword" title="Please enter your current password."><br>
+                        <label class="form-label">New Password</label><br>
+                        <input class="form-text-field" type="password" name="newPasswordIn" id="newPassword" title="Your new password must be 6 to 20 characters in length."><br>
+                        <p id="passwordNotif" class="warningText"></p>
+                        <label class="form-label">New Password Confirmation</label><br>
+                        <input class="form-text-field" type="password" name="newPasswordInConf" id="newPasswordConf" title="Please re-enter your new password."><br>
+                        <p id="passwordConfNotif" class="warningText"></p>
+                        <input class="submit" id="submit" type="submit" value="Change Password">
+                    </form>
+                </div>
+            </div>
+        </div>
 	</body>
 </html>

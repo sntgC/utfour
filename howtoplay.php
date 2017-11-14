@@ -3,8 +3,7 @@
 	<head>
 		<title>How To Play</title>
 		<meta charset="utf-8">
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="style/header.css">
+		<link rel="stylesheet" type="text/css" href="style/utfour.css">
 		<link rel="stylesheet" type="text/css" href="style/howtoplay.css">
 		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -24,6 +23,7 @@
 			adjustTheme();
 
 			$(document).ready(function(){
+                $(".dropdown-content").toggle();
 				$("a").on('click', function(event) {
 						if (this.hash !== "") {
 							event.preventDefault();
@@ -58,7 +58,7 @@
 			// Close the dropdown if the user clicks outside of the button or image
 			window.onclick = function(e) {
 				//.dropdownLink is the class for anything that does not hide the dropdowns
-				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")) {
+				if (!e.target.matches('#usrImg')&&!e.target.matches(".dropdownLink")&&!e.target.matches(".dropbtn")) {
 					var keys=Object.keys(isOpen);
 					for(o=0;o<keys.length;o++){
 						if(isOpen[keys[o]]){
@@ -196,7 +196,7 @@
 				window.setTimeout(function(){
 					for(j=0;j<9;j++){
 						var div=document.getElementById("sqrTwo"+j);
-						div.style.background="#dddddd";
+						div.style.background="rgba(0,0,0,0)";
 						for(i=0;i<9;i++){
 							var ret=div.innerHTML+"<div class='square'></div>";
 							if(i%3===2&&i!=8){
@@ -248,36 +248,36 @@
 		</script>
 	</head>
 	<body>
-		<ul class="blue" id="parentNav1">
-			<li class="dropdown left">
+		<div class="header" id="parentNav1">
+            <span class="filler"></span>
+			<div class="dropdown left">
 				<a href="index" class="dropbtn title blue">UT<sup>4</sup></a>
-			</li>
-		</ul>
+			</div>
+		</div>
 
-		<ul class="blue" id="parentNav2" style="display:none">
-			<li class="dropdown right" id="userData">
-				<a href="javascript:dropMenu('accountSettings');" class="dropbtn dropdownLink blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
+		<div class="header" id="parentNav2" style="display:none">
+			<div class="dropdown right" id="userData">
+				<a href="javascript:dropMenu('accountSettings');" class="dropbtn blue"><?php include 'php/loadUserImg.php'; $emailOnly=""; $winsOnly=""; $includeWins="true"; include 'php/getUser.php';?></a>
 				<div class="dropdown-content" id="accountSettings">
 					<a href="account" class="dropdownLink">My Account</a>
 					<a href="spectate" class="dropdownLink">Spectate</a>
 					<a href="php/logoutUser.php" class="dropdownLink">Sign Out</a>
 				</div>
-			</li>
-			<li class="dropdown left">
+			</div>
+            <span class="filler"></span>
+			<div class="dropdown left">
 				<a href="lobby" class="dropbtn title blue">UT<sup>4</sup></a>
-			</li>
-		</ul>
-
-		<div id="nav">
-			<ul>
-				<li class="left"><a href="#pt1">A Simple Game</a></li>
-				<li class="left"><a href="#pt2">A Simple Fix</a></li>
-				<li class="left"><a href="#pt3">A Goal</a></li>
-				<li class="left"><a href="#pt4">A Twist</a></li>
-				<li class="left"><a href="#pt5">A Full Board</a></li>
-				<li class="left"><a href="#pt6">Credits</a></li>
-			</ul>
+			</div>
 		</div>
+
+		<nav id="nav">
+			<a href="#pt1">A Simple Game</a>
+			<a href="#pt2">A Simple Fix</a>
+			<a href="#pt3">A Goal</a>
+			<a href="#pt4">A Twist</a>
+			<a href="#pt5">A Full Board</a>
+			<a href="#pt6">Credits</a>
+		</nav>
 
 		<div id="page1" class="centeredGrid">
 			<a id="pt1"></a>
